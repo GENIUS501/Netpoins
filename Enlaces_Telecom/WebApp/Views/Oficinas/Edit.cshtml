@@ -1,0 +1,63 @@
+﻿@model WebApp.Models.OficinasEdit
+
+@using Newtonsoft.Json;
+
+@{
+    var TypeForm = ViewBag.Form as bool?;
+}
+<model data-entity="@JsonConvert.SerializeObject(Model.oficinas)" />
+<div id="OficinasEdit" class="container">
+    <div class="row" v-if="true">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">@(TypeForm.Value ? "Editar Sitio": "Nuevo Sitio")</h4>
+                    <form id="FormOficinas">
+                        <input type="hidden" name="IdOficina" v-model="model.IdOficina" />
+
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="NombreOficina" id="NombreOficina" v-model="model.NombreOficina" required />
+                            <label for="NombreOficina"> Sitio</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="number" name="UE" id="UE" v-model="model.UE" maxlength="8" required />
+                            <label for="UE"> Unidad Ejecutora</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <select class=" form-select" name="Provincia" id="Provincia" arial-label="Default select example" v-model="model.Provincia" required>
+                                <option value="Alajuela">Alajuela</option>
+                                <option value="Cartago">Cartago</option>
+                                <option value="Guanacaste">Guanacaste</option>
+                                <option value="Heredia">Heredia</option>
+                                <option value="Limon">Limón</option>
+                                <option value="Puntarenas">Puntarenas</option>
+                                <option value="San Jose">San José</option>
+                            </select>
+                            <label for="Provincia"> Provincia </label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <textarea class="form-control" type="text" name="Comentario" id="textarea" v-model="model.Comentario" rows="3"> </textarea>
+                            <label for="Comentario"> Comentarios </label>
+                        </div>
+                        <br />
+                        <div class="mb-3">
+                            @if (TypeForm.Value)
+                            {
+                            <button type="button" @@click="Save" class="btn btn-outline-primary">Guardar <i class='bx bx-edit'></i></button>
+                            }
+                            else
+                            {
+                        <button type="button" @@click="Save" class="btn btn-outline-primary">Guardar <i class='bx bx-save'></i></button>
+                            }
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Oficinas/Edit.js"></script>
+}
+

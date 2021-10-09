@@ -1,0 +1,27 @@
+﻿** Aspectos destacados
+     Tablas que se volverán a compilar
+       Ninguno
+     Índices clúster que se van a quitar
+       Ninguno
+     Índices clúster que se van a crear
+       Ninguno
+     Posibles incidencias de datos
+       Ninguno
+
+** Acciones del usuario
+     Modificar
+       [dbo].[Oficinas] (Tabla)
+       [dbo].[Proveedores] (Tabla)
+
+** Acciones de compatibilidad
+     Actualizar
+       [dbo].[OficinasActualizar] (Procedimiento)
+       [dbo].[OficinasEliminar] (Procedimiento)
+       [dbo].[OficinasInsertar] (Procedimiento)
+       [dbo].[OficinasLista] (Procedimiento)
+       [dbo].[OficinasObtener] (Procedimiento)
+       [dbo].[ProveedoresActualizar] (Procedimiento)
+       [dbo].[ProveedoresEliminar] (Procedimiento)
+       [dbo].[ProveedoresInsertar] (Procedimiento)
+       [dbo].[ProveedoresLista] (Procedimiento)
+       [dbo].[ProveedoresObtener] (Procedimiento)

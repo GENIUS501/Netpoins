@@ -1,0 +1,74 @@
+﻿@model List<Entity.RedesEntity>
+
+<div class="container-fluid">
+    <h1>Redes</h1> <br />
+    <div class="row">
+        <div class="col-2">
+            <button type="button" class="btn btn-outline-primary" onclick="ClickNew()"><i class='bx bx-add-to-queue'></i>Agregar</button>
+            <br />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-11">
+            <table id="GridRedes" class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th>Número de Linea</th>
+                        <th>IP Gateway</th>
+                        <th>Interface</th>
+                        <th>Tipo Enlace</th>
+                        <th>Bandwidth</th>
+                        <th>Medio Enlace</th>
+                        <th>Comentarios</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Linea</td>
+                            <td>@item.Gateway</td>
+                            <td>@item.Interface </td>
+                            <td>@item.TipoEnlace</td>
+                            <td>@item.Bandwidth</td>
+                            <td>@item.MedioEnlace</td>
+                            <td>@item.Comentario</td>
+                            <td>
+                                <button type="button" class="btn btn-outline-primary" onclick="ClickUpdate(@item.IdRed)"><i class='bx bxs-edit'></i>Editar</button>
+                                <button type="button" class="btn btn-outline-primary" onclick="ClickDelete(@item.IdRed)"><i class='bx bxs-trash'></i>Eliminar</button>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="root">
+
+</div>
+
+@section scripts{
+    @if (ViewData.ContainsKey("msg"))
+    {
+        <script>
+            Swal.fire(
+                'Eliminado!',
+                'Su registro ha sido Eliminado..',
+                'Exitosamente'
+            );
+            var IsLoading = false;
+        </script>
+    }
+    else
+    {
+        <script>
+            var IsLoading = true;
+        </script>
+    }
+    <script src="~/Scripts/Redes/Index.js"></script>
+}
+

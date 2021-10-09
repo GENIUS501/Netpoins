@@ -1,0 +1,39 @@
+﻿@model List<Entity.ReporteUbicacionEntity>
+
+<div class="container-fluid">
+    <h1>Reporte por Ubicación</h1>
+    <Br />
+    <div class=" row">
+        <div class="col-11">
+            <table id="GridReporteUbicacion" class="table table-dark table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Provincia</th>
+                        <th>Enlace</th>
+                        <th>Redes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td> @item.</td>
+                            <td> @item.</td>
+                            <td> @item.</td>
+                            <td> @item.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="root">
+
+</div>
+
+@section scripts {
+    <script src="~/Scripts/ReporteUbicacion/Index.js"></script>
+}

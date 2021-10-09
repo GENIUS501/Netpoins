@@ -1,0 +1,45 @@
+﻿** Aspectos destacados
+     Tablas que se volverán a compilar
+       [dbo].[Redes]
+     Índices clúster que se van a quitar
+       Ninguno
+     Índices clúster que se van a crear
+       Ninguno
+     Posibles incidencias de datos
+       Debe agregarse la columna [dbo].[Redes].[IdProveedor] de la tabla [dbo].[Redes], pero esta columna no tiene un valor
+         predeterminado y no admite valores NULL. Si la tabla contiene datos, el script ALTER no funcionará. Para evitar esta
+         incidencia, agregue un valor predeterminado a la columna, márquela de modo que permita valores NULL o habilite la
+         generación de valores predeterminados inteligentes como opción de implementación.
+
+** Acciones del usuario
+     Modificar
+       [dbo].[Enlaces] (Tabla)
+       [dbo].[EnlacesActualizar] (Procedimiento)
+       [dbo].[EnlacesInsertar] (Procedimiento)
+       [dbo].[EnlacesLista] (Procedimiento)
+       [dbo].[EnlacesObtener] (Procedimiento)
+       [dbo].[RedesActualizar] (Procedimiento)
+       [dbo].[RedesInsertar] (Procedimiento)
+       [dbo].[RedesLista] (Procedimiento)
+       [dbo].[RedesObtener] (Procedimiento)
+       [dbo].[UsuariosLista] (Procedimiento)
+     Nueva compilación de tablas
+       [dbo].[Redes] (Tabla)
+     Crear
+       [dbo].[BitacoraCambios] (Tabla)
+       [dbo].[BitacoraRegistro] (Tabla)
+       [dbo].[FK_Redes_Proveedores] (Clave externa)
+       [dbo].[FK_BitacoraCambios_Usuarios] (Clave externa)
+       [dbo].[FK_BitacoraRegistro_Usuarios] (Clave externa)
+
+** Acciones de compatibilidad
+     Quitar
+       [dbo].[FK_Enlaces_Redes] (Clave externa)
+     Crear
+       [dbo].[FK_Enlaces_Redes] (Clave externa)
+     Actualizar
+       [dbo].[EnlacesEliminar] (Procedimiento)
+       [dbo].[RedesEliminar] (Procedimiento)
+
+Debe agregarse la columna [dbo].[Redes].[IdProveedor] de la tabla [dbo].[Redes], pero esta columna no tiene un valor predeterminado y no admite valores NULL. Si la tabla contiene datos, el script ALTER no funcionará. Para evitar esta incidencia, agregue un valor predeterminado a la columna, márquela de modo que permita valores NULL o habilite la generación de valores predeterminados inteligentes como opción de implementación.
+

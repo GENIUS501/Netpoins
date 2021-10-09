@@ -1,0 +1,67 @@
+﻿** Aspectos destacados
+     Tablas que se volverán a compilar
+       Ninguno
+     Índices clúster que se van a quitar
+       Ninguno
+     Índices clúster que se van a crear
+       Ninguno
+     Posibles incidencias de datos
+       Se está quitando la columna [dbo].[Oficinas].[Estado]; puede que se pierdan datos.
+       Se está quitando la columna [dbo].[Oficinas].[IdProveedor]; puede que se pierdan datos.
+       Se está quitando la columna [dbo].[Oficinas].[IdRed]; puede que se pierdan datos.
+       Debe agregarse la columna [dbo].[Oficinas].[Comentario] de la tabla [dbo].[Oficinas], pero esta columna no tiene un
+         valor predeterminado y no admite valores NULL. Si la tabla contiene datos, el script ALTER no funcionará. Para evitar
+         esta incidencia, agregue un valor predeterminado a la columna, márquela de modo que permita valores NULL o habilite la
+         generación de valores predeterminados inteligentes como opción de implementación.
+       Se está quitando la columna [dbo].[Proveedores].[Estado]; puede que se pierdan datos.
+       Debe agregarse la columna [dbo].[Proveedores].[Comentario] de la tabla [dbo].[Proveedores], pero esta columna no tiene
+         un valor predeterminado y no admite valores NULL. Si la tabla contiene datos, el script ALTER no funcionará. Para evitar
+         esta incidencia, agregue un valor predeterminado a la columna, márquela de modo que permita valores NULL o habilite la
+         generación de valores predeterminados inteligentes como opción de implementación.
+       Debe agregarse la columna [dbo].[Redes].[Comentario] de la tabla [dbo].[Redes], pero esta columna no tiene un valor
+         predeterminado y no admite valores NULL. Si la tabla contiene datos, el script ALTER no funcionará. Para evitar esta
+         incidencia, agregue un valor predeterminado a la columna, márquela de modo que permita valores NULL o habilite la
+         generación de valores predeterminados inteligentes como opción de implementación.
+
+** Acciones del usuario
+     Quitar
+       [dbo].[DF_Oficinas_Estado] (Restricción DEFAULT)
+       [dbo].[DF_Proveedores_Estado] (Restricción DEFAULT)
+       [dbo].[FK_Oficinas_Proveedores] (Clave externa)
+       [dbo].[FK_Oficinas_Redes] (Clave externa)
+     Modificar
+       [dbo].[Oficinas] (Tabla)
+       [dbo].[Proveedores] (Tabla)
+       [dbo].[Redes] (Tabla)
+       [dbo].[OficinasActualizar] (Procedimiento)
+       [dbo].[OficinasInsertar] (Procedimiento)
+       [dbo].[OficinasLista] (Procedimiento)
+       [dbo].[OficinasObtener] (Procedimiento)
+       [dbo].[ProveedoresActualizar] (Procedimiento)
+       [dbo].[ProveedoresInsertar] (Procedimiento)
+       [dbo].[ProveedoresLista] (Procedimiento)
+       [dbo].[ProveedoresObtener] (Procedimiento)
+       [dbo].[RedesActualizar] (Procedimiento)
+     Crear
+       [dbo].[Enlaces] (Tabla)
+       [dbo].[FK_Enlaces_Oficinas] (Clave externa)
+       [dbo].[FK_Enlaces_Redes] (Clave externa)
+       [dbo].[FK_Enlaces_Proveedores] (Clave externa)
+
+** Acciones de compatibilidad
+     Actualizar
+       [dbo].[OficinasEliminar] (Procedimiento)
+       [dbo].[ProveedoresEliminar] (Procedimiento)
+       [dbo].[RedesEliminar] (Procedimiento)
+       [dbo].[RedesInsertar] (Procedimiento)
+       [dbo].[RedesLista] (Procedimiento)
+       [dbo].[RedesObtener] (Procedimiento)
+
+Se está quitando la columna [dbo].[Oficinas].[Estado]; puede que se pierdan datos.
+Se está quitando la columna [dbo].[Oficinas].[IdProveedor]; puede que se pierdan datos.
+Se está quitando la columna [dbo].[Oficinas].[IdRed]; puede que se pierdan datos.
+Debe agregarse la columna [dbo].[Oficinas].[Comentario] de la tabla [dbo].[Oficinas], pero esta columna no tiene un valor predeterminado y no admite valores NULL. Si la tabla contiene datos, el script ALTER no funcionará. Para evitar esta incidencia, agregue un valor predeterminado a la columna, márquela de modo que permita valores NULL o habilite la generación de valores predeterminados inteligentes como opción de implementación.
+Se está quitando la columna [dbo].[Proveedores].[Estado]; puede que se pierdan datos.
+Debe agregarse la columna [dbo].[Proveedores].[Comentario] de la tabla [dbo].[Proveedores], pero esta columna no tiene un valor predeterminado y no admite valores NULL. Si la tabla contiene datos, el script ALTER no funcionará. Para evitar esta incidencia, agregue un valor predeterminado a la columna, márquela de modo que permita valores NULL o habilite la generación de valores predeterminados inteligentes como opción de implementación.
+Debe agregarse la columna [dbo].[Redes].[Comentario] de la tabla [dbo].[Redes], pero esta columna no tiene un valor predeterminado y no admite valores NULL. Si la tabla contiene datos, el script ALTER no funcionará. Para evitar esta incidencia, agregue un valor predeterminado a la columna, márquela de modo que permita valores NULL o habilite la generación de valores predeterminados inteligentes como opción de implementación.
+

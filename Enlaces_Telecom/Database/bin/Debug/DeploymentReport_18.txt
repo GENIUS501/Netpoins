@@ -1,0 +1,23 @@
+﻿** Aspectos destacados
+     Tablas que se volverán a compilar
+       Ninguno
+     Índices clúster que se van a quitar
+       Ninguno
+     Índices clúster que se van a crear
+       Ninguno
+     Posibles incidencias de datos
+       Se está quitando la columna [dbo].[Enlaces].[Comentario]; puede que se pierdan datos.
+
+** Acciones del usuario
+     Modificar
+       [dbo].[Enlaces] (Tabla)
+     Crear
+       [dbo].[EnlacesActualizar] (Procedimiento)
+       [dbo].[EnlacesEliminar] (Procedimiento)
+       [dbo].[EnlacesInsertar] (Procedimiento)
+       [dbo].[EnlacesObtener] (Procedimiento)
+
+** Acciones de compatibilidad
+
+Se está quitando la columna [dbo].[Enlaces].[Comentario]; puede que se pierdan datos.
+

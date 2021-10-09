@@ -1,0 +1,26 @@
+﻿** Aspectos destacados
+     Tablas que se volverán a compilar
+       Ninguno
+     Índices clúster que se van a quitar
+       Ninguno
+     Índices clúster que se van a crear
+       Ninguno
+     Posibles incidencias de datos
+       Ninguno
+
+** Acciones del usuario
+     Modificar
+       [dbo].[Redes] (Tabla)
+
+** Acciones de compatibilidad
+     Quitar
+       [dbo].[CHK_Redes_MedioEnlace] (Restricción CHECK)
+     Crear
+       [dbo].[CHK_Redes_MedioEnlace] (Restricción CHECK)
+     Actualizar
+       [dbo].[OficinasObtener] (Procedimiento)
+       [dbo].[RedesActualizar] (Procedimiento)
+       [dbo].[RedesEliminar] (Procedimiento)
+       [dbo].[RedesInsertar] (Procedimiento)
+       [dbo].[RedesLista] (Procedimiento)
+       [dbo].[RedesObtener] (Procedimiento)

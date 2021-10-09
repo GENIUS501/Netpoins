@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{53e6c8c0-c997-401b-9062-0b0bce3e59ae}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Database</RootNamespace>
+    <AssemblyName>Database</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo" />
+    <Folder Include="dbo\Tables" />
+    <Folder Include="dbo\Store Procedures" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\Oficinas.sql" />
+    <Build Include="dbo\Tables\Redes.sql" />
+    <Build Include="dbo\Tables\Proveedores.sql" />
+    <Build Include="dbo\Tables\Usuarios.sql" />
+    <Build Include="dbo\Tables\BitacoraRegistros.sql" />
+    <Build Include="dbo\Tables\BitacoraCambios.sql" />
+    <Build Include="dbo\Tables\Roles.sql" />
+    <Build Include="dbo\Store Procedures\RolesLista.sql" />
+    <Build Include="dbo\Store Procedures\RolesObtener.sql" />
+    <Build Include="dbo\Store Procedures\RolesInsertar.sql" />
+    <Build Include="dbo\Store Procedures\RolesActualizar.sql" />
+    <Build Include="dbo\Store Procedures\RolesEliminar.sql" />
+    <Build Include="dbo\Store Procedures\UsuariosLista.sql" />
+    <Build Include="dbo\Store Procedures\UsuariosObtener.sql" />
+    <Build Include="dbo\Store Procedures\UsuariosInsertar.sql" />
+    <Build Include="dbo\Store Procedures\UsuariosEliminar.sql" />
+    <Build Include="dbo\Store Procedures\UsuariosActualizar.sql" />
+    <Build Include="dbo\Store Procedures\ProveedoresLista.sql" />
+    <Build Include="dbo\Store Procedures\ProveedoresObtener.sql" />
+    <Build Include="dbo\Store Procedures\ProveedoresInsertar.sql" />
+    <Build Include="dbo\Store Procedures\ProveedoresActualizar.sql" />
+    <Build Include="dbo\Store Procedures\ProveedoresEliminar.sql" />
+    <Build Include="dbo\Store Procedures\RedesObtener.sql" />
+    <Build Include="dbo\Store Procedures\RedesLista.sql" />
+    <Build Include="dbo\Store Procedures\RedesActualizar.sql" />
+    <Build Include="dbo\Store Procedures\RedesEliminar.sql" />
+    <Build Include="dbo\Store Procedures\RedesInsertar.sql" />
+    <Build Include="dbo\Store Procedures\OficinasLista.sql" />
+    <Build Include="dbo\Store Procedures\OficinasObtener.sql" />
+    <Build Include="dbo\Store Procedures\OficinasInsertar.sql" />
+    <Build Include="dbo\Store Procedures\OficinasActualizar.sql" />
+    <Build Include="dbo\Store Procedures\OficinasEliminar.sql" />
+    <Build Include="dbo\Tables\Enlaces.sql" />
+    <Build Include="dbo\Store Procedures\EnlacesInsertar.sql" />
+    <Build Include="dbo\Store Procedures\EnlacesEliminar.sql" />
+    <Build Include="dbo\Store Procedures\EnlacesActualizar.sql" />
+    <Build Include="dbo\Store Procedures\EnlacesObtener.sql" />
+    <Build Include="dbo\Store Procedures\EnlacesLista.sql" />
+    <Build Include="dbo\Store Procedures\BitacoraCambiosInsertar.sql" />
+    <Build Include="dbo\Store Procedures\BitacoraCambiosObtener.sql" />
+    <Build Include="dbo\Store Procedures\BitacoraRegistrosInsertar.sql" />
+    <Build Include="dbo\Store Procedures\BitacoraRegistrosObtener.sql" />
+    <Build Include="dbo\Store Procedures\ReporteUbicacionLista.sql" />
+  </ItemGroup>
+</Project>

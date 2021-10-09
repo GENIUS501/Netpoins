@@ -1,0 +1,35 @@
+﻿** Aspectos destacados
+     Tablas que se volverán a compilar
+       Ninguno
+     Índices clúster que se van a quitar
+       Ninguno
+     Índices clúster que se van a crear
+       Ninguno
+     Posibles incidencias de datos
+       Se está quitando la columna [dbo].[Oficinas].[Estado]; puede que se pierdan datos.
+       Se está quitando la columna [dbo].[Proveedores].[Estado]; puede que se pierdan datos.
+
+** Acciones del usuario
+     Quitar
+       [dbo].[DF_Oficinas_Estado] (Restricción DEFAULT)
+       [dbo].[DF_Proveedores_Estado] (Restricción DEFAULT)
+     Modificar
+       [dbo].[Oficinas] (Tabla)
+       [dbo].[Proveedores] (Tabla)
+       [dbo].[OficinasActualizar] (Procedimiento)
+       [dbo].[OficinasInsertar] (Procedimiento)
+       [dbo].[OficinasLista] (Procedimiento)
+       [dbo].[ProveedoresActualizar] (Procedimiento)
+       [dbo].[ProveedoresInsertar] (Procedimiento)
+       [dbo].[ProveedoresLista] (Procedimiento)
+       [dbo].[ProveedoresObtener] (Procedimiento)
+
+** Acciones de compatibilidad
+     Actualizar
+       [dbo].[OficinasEliminar] (Procedimiento)
+       [dbo].[OficinasObtener] (Procedimiento)
+       [dbo].[ProveedoresEliminar] (Procedimiento)
+
+Se está quitando la columna [dbo].[Oficinas].[Estado]; puede que se pierdan datos.
+Se está quitando la columna [dbo].[Proveedores].[Estado]; puede que se pierdan datos.
+

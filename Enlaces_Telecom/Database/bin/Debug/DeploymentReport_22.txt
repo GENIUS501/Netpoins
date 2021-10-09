@@ -1,0 +1,29 @@
+﻿** Aspectos destacados
+     Tablas que se volverán a compilar
+       [dbo].[BitacoraCambios]
+     Índices clúster que se van a quitar
+       Ninguno
+     Índices clúster que se van a crear
+       Ninguno
+     Posibles incidencias de datos
+       Se está quitando la columna [dbo].[BitacoraCambios].[IdBitCambios]; puede que se pierdan datos.
+
+** Acciones del usuario
+     Nueva compilación de tablas
+       [dbo].[BitacoraCambios] (Tabla)
+     Crear
+       [dbo].[BitacoraRegistros] (Tabla)
+       [dbo].[FK_BitacoraRegistros_Usuarios] (Clave externa)
+       [dbo].[BitacoraCambiosInsertar] (Procedimiento)
+       [dbo].[BitacoraCambiosObtener] (Procedimiento)
+       [dbo].[BitacoraRegistrosInsertar] (Procedimiento)
+       [dbo].[BitacoraRegistrosObtener] (Procedimiento)
+
+** Acciones de compatibilidad
+     Quitar
+       [dbo].[FK_BitacoraCambios_Usuarios] (Clave externa)
+     Crear
+       [dbo].[FK_BitacoraCambios_Usuarios] (Clave externa)
+
+Se está quitando la columna [dbo].[BitacoraCambios].[IdBitCambios]; puede que se pierdan datos.
+

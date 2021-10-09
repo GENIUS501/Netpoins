@@ -1,0 +1,76 @@
+﻿@model WebApp.Models.RedesEdit
+
+@using Newtonsoft.Json;
+
+@{
+    var TypeForm = ViewBag.Form as bool?;
+}
+<model data-entity="@JsonConvert.SerializeObject(Model.redes)" />
+<div id="RedesEdit" class="container">
+    <div class="row" v-if="true">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">@(TypeForm.Value ? "Editar Red" : "Nueva Red")</h4>
+                    <form id="FormRedes">
+                        <input type="hidden" name="IdRed" v-model="model.IdRed" />
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="Linea" id="Linea" v-model="model.Linea" maxlength="8" required />
+                            <label for="Linea">Linea</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="Gateway" id="Gateway" v-model="model.Gateway" maxlength="15" required />
+                            <label for="Gateway">IP Gateway </label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <select class=" form-select" name="Interface" id="Interface" arial-label="Default select example" v-model="model.Interface" required>
+                                <option value="Internet 1">Internet 1</option>
+                                <option value="Internet 2">Internet 2</option>
+                            </select>
+                            <label for="Interface"> Interface </label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <select class=" form-select" name="TipoEnlace" id="TipoEnlace" arial-label="Default select example" v-model="model.TipoEnlace" required>
+                                <option value="Principal">Principal</option>
+                                <option value="Respaldo">Respaldo</option>
+                            </select>
+                            <label for="TipoEnlace"> Tipo Enlace </label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="number" name="Bandwidth" id="Bandwidth" v-model="model.Bandwidth" min="256" required />
+                            <label for="Bandwidth">Bandwidth </label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <select class=" form-select" name="MedioEnlace" id="MedioEnlace" arial-label="Default select example" v-model="model.MedioEnlace" required>
+                                <option value="Fibra Optica">Fibra Optica</option>
+                                <option value="Inalambrico">Inalambrico</option>
+                                <option value="Cobre">Cobre</option>
+                            </select>
+                            <label for="MedioEnlace"> Medio Enlace </label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <textarea class="form-control" type="text" name="Comentario" id="textarea" v-model="model.Comentario" rows="3"> </textarea>
+                            <label for="Comentario"> Comentarios </label>
+                        </div>
+                        <br />
+                        <div class="mb-3">
+                            @if (TypeForm.Value)
+                            {
+                            <button type="button" @@click="Save" class="btn btn-outline-primary">Guardar <i class='bx bx-edit'></i></button>
+                            }
+                            else
+                            {
+                        <button type="button" @@click="Save" class="btn btn-outline-primary">Guardar <i class='bx bx-save'></i></button>
+                            }
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/Redes/Edit.js"></script>
+}
+
+

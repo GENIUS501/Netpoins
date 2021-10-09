@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].Oficinas
+(
+  IdOficina INT NOT NULL IDENTITY(1,1) 
+	        CONSTRAINT PK_Oficinas PRIMARY KEY CLUSTERED (IdOficina)
+	, NombreOficina VARCHAR (200) NOT NULL
+	, UE VARCHAR(10) NOT NULL
+	, Provincia VARCHAR(100) NOT NULL
+	, Comentario VARCHAR(500) NULL  
+)WITH (DATA_COMPRESSION = PAGE)

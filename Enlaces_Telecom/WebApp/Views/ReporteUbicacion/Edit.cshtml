@@ -1,0 +1,47 @@
+﻿@model WebApp.Models.ReporteUbicacionEdit
+
+@using Newtonsoft.Json;
+@{
+    var TypeForm = ViewBag.Form as bool?;
+}
+<model data-entity="@JsonConvert.SerializeObject(Model.reporteUbicacion)" />
+<div id="ReporteUbicacionEdit" class="container">
+    <div class="row" v-if="true">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">@(TypeForm.Value ? "Generar Reporte" : "Generar Reporte")</h4>
+                    <form id="FormReporteUbicacion">
+                        <div class="col-2">
+                            <div class="form-floating mb-3 form-group">
+                                <select class=" form-select" name="Provincia" id="Provincia" arial-label="Default select example" v-model="model.Provincia" required>
+                                    <option value="Alajuela">Alajuela</option>
+                                    <option value="Cartago">Cartago</option>
+                                    <option value="Guanacaste">Guanacaste</option>
+                                    <option value="Heredia">Heredia</option>
+                                    <option value="Limon">Limón</option>
+                                    <option value="Puntarenas">Puntarenas</option>
+                                    <option value="San Jose">San José</option>
+                                </select>
+                                <label for="Provincia"> Provincia </label>
+                            </div>
+                            <button type="button" class="btn btn-outline-primary" onclick="ClickNew()"><i class='bx bx-add-to-queue'></i></button> Generar Reporte
+                            <br />
+                        </div>
+                        <br />
+                        <div class="mb-3">
+                            @if (TypeForm.Value)
+                            {
+                                <button type="button" @@click="Selection" class="btn btn-outline-primary">Guardar <i class='bx bx-edit'></i></button>
+                            }
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/ReporteUbicacion/Edit.js"></script>
+}
+

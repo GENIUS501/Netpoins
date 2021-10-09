@@ -1,0 +1,62 @@
+﻿@model List<Entity.RolesEntity>
+
+<div class="container-fluid">
+    <h1>Roles - Permisos</h1>  <br />
+    <div class="row">
+        <div class="col-2">
+            <button type="button" class="btn btn-outline-primary" onclick="ClickNew()"><i class='bx bx-add-to-queue'></i>Agregar</button> 
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-11">
+            <table id="GridRoles" class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th>Rol</th>
+                        <th>Descripción</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Rol</td>
+                            <td>@item.Descripcion</td>
+                            <td>@(item.Estado ? "Activo" : "Inactivo")</td>
+                            <td>
+                                <button type="button" class="btn btn-outline-primary" onclick="ClickUpdate(@item.IdRol)"><i class='bx bxs-edit'></i>Editar</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="root">
+
+</div>
+
+@section scripts{
+    @if (ViewData.ContainsKey("msg"))
+    {
+        <script>
+            Swal.fire(
+                'Eliminado!',
+                'Su registro ha sido Eliminado..',
+                'Exitosamente'
+            );
+            var IsLoading = false;
+        </script>
+    }
+    else
+    {
+        <script>
+            var IsLoading = true;
+        </script>
+    }
+    <script src="~/Scripts/Roles/Index.js"></script>
+}

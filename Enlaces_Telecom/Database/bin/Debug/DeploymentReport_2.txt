@@ -1,0 +1,66 @@
+﻿** Aspectos destacados
+     Tablas que se volverán a compilar
+       [dbo].[Oficinas]
+     Índices clúster que se van a quitar
+       Ninguno
+     Índices clúster que se van a crear
+       Ninguno
+     Posibles incidencias de datos
+       Se está quitando la columna [dbo].[Oficinas].[EU]; puede que se pierdan datos.
+       Debe agregarse la columna [dbo].[Oficinas].[IdProveedor] de la tabla [dbo].[Oficinas], pero esta columna no tiene un
+         valor predeterminado y no admite valores NULL. Si la tabla contiene datos, el script ALTER no funcionará. Para evitar
+         esta incidencia, agregue un valor predeterminado a la columna, márquela de modo que permita valores NULL o habilite la
+         generación de valores predeterminados inteligentes como opción de implementación.
+       Debe agregarse la columna [dbo].[Oficinas].[IdRed] de la tabla [dbo].[Oficinas], pero esta columna no tiene un valor
+         predeterminado y no admite valores NULL. Si la tabla contiene datos, el script ALTER no funcionará. Para evitar esta
+         incidencia, agregue un valor predeterminado a la columna, márquela de modo que permita valores NULL o habilite la
+         generación de valores predeterminados inteligentes como opción de implementación.
+       Debe agregarse la columna [dbo].[Oficinas].[UE] de la tabla [dbo].[Oficinas], pero esta columna no tiene un valor
+         predeterminado y no admite valores NULL. Si la tabla contiene datos, el script ALTER no funcionará. Para evitar esta
+         incidencia, agregue un valor predeterminado a la columna, márquela de modo que permita valores NULL o habilite la
+         generación de valores predeterminados inteligentes como opción de implementación.
+       El tipo de la columna Telefono en la tabla [dbo].[Proveedores] es  VARCHAR (50) NOT NULL, pero se va a cambiar a 
+         VARCHAR (10) NOT NULL. Si la columna contiene datos no compatibles con el tipo  VARCHAR (10) NOT NULL, podrían
+         producirse pérdidas de datos y errores en la implementación.
+       Se está quitando la columna [dbo].[Redes].[Estado]; puede que se pierdan datos.
+
+** Acciones del usuario
+     Quitar
+       [dbo].[DF_Actividades_Estado] (Restricción DEFAULT)
+     Nueva compilación de tablas
+       [dbo].[Oficinas] (Tabla)
+     Modificar
+       [dbo].[Proveedores] (Tabla)
+       [dbo].[Redes] (Tabla)
+     Crear
+       [dbo].[FK_Oficinas_Redes] (Clave externa)
+       [dbo].[FK_Oficinas_Proveedores] (Clave externa)
+       [dbo].[OficinasActualizar] (Procedimiento)
+       [dbo].[OficinasEliminar] (Procedimiento)
+       [dbo].[OficinasInsertar] (Procedimiento)
+       [dbo].[OficinasLista] (Procedimiento)
+       [dbo].[OficinasObtener] (Procedimiento)
+       [dbo].[ProveedoresActualizar] (Procedimiento)
+       [dbo].[ProveedoresEliminar] (Procedimiento)
+       [dbo].[ProveedoresInsertar] (Procedimiento)
+       [dbo].[ProveedoresLista] (Procedimiento)
+       [dbo].[ProveedoresObtener] (Procedimiento)
+       [dbo].[RedesActualizar] (Procedimiento)
+       [dbo].[RedesEliminar] (Procedimiento)
+       [dbo].[RedesInsertar] (Procedimiento)
+       [dbo].[RedesLista] (Procedimiento)
+       [dbo].[RedesObtener] (Procedimiento)
+
+** Acciones de compatibilidad
+     Quitar
+       [dbo].[DF_Oficinas_Estado] (Restricción DEFAULT)
+     Crear
+       [dbo].[CHK_Oficina_Provincia] (Restricción CHECK)
+
+Se está quitando la columna [dbo].[Oficinas].[EU]; puede que se pierdan datos.
+Debe agregarse la columna [dbo].[Oficinas].[IdProveedor] de la tabla [dbo].[Oficinas], pero esta columna no tiene un valor predeterminado y no admite valores NULL. Si la tabla contiene datos, el script ALTER no funcionará. Para evitar esta incidencia, agregue un valor predeterminado a la columna, márquela de modo que permita valores NULL o habilite la generación de valores predeterminados inteligentes como opción de implementación.
+Debe agregarse la columna [dbo].[Oficinas].[IdRed] de la tabla [dbo].[Oficinas], pero esta columna no tiene un valor predeterminado y no admite valores NULL. Si la tabla contiene datos, el script ALTER no funcionará. Para evitar esta incidencia, agregue un valor predeterminado a la columna, márquela de modo que permita valores NULL o habilite la generación de valores predeterminados inteligentes como opción de implementación.
+Debe agregarse la columna [dbo].[Oficinas].[UE] de la tabla [dbo].[Oficinas], pero esta columna no tiene un valor predeterminado y no admite valores NULL. Si la tabla contiene datos, el script ALTER no funcionará. Para evitar esta incidencia, agregue un valor predeterminado a la columna, márquela de modo que permita valores NULL o habilite la generación de valores predeterminados inteligentes como opción de implementación.
+El tipo de la columna Telefono en la tabla [dbo].[Proveedores] es  VARCHAR (50) NOT NULL, pero se va a cambiar a  VARCHAR (10) NOT NULL. Si la columna contiene datos no compatibles con el tipo  VARCHAR (10) NOT NULL, podrían producirse pérdidas de datos y errores en la implementación.
+Se está quitando la columna [dbo].[Redes].[Estado]; puede que se pierdan datos.
+

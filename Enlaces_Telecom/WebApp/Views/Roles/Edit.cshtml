@@ -1,0 +1,53 @@
+﻿@model WebApp.Models.RolesEdit
+
+@using Newtonsoft.Json;
+
+@{
+    var TypeForm = ViewBag.Form as bool?;
+}
+
+<model data-entity="@JsonConvert.SerializeObject(Model.roles)" />
+<div id="RolesEdit" class="container">
+
+    <div class="row" v-if="true">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">@(TypeForm.Value ? "Editar Roles": "Nuevo Rol")</h4>
+                    <form id="FormRoles">
+
+                        <input type="hidden" name="IdRol" v-model="model.IdRol" />
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="Rol" id="Rol" v-model="model.Rol" required />
+                            <label for="Rol"> Rol</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group ">
+                            <input class="form-control" type="text" name="Descripcion" id="Descripcion" v-model="model.Descripcion" required />
+                            <label for="Descripcion"> Descripción</label>
+                        </div>
+                        <div class="form-check form-group form-group">
+                            <input class="form-check-input" type="checkbox" id="Estado" name="Estado" v-model="model.Estado" />
+                            <label class="form-check-label" for="Estado">
+                                Estado
+                            </label>
+                        </div>
+                        <br />
+                        <div class="mb-3">
+                            @if (TypeForm.Value)
+                            {
+                            <button type="button" @@click="Save" class="btn btn-outline-primary">Guardar <i class='bx bx-edit'></i></button>
+                            }
+                            else
+                            {
+                        <button type="button" @@click="Save" class="btn btn-outline-primary">Guardar <i class='bx bx-save'></i></button>
+                            }
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/Roles/Edit.js"></script>
+}
