@@ -1,6 +1,0 @@
-C:\Users\jimensus\source\repos\Enlaces_Telecom\Entity\bin\Debug\Entity.dll
-C:\Users\jimensus\source\repos\Enlaces_Telecom\Entity\bin\Debug\Entity.pdb
-C:\Users\jimensus\source\repos\Enlaces_Telecom\Entity\obj\Debug\Entity.csproj.AssemblyReference.cache
-C:\Users\jimensus\source\repos\Enlaces_Telecom\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
-C:\Users\jimensus\source\repos\Enlaces_Telecom\Entity\obj\Debug\Entity.dll
-C:\Users\jimensus\source\repos\Enlaces_Telecom\Entity\obj\Debug\Entity.pdb

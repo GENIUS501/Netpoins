@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fd506b8a1eab455984f709d46f2bca7f" Name="Diagram1">
+        <EntityTypeShape EntityType="Enlaces_TelecomModel.BitacoraCambios" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Enlaces_TelecomModel.BitacoraRegistros" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Enlaces_TelecomModel.Enlaces" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Enlaces_TelecomModel.Oficinas" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Enlaces_TelecomModel.Proveedores" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Enlaces_TelecomModel.Redes" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Enlaces_TelecomModel.Roles" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Enlaces_TelecomModel.Usuarios" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <AssociationConnector Association="Enlaces_TelecomModel.FK_BitacoraCambios_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="Enlaces_TelecomModel.FK_BitacoraRegistros_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="Enlaces_TelecomModel.FK_Enlaces_Oficinas" ManuallyRouted="false" />
+        <AssociationConnector Association="Enlaces_TelecomModel.FK_Enlaces_Proveedores" ManuallyRouted="false" />
+        <AssociationConnector Association="Enlaces_TelecomModel.FK_Enlaces_Redes" ManuallyRouted="false" />
+        <AssociationConnector Association="Enlaces_TelecomModel.FK_Usuarios_Roles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

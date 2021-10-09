@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Enlaces_TelecomModelStoreContainer" CdmEntityContainer="Enlaces_TelecomEntities">
+    <EntitySetMapping Name="BitacoraCambios">
+      <EntityTypeMapping TypeName="Enlaces_TelecomModel.BitacoraCambios">
+        <MappingFragment StoreEntitySet="BitacoraCambios">
+          <ScalarProperty Name="IdCambio" ColumnName="IdCambio" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BitacoraRegistros">
+      <EntityTypeMapping TypeName="Enlaces_TelecomModel.BitacoraRegistros">
+        <MappingFragment StoreEntitySet="BitacoraRegistros">
+          <ScalarProperty Name="IdRegistro" ColumnName="IdRegistro" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="FechaHoraIngreso" ColumnName="FechaHoraIngreso" />
+          <ScalarProperty Name="FechaHoraSalida" ColumnName="FechaHoraSalida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Enlaces">
+      <EntityTypeMapping TypeName="Enlaces_TelecomModel.Enlaces">
+        <MappingFragment StoreEntitySet="Enlaces">
+          <ScalarProperty Name="IdEnlace" ColumnName="IdEnlace" />
+          <ScalarProperty Name="IdOficina" ColumnName="IdOficina" />
+          <ScalarProperty Name="IdRed" ColumnName="IdRed" />
+          <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Oficinas">
+      <EntityTypeMapping TypeName="Enlaces_TelecomModel.Oficinas">
+        <MappingFragment StoreEntitySet="Oficinas">
+          <ScalarProperty Name="IdOficina" ColumnName="IdOficina" />
+          <ScalarProperty Name="NombreOficina" ColumnName="NombreOficina" />
+          <ScalarProperty Name="UE" ColumnName="UE" />
+          <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proveedores">
+      <EntityTypeMapping TypeName="Enlaces_TelecomModel.Proveedores">
+        <MappingFragment StoreEntitySet="Proveedores">
+          <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+          <ScalarProperty Name="NombreEmpresa" ColumnName="NombreEmpresa" />
+          <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Redes">
+      <EntityTypeMapping TypeName="Enlaces_TelecomModel.Redes">
+        <MappingFragment StoreEntitySet="Redes">
+          <ScalarProperty Name="IdRed" ColumnName="IdRed" />
+          <ScalarProperty Name="Linea" ColumnName="Linea" />
+          <ScalarProperty Name="Gateway" ColumnName="Gateway" />
+          <ScalarProperty Name="Interface" ColumnName="Interface" />
+          <ScalarProperty Name="TipoEnlace" ColumnName="TipoEnlace" />
+          <ScalarProperty Name="Bandwidth" ColumnName="Bandwidth" />
+          <ScalarProperty Name="MedioEnlace" ColumnName="MedioEnlace" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="Enlaces_TelecomModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="Rol" ColumnName="Rol" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="Enlaces_TelecomModel.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

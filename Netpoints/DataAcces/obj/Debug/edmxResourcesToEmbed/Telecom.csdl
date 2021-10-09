@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Enlaces_TelecomModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BitacoraCambios">
+    <Key>
+      <PropertyRef Name="IdCambio" />
+    </Key>
+    <Property Name="IdCambio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="FechaHora" Type="DateTime" Precision="7" />
+    <Property Name="Tipo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Detalle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_BitacoraCambios_Usuarios" FromRole="BitacoraCambios" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="BitacoraRegistros">
+    <Key>
+      <PropertyRef Name="IdRegistro" />
+    </Key>
+    <Property Name="IdRegistro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="FechaHoraIngreso" Type="DateTime" Precision="7" />
+    <Property Name="FechaHoraSalida" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_BitacoraRegistros_Usuarios" FromRole="BitacoraRegistros" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="Enlaces">
+    <Key>
+      <PropertyRef Name="IdEnlace" />
+    </Key>
+    <Property Name="IdEnlace" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdOficina" Type="Int32" Nullable="false" />
+    <Property Name="IdRed" Type="Int32" Nullable="false" />
+    <Property Name="IdProveedor" Type="Int32" Nullable="false" />
+    <Property Name="Comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Oficinas" Relationship="Self.FK_Enlaces_Oficinas" FromRole="Enlaces" ToRole="Oficinas" />
+    <NavigationProperty Name="Proveedores" Relationship="Self.FK_Enlaces_Proveedores" FromRole="Enlaces" ToRole="Proveedores" />
+    <NavigationProperty Name="Redes" Relationship="Self.FK_Enlaces_Redes" FromRole="Enlaces" ToRole="Redes" />
+  </EntityType>
+  <EntityType Name="Oficinas">
+    <Key>
+      <PropertyRef Name="IdOficina" />
+    </Key>
+    <Property Name="IdOficina" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreOficina" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Provincia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Enlaces" Relationship="Self.FK_Enlaces_Oficinas" FromRole="Oficinas" ToRole="Enlaces" />
+  </EntityType>
+  <EntityType Name="Proveedores">
+    <Key>
+      <PropertyRef Name="IdProveedor" />
+    </Key>
+    <Property Name="IdProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreEmpresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Contacto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Enlaces" Relationship="Self.FK_Enlaces_Proveedores" FromRole="Proveedores" ToRole="Enlaces" />
+  </EntityType>
+  <EntityType Name="Redes">
+    <Key>
+      <PropertyRef Name="IdRed" />
+    </Key>
+    <Property Name="IdRed" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Linea" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gateway" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Interface" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TipoEnlace" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Bandwidth" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MedioEnlace" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Enlaces" Relationship="Self.FK_Enlaces_Redes" FromRole="Redes" ToRole="Enlaces" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_Roles" FromRole="Roles" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="Identificacion" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BitacoraCambios" Relationship="Self.FK_BitacoraCambios_Usuarios" FromRole="Usuarios" ToRole="BitacoraCambios" />
+    <NavigationProperty Name="BitacoraRegistros" Relationship="Self.FK_BitacoraRegistros_Usuarios" FromRole="Usuarios" ToRole="BitacoraRegistros" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK_Usuarios_Roles" FromRole="Usuarios" ToRole="Roles" />
+  </EntityType>
+  <Association Name="FK_BitacoraCambios_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="BitacoraCambios" Type="Self.BitacoraCambios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="BitacoraCambios">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BitacoraRegistros_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="BitacoraRegistros" Type="Self.BitacoraRegistros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="BitacoraRegistros">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Enlaces_Oficinas">
+    <End Role="Oficinas" Type="Self.Oficinas" Multiplicity="1" />
+    <End Role="Enlaces" Type="Self.Enlaces" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Oficinas">
+        <PropertyRef Name="IdOficina" />
+      </Principal>
+      <Dependent Role="Enlaces">
+        <PropertyRef Name="IdOficina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Enlaces_Proveedores">
+    <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
+    <End Role="Enlaces" Type="Self.Enlaces" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedores">
+        <PropertyRef Name="IdProveedor" />
+      </Principal>
+      <Dependent Role="Enlaces">
+        <PropertyRef Name="IdProveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Enlaces_Redes">
+    <End Role="Redes" Type="Self.Redes" Multiplicity="1" />
+    <End Role="Enlaces" Type="Self.Enlaces" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Redes">
+        <PropertyRef Name="IdRed" />
+      </Principal>
+      <Dependent Role="Enlaces">
+        <PropertyRef Name="IdRed" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Enlaces_TelecomEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BitacoraCambios" EntityType="Self.BitacoraCambios" />
+    <EntitySet Name="BitacoraRegistros" EntityType="Self.BitacoraRegistros" />
+    <EntitySet Name="Enlaces" EntityType="Self.Enlaces" />
+    <EntitySet Name="Oficinas" EntityType="Self.Oficinas" />
+    <EntitySet Name="Proveedores" EntityType="Self.Proveedores" />
+    <EntitySet Name="Redes" EntityType="Self.Redes" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+    <AssociationSet Name="FK_BitacoraCambios_Usuarios" Association="Self.FK_BitacoraCambios_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="BitacoraCambios" EntitySet="BitacoraCambios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BitacoraRegistros_Usuarios" Association="Self.FK_BitacoraRegistros_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="BitacoraRegistros" EntitySet="BitacoraRegistros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Enlaces_Oficinas" Association="Self.FK_Enlaces_Oficinas">
+      <End Role="Oficinas" EntitySet="Oficinas" />
+      <End Role="Enlaces" EntitySet="Enlaces" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Enlaces_Proveedores" Association="Self.FK_Enlaces_Proveedores">
+      <End Role="Proveedores" EntitySet="Proveedores" />
+      <End Role="Enlaces" EntitySet="Enlaces" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Enlaces_Redes" Association="Self.FK_Enlaces_Redes">
+      <End Role="Redes" EntitySet="Redes" />
+      <End Role="Enlaces" EntitySet="Enlaces" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Roles" Association="Self.FK_Usuarios_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

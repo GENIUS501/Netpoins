@@ -1,0 +1,532 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Enlaces_TelecomModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BitacoraCambios">
+          <Key>
+            <PropertyRef Name="IdCambio" />
+          </Key>
+          <Property Name="IdCambio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="FechaHora" Type="datetime2" Precision="7" />
+          <Property Name="Tipo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Detalle" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BitacoraRegistros">
+          <Key>
+            <PropertyRef Name="IdRegistro" />
+          </Key>
+          <Property Name="IdRegistro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="FechaHoraIngreso" Type="datetime2" Precision="7" />
+          <Property Name="FechaHoraSalida" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Enlaces">
+          <Key>
+            <PropertyRef Name="IdEnlace" />
+          </Key>
+          <Property Name="IdEnlace" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdOficina" Type="int" Nullable="false" />
+          <Property Name="IdRed" Type="int" Nullable="false" />
+          <Property Name="IdProveedor" Type="int" Nullable="false" />
+          <Property Name="Comentario" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Oficinas">
+          <Key>
+            <PropertyRef Name="IdOficina" />
+          </Key>
+          <Property Name="IdOficina" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreOficina" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UE" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Provincia" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Comentario" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Proveedores">
+          <Key>
+            <PropertyRef Name="IdProveedor" />
+          </Key>
+          <Property Name="IdProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreEmpresa" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contacto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Comentario" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Redes">
+          <Key>
+            <PropertyRef Name="IdRed" />
+          </Key>
+          <Property Name="IdRed" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Linea" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Gateway" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Interface" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TipoEnlace" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Bandwidth" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="MedioEnlace" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Comentario" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rol" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRol" Type="int" Nullable="false" />
+          <Property Name="Identificacion" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contrasena" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BitacoraCambios_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="BitacoraCambios" Type="Self.BitacoraCambios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="BitacoraCambios">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BitacoraRegistros_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="BitacoraRegistros" Type="Self.BitacoraRegistros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="BitacoraRegistros">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enlaces_Oficinas">
+          <End Role="Oficinas" Type="Self.Oficinas" Multiplicity="1" />
+          <End Role="Enlaces" Type="Self.Enlaces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oficinas">
+              <PropertyRef Name="IdOficina" />
+            </Principal>
+            <Dependent Role="Enlaces">
+              <PropertyRef Name="IdOficina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enlaces_Proveedores">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
+          <End Role="Enlaces" Type="Self.Enlaces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="Enlaces">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enlaces_Redes">
+          <End Role="Redes" Type="Self.Redes" Multiplicity="1" />
+          <End Role="Enlaces" Type="Self.Enlaces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Redes">
+              <PropertyRef Name="IdRed" />
+            </Principal>
+            <Dependent Role="Enlaces">
+              <PropertyRef Name="IdRed" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Enlaces_TelecomModelStoreContainer">
+          <EntitySet Name="BitacoraCambios" EntityType="Self.BitacoraCambios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BitacoraRegistros" EntityType="Self.BitacoraRegistros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enlaces" EntityType="Self.Enlaces" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Oficinas" EntityType="Self.Oficinas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Redes" EntityType="Self.Redes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BitacoraCambios_Usuarios" Association="Self.FK_BitacoraCambios_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="BitacoraCambios" EntitySet="BitacoraCambios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BitacoraRegistros_Usuarios" Association="Self.FK_BitacoraRegistros_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="BitacoraRegistros" EntitySet="BitacoraRegistros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enlaces_Oficinas" Association="Self.FK_Enlaces_Oficinas">
+            <End Role="Oficinas" EntitySet="Oficinas" />
+            <End Role="Enlaces" EntitySet="Enlaces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enlaces_Proveedores" Association="Self.FK_Enlaces_Proveedores">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Enlaces" EntitySet="Enlaces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enlaces_Redes" Association="Self.FK_Enlaces_Redes">
+            <End Role="Redes" EntitySet="Redes" />
+            <End Role="Enlaces" EntitySet="Enlaces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Roles" Association="Self.FK_Usuarios_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Enlaces_TelecomModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BitacoraCambios">
+          <Key>
+            <PropertyRef Name="IdCambio" />
+          </Key>
+          <Property Name="IdCambio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="FechaHora" Type="DateTime" Precision="7" />
+          <Property Name="Tipo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Detalle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_BitacoraCambios_Usuarios" FromRole="BitacoraCambios" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="BitacoraRegistros">
+          <Key>
+            <PropertyRef Name="IdRegistro" />
+          </Key>
+          <Property Name="IdRegistro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="FechaHoraIngreso" Type="DateTime" Precision="7" />
+          <Property Name="FechaHoraSalida" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_BitacoraRegistros_Usuarios" FromRole="BitacoraRegistros" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Enlaces">
+          <Key>
+            <PropertyRef Name="IdEnlace" />
+          </Key>
+          <Property Name="IdEnlace" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdOficina" Type="Int32" Nullable="false" />
+          <Property Name="IdRed" Type="Int32" Nullable="false" />
+          <Property Name="IdProveedor" Type="Int32" Nullable="false" />
+          <Property Name="Comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Oficinas" Relationship="Self.FK_Enlaces_Oficinas" FromRole="Enlaces" ToRole="Oficinas" />
+          <NavigationProperty Name="Proveedores" Relationship="Self.FK_Enlaces_Proveedores" FromRole="Enlaces" ToRole="Proveedores" />
+          <NavigationProperty Name="Redes" Relationship="Self.FK_Enlaces_Redes" FromRole="Enlaces" ToRole="Redes" />
+        </EntityType>
+        <EntityType Name="Oficinas">
+          <Key>
+            <PropertyRef Name="IdOficina" />
+          </Key>
+          <Property Name="IdOficina" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreOficina" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Provincia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Enlaces" Relationship="Self.FK_Enlaces_Oficinas" FromRole="Oficinas" ToRole="Enlaces" />
+        </EntityType>
+        <EntityType Name="Proveedores">
+          <Key>
+            <PropertyRef Name="IdProveedor" />
+          </Key>
+          <Property Name="IdProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreEmpresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contacto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Enlaces" Relationship="Self.FK_Enlaces_Proveedores" FromRole="Proveedores" ToRole="Enlaces" />
+        </EntityType>
+        <EntityType Name="Redes">
+          <Key>
+            <PropertyRef Name="IdRed" />
+          </Key>
+          <Property Name="IdRed" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Linea" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gateway" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Interface" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TipoEnlace" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Bandwidth" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MedioEnlace" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Enlaces" Relationship="Self.FK_Enlaces_Redes" FromRole="Redes" ToRole="Enlaces" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_Roles" FromRole="Roles" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRol" Type="Int32" Nullable="false" />
+          <Property Name="Identificacion" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="BitacoraCambios" Relationship="Self.FK_BitacoraCambios_Usuarios" FromRole="Usuarios" ToRole="BitacoraCambios" />
+          <NavigationProperty Name="BitacoraRegistros" Relationship="Self.FK_BitacoraRegistros_Usuarios" FromRole="Usuarios" ToRole="BitacoraRegistros" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Usuarios_Roles" FromRole="Usuarios" ToRole="Roles" />
+        </EntityType>
+        <Association Name="FK_BitacoraCambios_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="BitacoraCambios" Type="Self.BitacoraCambios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="BitacoraCambios">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BitacoraRegistros_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="BitacoraRegistros" Type="Self.BitacoraRegistros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="BitacoraRegistros">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enlaces_Oficinas">
+          <End Role="Oficinas" Type="Self.Oficinas" Multiplicity="1" />
+          <End Role="Enlaces" Type="Self.Enlaces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oficinas">
+              <PropertyRef Name="IdOficina" />
+            </Principal>
+            <Dependent Role="Enlaces">
+              <PropertyRef Name="IdOficina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enlaces_Proveedores">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
+          <End Role="Enlaces" Type="Self.Enlaces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="Enlaces">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enlaces_Redes">
+          <End Role="Redes" Type="Self.Redes" Multiplicity="1" />
+          <End Role="Enlaces" Type="Self.Enlaces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Redes">
+              <PropertyRef Name="IdRed" />
+            </Principal>
+            <Dependent Role="Enlaces">
+              <PropertyRef Name="IdRed" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Enlaces_TelecomEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BitacoraCambios" EntityType="Self.BitacoraCambios" />
+          <EntitySet Name="BitacoraRegistros" EntityType="Self.BitacoraRegistros" />
+          <EntitySet Name="Enlaces" EntityType="Self.Enlaces" />
+          <EntitySet Name="Oficinas" EntityType="Self.Oficinas" />
+          <EntitySet Name="Proveedores" EntityType="Self.Proveedores" />
+          <EntitySet Name="Redes" EntityType="Self.Redes" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <AssociationSet Name="FK_BitacoraCambios_Usuarios" Association="Self.FK_BitacoraCambios_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="BitacoraCambios" EntitySet="BitacoraCambios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BitacoraRegistros_Usuarios" Association="Self.FK_BitacoraRegistros_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="BitacoraRegistros" EntitySet="BitacoraRegistros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enlaces_Oficinas" Association="Self.FK_Enlaces_Oficinas">
+            <End Role="Oficinas" EntitySet="Oficinas" />
+            <End Role="Enlaces" EntitySet="Enlaces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enlaces_Proveedores" Association="Self.FK_Enlaces_Proveedores">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Enlaces" EntitySet="Enlaces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enlaces_Redes" Association="Self.FK_Enlaces_Redes">
+            <End Role="Redes" EntitySet="Redes" />
+            <End Role="Enlaces" EntitySet="Enlaces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Roles" Association="Self.FK_Usuarios_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Enlaces_TelecomModelStoreContainer" CdmEntityContainer="Enlaces_TelecomEntities">
+          <EntitySetMapping Name="BitacoraCambios">
+            <EntityTypeMapping TypeName="Enlaces_TelecomModel.BitacoraCambios">
+              <MappingFragment StoreEntitySet="BitacoraCambios">
+                <ScalarProperty Name="IdCambio" ColumnName="IdCambio" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BitacoraRegistros">
+            <EntityTypeMapping TypeName="Enlaces_TelecomModel.BitacoraRegistros">
+              <MappingFragment StoreEntitySet="BitacoraRegistros">
+                <ScalarProperty Name="IdRegistro" ColumnName="IdRegistro" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="FechaHoraIngreso" ColumnName="FechaHoraIngreso" />
+                <ScalarProperty Name="FechaHoraSalida" ColumnName="FechaHoraSalida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enlaces">
+            <EntityTypeMapping TypeName="Enlaces_TelecomModel.Enlaces">
+              <MappingFragment StoreEntitySet="Enlaces">
+                <ScalarProperty Name="IdEnlace" ColumnName="IdEnlace" />
+                <ScalarProperty Name="IdOficina" ColumnName="IdOficina" />
+                <ScalarProperty Name="IdRed" ColumnName="IdRed" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Oficinas">
+            <EntityTypeMapping TypeName="Enlaces_TelecomModel.Oficinas">
+              <MappingFragment StoreEntitySet="Oficinas">
+                <ScalarProperty Name="IdOficina" ColumnName="IdOficina" />
+                <ScalarProperty Name="NombreOficina" ColumnName="NombreOficina" />
+                <ScalarProperty Name="UE" ColumnName="UE" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proveedores">
+            <EntityTypeMapping TypeName="Enlaces_TelecomModel.Proveedores">
+              <MappingFragment StoreEntitySet="Proveedores">
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="NombreEmpresa" ColumnName="NombreEmpresa" />
+                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Redes">
+            <EntityTypeMapping TypeName="Enlaces_TelecomModel.Redes">
+              <MappingFragment StoreEntitySet="Redes">
+                <ScalarProperty Name="IdRed" ColumnName="IdRed" />
+                <ScalarProperty Name="Linea" ColumnName="Linea" />
+                <ScalarProperty Name="Gateway" ColumnName="Gateway" />
+                <ScalarProperty Name="Interface" ColumnName="Interface" />
+                <ScalarProperty Name="TipoEnlace" ColumnName="TipoEnlace" />
+                <ScalarProperty Name="Bandwidth" ColumnName="Bandwidth" />
+                <ScalarProperty Name="MedioEnlace" ColumnName="MedioEnlace" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="Enlaces_TelecomModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="Enlaces_TelecomModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
