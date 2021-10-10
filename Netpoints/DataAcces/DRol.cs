@@ -13,19 +13,19 @@ namespace DataAcces
         Enlaces_TelecomEntities db = new Enlaces_TelecomEntities();
 
         #region "Agregar"
-        public int Agregar(ERol obj)
+        public int Agregar(ERol obj)//Viene de la vista obj
         {
             try
             {
                 using (TransactionScope Ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
-                    Roles Objbd = new Roles();
+                    Roles Objbd = new Roles();//Viene de la base de datos
                     Objbd.Rol = obj.Rol;
                     Objbd.Descripcion = obj.Descripcion;
                     Objbd.Estado = obj.Estado;
                     db.Roles.Add(Objbd);
 
-                    int Resultado = db.SaveChanges();
+                    int Resultado = db.SaveChanges();//Commit
 
                     if (Resultado > 0)
                     {

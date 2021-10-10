@@ -4,7 +4,6 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div class="container-fluid">
     <h1>Roles - Permisos</h1>  <br />
     <div class="row">
@@ -41,3 +40,26 @@
         </div>
     </div>
 </div>
+<div id="root">
+
+</div>
+@section scripts{
+    @if (ViewData.ContainsKey("msg"))
+    {
+        <script>
+            Swal.fire(
+                'Eliminado!',
+                'Su registro ha sido Eliminado..',
+                'Exitosamente'
+            );
+            var IsLoading = false;
+        </script>
+    }
+    else
+    {
+        <script>
+            var IsLoading = true;
+        </script>
+    }
+    <script src="~/Scripts/Roles/Index.js"></script>
+}

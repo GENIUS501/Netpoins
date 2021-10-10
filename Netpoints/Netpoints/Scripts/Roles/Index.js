@@ -1,6 +1,6 @@
 ﻿
 var ClickNew = function () {
-    window.location.href = "Roles/Edit";
+    window.location.href = "Roles/Agregar";
 }
 
 var ClickUpdate = function (id) {

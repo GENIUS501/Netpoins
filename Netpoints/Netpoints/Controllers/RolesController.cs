@@ -18,5 +18,29 @@ namespace Netpoints.Controllers
             Lista = Negocios.Mostrar();
             return View(Lista);
         }
+        public ActionResult Agregar(ERol Modelo)
+        {
+            try
+            {
+                if (Modelo.Rol == null && Modelo.Descripcion == null)
+                {
+                    return View();
+                }
+                NRol Negocios = new NRol();
+                int FilasAfectadas = Negocios.Agregar(Modelo);
+                if (FilasAfectadas > 0)
+                {
+                    return Json("success" );
+                }
+                else
+                {
+                    return Json("Error" );
+                }
+            }
+            catch (Exception )
+            {
+                return Json("Error");
+            }
+        }
     }
 }
