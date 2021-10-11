@@ -129,6 +129,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -165,6 +166,8 @@
     <Content Include="Scripts\Roles\Agregar.js" />
     <Content Include="Scripts\Roles\Edit.js" />
     <Content Include="Scripts\Roles\Index.js" />
+    <Content Include="Scripts\Usuarios\Edit.js" />
+    <Content Include="Scripts\Usuarios\Index.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -183,6 +186,7 @@
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Roles\Agregar.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Usuarios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
