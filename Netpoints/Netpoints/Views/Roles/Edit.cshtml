@@ -1,0 +1,51 @@
+﻿@model Entidades.ERol
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="RolesEdit" class="container">
+
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Editar Rol</h4>
+                    <form action="/Roles/Edit" method="POST" id="Confirmar">
+                        <input type="hidden" name="IdRol" value="@Model.IdRol" />
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="Rol" id="Rol" value="@Model.Rol" required />
+                            <label for="Rol"> Rol</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group ">
+                            <input class="form-control" type="text" name="Descripcion" id="Descripcion" value="@Model.Descripcion" required />
+                            <label for="Descripcion"> Descripción</label>
+                        </div>
+                        <div class="form-check form-group form-group">
+                            <input class="form-check-input" type="checkbox" id="Estado" name="Estado" value="@Model.Estado" />
+                            <label class="form-check-label" for="Estado">
+                                Estado
+                            </label>
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-outline-primary">Guardar <i class='bx bx-save'></i></button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="~/Scripts/Roles/Edit.js"></script>
+    <script>
+        let Estado = '@Model.Estado';
+        if (Estado === "True") {
+            $('#Estado').prop('checked', true);
+        }
+    </script>
+}

@@ -37,9 +37,61 @@ namespace Netpoints.Controllers
                     return Json("Error" );
                 }
             }
-            catch (Exception )
+            catch (Exception ex)
             {
+                ModelState.AddModelError("Error", ex.Message);
                 return Json("Error");
+            }
+        }
+        public ActionResult Edit(string Id)
+        {
+            NRol Negocios = new NRol();
+            var Rol = Negocios.Mostrar_Detallado(int.Parse(Id));
+            return View(Rol);
+        }
+        //Le indica al metodo que reciba los datos por el metodo post
+        [HttpPost]
+        ////Evita que se inicie de otro formulario
+        //[ValidateAntiForgeryToken]
+        //Action result es el tipo de dato que retorna la funcion
+        public ActionResult Edit(ERol Model)
+        {
+            try
+            {
+                if (Model.Rol == null || Model.Descripcion == null)
+                {
+                    return View();
+                }
+                NRol Negocios = new NRol();
+                int FilasAfectadas = Negocios.Modificar(Model);
+                if (FilasAfectadas > 0)
+                {
+                    return Json("success");
+                }
+                else
+                {
+                    return Json("Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Error", ex.Message);
+                return Json("Error");
+            }
+        }
+        [HttpGet]
+        public ActionResult Delete(string id)
+        {
+            try
+            {
+                NRol Negocios = new NRol();
+                Negocios.Desactivar(int.Parse(id));
+                TempData["msg"] = "0";
+                return RedirectToAction("index");
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.Message);
             }
         }
     }

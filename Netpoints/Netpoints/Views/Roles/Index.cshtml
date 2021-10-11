@@ -32,6 +32,10 @@
                             <td>@(item.Estado ? "Activo" : "Inactivo")</td>
                             <td>
                                 <button type="button" class="btn btn-outline-primary" onclick="ClickUpdate(@item.IdRol)"><i class='bx bxs-edit'></i>Editar</button>
+                                @if(item.Estado)
+                                {
+                                <button type="button" class="btn btn-outline-primary" onclick="ClickDelete(@item.IdRol)"><i class='bx bxs-trash'></i>Desactivar</button>
+                                }
                             </td>
                         </tr>
                     }
@@ -48,8 +52,8 @@
     {
         <script>
             Swal.fire(
-                'Eliminado!',
-                'Su registro ha sido Eliminado..',
+                'Desactivado!',
+                'El Rol ha sido Desactivado..',
                 'Exitosamente'
             );
             var IsLoading = false;

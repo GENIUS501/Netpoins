@@ -25,6 +25,48 @@ namespace Negocios
         }
         #endregion
 
+        #region Mostrar Detallado
+        public ERol Mostrar_Detallado(int Id)
+        {
+            try
+            {
+                DRol db = new DRol();
+                return db.Mostrar_Detallado(Id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        #endregion
+
+        #region Modificar
+        public int Modificar(ERol obj)
+        {
+            try
+            {
+                DRol db = new DRol();
+                return db.Modificar(obj);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public int Desactivar(int IdRol)
+        {
+            try
+            {
+                DRol db = new DRol();
+                return db.Desactivar(IdRol);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        #endregion
+
         #region Listar
         public List<ERol> Mostrar()
         {

@@ -1,6 +1,0 @@
-C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Entidades\bin\Debug\Entidades.dll
-C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Entidades\bin\Debug\Entidades.pdb
-C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
-C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
-C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Entidades\obj\Debug\Entidades.dll
-C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Entidades\obj\Debug\Entidades.pdb

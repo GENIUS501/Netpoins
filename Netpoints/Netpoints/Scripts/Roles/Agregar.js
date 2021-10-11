@@ -20,7 +20,7 @@
             if (data == "success") {
                 Toast.fire({
                     icon: 'success',
-                    title: 'Registro Guardado'
+                    title: 'Rol Guardado'
                 });
                 sleep(2500).then(() => {
                     window.location.href = "../Roles"
