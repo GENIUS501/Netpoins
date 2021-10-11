@@ -43,7 +43,10 @@
                             <td>@(item.Estado ? "Activo" : "Inactivo")</td>
                             <td>
                                 <button type="button" class="btn btn-outline-primary" onclick="ClickUpdate(@item.IdUsuario)"><i class='bx bxs-edit'></i>Editar</button>
-
+                                @if (item.Estado)
+                                {
+                                <button type="button" class="btn btn-outline-primary" onclick="ClickDelete(@item.IdUsuario)"><i class='bx bxs-trash'></i>Desactivar</button>
+                                }
                             </td>
                         </tr>
                     }
