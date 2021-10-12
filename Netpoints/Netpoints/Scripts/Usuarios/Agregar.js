@@ -24,7 +24,7 @@
                     title: 'Usuario Guardado'
                 });
                 sleep(2500).then(() => {
-                    window.location.href = "../Roles"
+                    window.location.href = "../Usuarios"
                 })
             }
             if (data == "Error") {

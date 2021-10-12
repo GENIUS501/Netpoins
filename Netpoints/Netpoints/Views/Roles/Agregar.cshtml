@@ -14,11 +14,11 @@
                     <form action="/Roles/Agregar" method="POST" id="FormRoles">
                         <input type="hidden" name="IdRol" />
                         <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="text" name="Rol" id="Rol" required />
+                            <input class="form-control" type="text" name="Rol" id="Rol" maxlength="20" required />
                             <label for="Rol"> Rol</label>
                         </div>
                         <div class="form-floating mb-3 form-group ">
-                            <input class="form-control" type="text" name="Descripcion" id="Descripcion" required />
+                            <input class="form-control" type="text" name="Descripcion" id="Descripcion" maxlength="200" required />
                             <label for="Descripcion"> Descripción</label>
                         </div>
                         <div class="form-check form-group form-group">

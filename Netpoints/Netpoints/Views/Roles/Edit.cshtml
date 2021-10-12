@@ -15,11 +15,11 @@
                     <form action="/Roles/Edit" method="POST" id="FormRoles">
                         <input type="hidden" name="IdRol" value="@Model.IdRol" />
                         <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="text" name="Rol" id="Rol" value="@Model.Rol" required />
+                            <input class="form-control" type="text" name="Rol" id="Rol" value="@Model.Rol" maxlength="20" required />
                             <label for="Rol"> Rol</label>
                         </div>
                         <div class="form-floating mb-3 form-group ">
-                            <input class="form-control" type="text" name="Descripcion" id="Descripcion" value="@Model.Descripcion" required />
+                            <input class="form-control" type="text" name="Descripcion" id="Descripcion" value="@Model.Descripcion" maxlength="200" required />
                             <label for="Descripcion"> Descripción</label>
                         </div>
                         <div class="form-check form-group form-group">
