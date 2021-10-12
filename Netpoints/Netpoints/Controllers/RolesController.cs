@@ -18,7 +18,7 @@ namespace Netpoints.Controllers
             Lista = Negocios.Mostrar();
             return View(Lista);
         }
-        public ActionResult Agregar(ERol Modelo)
+        public ActionResult Agregar(ERol Modelo, FormCollection frm)
         {
             try
             {
@@ -27,6 +27,10 @@ namespace Netpoints.Controllers
                     return View();
                 }
                 NRol Negocios = new NRol();
+                if (frm["Estado"] != null)
+                {
+                    Modelo.Estado = true;
+                }
                 int FilasAfectadas = Negocios.Agregar(Modelo);
                 if (FilasAfectadas > 0)
                 {

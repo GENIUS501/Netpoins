@@ -1,4 +1,13 @@
-﻿$("#FormRoles").submit(function (e) {
+﻿$("#Confirmar").bootstrapValidator("destroy");
+$("#Confirmar").bootstrapValidator({
+    feedbackIcons: {
+        valid: "bx bx-check-double",
+        invalid: "bx bx-x",
+        validating: "bx bx-refresh"
+    }
+
+});
+$("#Confirmar").submit(function (e) {
     e.preventDefault();
     $.validator.setDefaults({ ignore: "" });
     var Formulario = $(this);
@@ -50,15 +59,3 @@
 function sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
-var rolesEdit = new Vue({
-    //Data
-    data: {
-        formulario: "#FormRoles",
-    },
-    mounted: function () {
-        CreateValidator(this.formulario);
-    }
-    //create
-});
-
-rolesEdit.$mount("#RolesEdit");

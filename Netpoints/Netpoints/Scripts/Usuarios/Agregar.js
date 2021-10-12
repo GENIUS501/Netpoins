@@ -1,4 +1,13 @@
-﻿$("#FormUsuarios").submit(function (e) {
+﻿$("##FormUsuarios").bootstrapValidator("destroy");
+$("##FormUsuarios").bootstrapValidator({
+    feedbackIcons: {
+        valid: "bx bx-check-double",
+        invalid: "bx bx-x",
+        validating: "bx bx-refresh"
+    }
+
+});
+$("#FormUsuarios").submit(function (e) {
     e.preventDefault();
     $.validator.setDefaults({ ignore: "" });
     var Formulario = $(this);
@@ -50,16 +59,12 @@
 function sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
-var UsuariosEdit = new Vue({
-    data: {
-        formulario: "#FormUsuarios"
-
-    },//fin Data
-
-    //methods: {
-    //},//fin methods
-    mounted: function () {
-        CreateValidator(this.formulario);
-    },//fin Mounted
-});
-UsuariosEdit.$mount("#UsuariosEdit");
+//var UsuariosEdit = new Vue({
+//    data: {
+//        formulario: "#FormUsuarios"
+//    },
+//    mounted: function () {
+//        CreateValidator(this.formulario);
+//    },//fin Mounted
+//});
+//UsuariosEdit.$mount("#UsuariosEdit");

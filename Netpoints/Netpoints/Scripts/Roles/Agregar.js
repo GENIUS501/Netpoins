@@ -1,4 +1,13 @@
-﻿$("#FormRoles").submit(function (e) {
+﻿$("#Confirmar").bootstrapValidator("destroy");
+$("#Confirmar").bootstrapValidator({
+    feedbackIcons: {
+        valid: "bx bx-check-double",
+        invalid: "bx bx-x",
+        validating: "bx bx-refresh"
+    }
+
+});
+$("#Confirmar").submit(function (e) {
     e.preventDefault();
     $.validator.setDefaults({ ignore: "" });
     var Formulario = $(this);
@@ -18,7 +27,6 @@
         success: function (data) {
             debugger
             if (data == "success") {
-                Loading.close();
                 Toast.fire({
                     icon: 'success',
                     title: 'Rol Guardado'
@@ -28,7 +36,6 @@
                 })
             }
             if (data == "Error") {
-                Loading.close();
                 Toast.fire({
                     icon: 'error',
                     title: 'Error'
@@ -36,7 +43,6 @@
             }
         },
         error: function (xhr, error, status) {
-            Loading.close();
             Toast.fire({
                 icon: 'error',
                 title: 'Error'
@@ -50,15 +56,15 @@
 function sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
-var rolesEdit = new Vue({
-    //Data
-    data: {
-        formulario: "#FormRoles",
-    },
-    mounted: function () {
-        CreateValidator(this.formulario);
-    }
-    //create
-});
+//var rolesEdit = new Vue({
+//    //Data
+//    data: {
+//        formulario: "#FormRoles",
+//    },
+//    mounted: function () {
+//        CreateValidator(this.formulario);
+//    }
+//    //create
+//});
 
-rolesEdit.$mount("#RolesEdit");
+//rolesEdit.$mount("#RolesEdit");
