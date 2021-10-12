@@ -11,42 +11,42 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Nuevo Usuario</h4>
-                    <form id="FormUsuarios">
-                        <input type="hidden" name="IdUsuario" v-model="model.IdUsuario" />
+                    <form id="FormUsuarios" action="/Usuarios/Agregar" method="POST">
+                        <input type="hidden" name="IdUsuario"  />
 
                         <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="text" name="Identificacion" id="Identificacion"  required />
+                            <input class="form-control" type="number" name="Identificacion" id="Identificacion" placeholder="Identificación" required />
                             <label for="Identificacion"> Identificación</label>
                         </div>
                         <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="text" name="NombreCliente" id="NombreCliente"  required />
-                            <label for="NombreCliente"> Nombre </label>
+                            <input class="form-control" type="text" name="Nombre" id="Nombre" placeholder="Nombre"  required />
+                            <label for="Nombre"> Nombre </label>
                         </div>
                         <div class="form-floating mb-3 form-group ">
-                            <input class="form-control" type="text" name="Telefono" id="Telefono"  maxlength="8" required />
+                            <input class="form-control" type="number" name="Telefono" id="Telefono"  maxlength="8" placeholder="Teléfono" required />
                             <label for="Telefono"> Teléfono </label>
                         </div>
                         <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="text" name="Email" id="Email"  required />
+                            <input class="form-control" type="email" name="Email" id="Email" placeholder="Correo" required />
                             <label for="Email"> Email</label>
                         </div>
                         <div class="form-floating mb-3 form-group">
                             @Html.DropDownList("IdRol", ViewBag.Roles as SelectList, new { @class = "form-control", @required="required" })
-                            <label for="Roles">Rol</label>
+                            <label for="IdRol">Rol</label>
                         </div>
                         <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="text" name="Usuario" id="Usuario" required />
+                            <input class="form-control" type="text" name="Usuario" id="Usuario" placeholder="Usuario" required />
                             <label for="Usuario"> Usuario </label>
                         </div>
-                        <div class="form-floating">
-                            <input type="password" class="form-control" id="Contraseña" minlength="8" maxlength="15" placeholder="Contraseña" >
-                            <label for="Contraseña">Contraseña</label>
+                        <div class="form-floating mb-3 form-group">
+                            <input type="password" class="form-control" name="Contrasena" id="Contrasena"  minlength="8" maxlength="15" placeholder="Contraseña" required>
+                            <label for="Contrasena">Contraseña</label>
                         </div>
                         <br />
-                        <div class="form-floating mb-3 form-group">
+                        @*<div class="form-floating mb-3 form-group">
                             <textarea class="form-control" type="text" name="Comentario" id="textarea"  rows="3"> </textarea>
                             <label for="Comentario"> Comentarios </label>
-                        </div>
+                        </div>*@
                         <br />
                         <div class="form-check form-group form-group">
                             <input class="form-check-input" type="checkbox" id="Estado" name="Estado"  />
@@ -56,7 +56,7 @@
                         </div>
                         <br />
                         <div class="mb-3">
-                                <button type="button" @@click="Save" class="btn btn-outline-primary">Guardar <i class='bx bx-save'></i></button>
+                                <button type="submit" class="btn btn-outline-primary">Guardar <i class='bx bx-save'></i></button>
                         </div>
                     </form>
                 </div>

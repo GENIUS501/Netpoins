@@ -25,6 +25,8 @@ namespace DataAcces
                     Objbd.Nombre = obj.Nombre;
                     Objbd.Telefono = obj.Telefono;
                     Objbd.Usuario = obj.Usuario;
+                    Objbd.Contrasena = obj.Contrasena;
+                    Objbd.Email = obj.Email;
                     db.Usuarios.Add(Objbd);
 
                     int Resultado = db.SaveChanges();//Commit

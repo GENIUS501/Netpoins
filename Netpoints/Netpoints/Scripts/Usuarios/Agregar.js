@@ -21,7 +21,7 @@
                 Loading.close();
                 Toast.fire({
                     icon: 'success',
-                    title: 'Rol Guardado'
+                    title: 'Usuario Guardado'
                 });
                 sleep(2500).then(() => {
                     window.location.href = "../Roles"
@@ -53,9 +53,7 @@ function sleep(time) {
 var UsuariosEdit = new Vue({
     data: {
         Model: {
-            Usuario: null,
-            Contrasena: null,
-            Nombre: null
+            
         },//fin Model
         formulario: "#FormUsuarios"
 
