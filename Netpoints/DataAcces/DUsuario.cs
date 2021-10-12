@@ -193,18 +193,15 @@ namespace DataAcces
         {
             try
             {
-                List<ERol> lista1;
+                List<ERol> lista1 = new List<ERol>();
                 //llena la lista que a su vez es una entidad
                 using (db)
                 {
-                    //consulta
-                    lista1 =
-                        (from d in db.Roles
-                         select new ERol
-                         {
-                             IdRol = d.IdRol,
-                             Descripcion = d.Descripcion
-                         }).ToList();
+                    var Rol = db.Roles.Where(x => x.Estado == true).ToList();
+                    foreach (var item in Rol)
+                    {
+                        lista1.Add(new ERol { IdRol = item.IdRol, Descripcion = item.Descripcion, Estado = item.Estado, Rol = item.Rol });
+                    }
                 }
                 return lista1;
             }

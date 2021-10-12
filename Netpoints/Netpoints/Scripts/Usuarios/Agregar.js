@@ -52,9 +52,6 @@ function sleep(time) {
 }
 var UsuariosEdit = new Vue({
     data: {
-        Model: {
-            
-        },//fin Model
         formulario: "#FormUsuarios"
 
     },//fin Data
