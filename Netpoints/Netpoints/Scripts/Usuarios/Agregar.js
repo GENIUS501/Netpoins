@@ -1,4 +1,4 @@
-﻿$("#FormRoles").submit(function (e) {
+﻿$("#FormUsuarios").submit(function (e) {
     e.preventDefault();
     $.validator.setDefaults({ ignore: "" });
     var Formulario = $(this);
@@ -21,7 +21,7 @@
                 Loading.close();
                 Toast.fire({
                     icon: 'success',
-                    title: 'Rol Editado'
+                    title: 'Rol Guardado'
                 });
                 sleep(2500).then(() => {
                     window.location.href = "../Roles"
@@ -50,15 +50,21 @@
 function sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
-var rolesEdit = new Vue({
-    //Data
+var UsuariosEdit = new Vue({
     data: {
-        formulario: "#FormRoles",
-    },
+        Model: {
+            Usuario: null,
+            Contrasena: null,
+            Nombre: null
+        },//fin Model
+        formulario: "#FormUsuarios"
+
+    },//fin Data
+
+    //methods: {
+    //},//fin methods
     mounted: function () {
         CreateValidator(this.formulario);
-    }
-    //create
+    },//fin Mounted
 });
-
-rolesEdit.$mount("#RolesEdit");
+UsuariosEdit.$mount("#UsuariosEdit");

@@ -1,0 +1,72 @@
+﻿@model Entidades.EUsuario
+
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="usuariosEdit" class="container">
+    <div class="row" v-if="true">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Nuevo Usuario</h4>
+                    <form id="FormUsuarios">
+                        <input type="hidden" name="IdUsuario" v-model="model.IdUsuario" />
+
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="Identificacion" id="Identificacion"  required />
+                            <label for="Identificacion"> Identificación</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="NombreCliente" id="NombreCliente"  required />
+                            <label for="NombreCliente"> Nombre </label>
+                        </div>
+                        <div class="form-floating mb-3 form-group ">
+                            <input class="form-control" type="text" name="Telefono" id="Telefono"  maxlength="8" required />
+                            <label for="Telefono"> Teléfono </label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="Email" id="Email"  required />
+                            <label for="Email"> Email</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            @Html.DropDownList("IdRol", ViewBag.Roles as SelectList, new { @class = "form-control", @required="required" })
+                            <label for="Roles">Rol</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="Usuario" id="Usuario" required />
+                            <label for="Usuario"> Usuario </label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="Contraseña" minlength="8" maxlength="15" placeholder="Contraseña" >
+                            <label for="Contraseña">Contraseña</label>
+                        </div>
+                        <br />
+                        <div class="form-floating mb-3 form-group">
+                            <textarea class="form-control" type="text" name="Comentario" id="textarea"  rows="3"> </textarea>
+                            <label for="Comentario"> Comentarios </label>
+                        </div>
+                        <br />
+                        <div class="form-check form-group form-group">
+                            <input class="form-check-input" type="checkbox" id="Estado" name="Estado"  />
+                            <label class="form-check-label" for="Estado">
+                                Estado
+                            </label>
+                        </div>
+                        <br />
+                        <div class="mb-3">
+                                <button type="button" @@click="Save" class="btn btn-outline-primary">Guardar <i class='bx bx-save'></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/Usuarios/Agregar.js"></script>
+}
+

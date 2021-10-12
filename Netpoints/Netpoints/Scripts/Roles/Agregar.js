@@ -1,4 +1,4 @@
-﻿$("#Confirmar").submit(function (e) {
+﻿$("#FormRoles").submit(function (e) {
     e.preventDefault();
     $.validator.setDefaults({ ignore: "" });
     var Formulario = $(this);
@@ -18,6 +18,7 @@
         success: function (data) {
             debugger
             if (data == "success") {
+                Loading.close();
                 Toast.fire({
                     icon: 'success',
                     title: 'Rol Guardado'
@@ -27,6 +28,7 @@
                 })
             }
             if (data == "Error") {
+                Loading.close();
                 Toast.fire({
                     icon: 'error',
                     title: 'Error'
@@ -34,6 +36,7 @@
             }
         },
         error: function (xhr, error, status) {
+            Loading.close();
             Toast.fire({
                 icon: 'error',
                 title: 'Error'
@@ -47,3 +50,15 @@
 function sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
+var rolesEdit = new Vue({
+    //Data
+    data: {
+        formulario: "#FormRoles",
+    },
+    mounted: function () {
+        CreateValidator(this.formulario);
+    }
+    //create
+});
+
+rolesEdit.$mount("#RolesEdit");

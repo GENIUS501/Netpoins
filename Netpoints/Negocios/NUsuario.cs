@@ -11,11 +11,11 @@ namespace Negocios
     public class NUsuario
     {
         #region Agregar
-        public int Agregar(ERol obj)
+        public int Agregar(EUsuario obj)
         {
             try
             {
-                DRol db = new DRol();
+                DUsuario db = new DUsuario();
                 return db.Agregar(obj);
             }
             catch (Exception ex)
@@ -88,6 +88,18 @@ namespace Negocios
             {
                 DUsuario db = new DUsuario();
                 return db.Nombre_Rol(Id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<ERol> LlenarRoles()
+        {
+            try
+            {
+                DUsuario db = new DUsuario();
+                return db.llenarRoles();
             }
             catch (Exception ex)
             {

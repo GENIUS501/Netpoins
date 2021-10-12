@@ -6,20 +6,19 @@
 }
 
 <div id="RolesEdit" class="container">
-
-    <div class="row">
+    <div class="row" v-if="true">
         <div class="col-6">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Nuevo Rol</h4>
-                    <form action="/Roles/Agregar" method="POST" id="Confirmar">
-                        <input type="hidden" name="IdRol"  />
+                    <form action="/Roles/Agregar" method="POST" id="FormRoles">
+                        <input type="hidden" name="IdRol" />
                         <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="text" name="Rol" id="Rol"  required />
+                            <input class="form-control" type="text" name="Rol" id="Rol" required />
                             <label for="Rol"> Rol</label>
                         </div>
                         <div class="form-floating mb-3 form-group ">
-                            <input class="form-control" type="text" name="Descripcion" id="Descripcion"  required />
+                            <input class="form-control" type="text" name="Descripcion" id="Descripcion" required />
                             <label for="Descripcion"> Descripción</label>
                         </div>
                         <div class="form-check form-group form-group">
@@ -40,6 +39,7 @@
 </div>
 
 @section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script src="~/Scripts/Roles/Agregar.js"></script>
 }

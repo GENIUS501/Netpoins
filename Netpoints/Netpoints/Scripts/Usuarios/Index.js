@@ -1,6 +1,6 @@
 ﻿
 var ClickNew = function () {
-    window.location.href = "Usuarios/Edit";
+    window.location.href = "Usuarios/Agregar";
 }
 
 var ClickUpdate = function (id) {

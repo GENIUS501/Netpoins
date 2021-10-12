@@ -12,17 +12,20 @@ namespace DataAcces
     {
         Enlaces_TelecomEntities db = new Enlaces_TelecomEntities();
         #region Agregar
-        public int Agregar(ERol obj)//Viene de la vista obj
+        public int Agregar(EUsuario obj)//Viene de la vista obj
         {
             try
             {
                 using (TransactionScope Ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
-                    Roles Objbd = new Roles();//Viene de la base de datos
-                    Objbd.Rol = obj.Rol;
-                    Objbd.Descripcion = obj.Descripcion;
+                    Usuarios Objbd = new Usuarios();//Viene de la base de datos
+                    Objbd.Identificacion = obj.Identificacion;
+                    Objbd.IdRol = obj.IdRol;
                     Objbd.Estado = obj.Estado;
-                    db.Roles.Add(Objbd);
+                    Objbd.Nombre = obj.Nombre;
+                    Objbd.Telefono = obj.Telefono;
+                    Objbd.Usuario = obj.Usuario;
+                    db.Usuarios.Add(Objbd);
 
                     int Resultado = db.SaveChanges();//Commit
 
@@ -182,6 +185,31 @@ namespace DataAcces
             catch (Exception)
             {
                 return "";
+            }
+        }
+        public List<ERol> llenarRoles()
+        {
+            try
+            {
+                List<ERol> lista1;
+                //llena la lista que a su vez es una entidad
+                using (db)
+                {
+                    //consulta
+                    lista1 =
+                        (from d in db.Roles
+                         select new ERol
+                         {
+                             IdRol = d.IdRol,
+                             Descripcion = d.Descripcion
+                         }).ToList();
+                }
+                return lista1;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
         }
         #endregion
