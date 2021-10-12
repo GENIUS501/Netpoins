@@ -1,12 +1,12 @@
-﻿$("##FormUsuarios").bootstrapValidator("destroy");
-$("##FormUsuarios").bootstrapValidator({
-    feedbackIcons: {
-        valid: "bx bx-check-double",
-        invalid: "bx bx-x",
-        validating: "bx bx-refresh"
-    }
+﻿////$("#FormUsuarios").bootstrapValidator("destroy");
+////$("#FormUsuarios").bootstrapValidator({
+////    feedbackIcons: {
+////        valid: "bx bx-check-double",
+////        invalid: "bx bx-x",
+////        validating: "bx bx-refresh"
+////    }
 
-});
+////});
 $("#FormUsuarios").submit(function (e) {
     e.preventDefault();
     $.validator.setDefaults({ ignore: "" });

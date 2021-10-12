@@ -1,4 +1,4 @@
-﻿@model Entidades.ERol
+﻿@model Netpoints.Models.ERolViewModel
 
 @{
     ViewBag.Title = "Agregar";
@@ -30,7 +30,6 @@
                         <div class="mb-3">
                             <button type="submit" class="btn btn-outline-primary">Guardar <i class='bx bx-save'></i></button>
                         </div>
-
                     </form>
                 </div>
             </div>
@@ -40,6 +39,6 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script src="~/Scripts/Roles/Agregar.js"></script>
+    <script>CreateValidator("#RolesEdit");</script>
 }

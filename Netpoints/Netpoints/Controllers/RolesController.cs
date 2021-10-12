@@ -1,5 +1,6 @@
 ﻿using Entidades;
 using Negocios;
+using Netpoints.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Netpoints.Controllers
             Lista = Negocios.Mostrar();
             return View(Lista);
         }
-        public ActionResult Agregar(ERol Modelo, FormCollection frm)
+        public ActionResult Agregar(ERolViewModel Modelo)
         {
             try
             {
@@ -27,11 +28,15 @@ namespace Netpoints.Controllers
                     return View();
                 }
                 NRol Negocios = new NRol();
-                if (frm["Estado"] != null)
+                ERol Rol = new ERol();
+                Rol.Rol = Modelo.Rol;
+                Rol.Descripcion = Modelo.Descripcion;
+                Rol.Estado = false;
+                if(Modelo.Estado=="on")
                 {
-                    Modelo.Estado = true;
+                    Rol.Estado = true;
                 }
-                int FilasAfectadas = Negocios.Agregar(Modelo);
+                int FilasAfectadas = Negocios.Agregar(Rol);
                 if (FilasAfectadas > 0)
                 {
                     return Json("success" );
@@ -51,14 +56,19 @@ namespace Netpoints.Controllers
         {
             NRol Negocios = new NRol();
             var Rol = Negocios.Mostrar_Detallado(int.Parse(Id));
-            return View(Rol);
+            ERolViewModel RolV = new ERolViewModel();
+            RolV.IdRol = Rol.IdRol;
+            RolV.Rol = Rol.Rol;
+            RolV.Descripcion = Rol.Descripcion;
+            RolV.Estado = Rol.Estado.ToString();
+            return View(RolV);
         }
         //Le indica al metodo que reciba los datos por el metodo post
         [HttpPost]
         ////Evita que se inicie de otro formulario
         //[ValidateAntiForgeryToken]
         //Action result es el tipo de dato que retorna la funcion
-        public ActionResult Edit(ERol Model)
+        public ActionResult Edit(ERolViewModel Model)
         {
             try
             {
@@ -67,7 +77,16 @@ namespace Netpoints.Controllers
                     return View();
                 }
                 NRol Negocios = new NRol();
-                int FilasAfectadas = Negocios.Modificar(Model);
+                ERol Rol = new ERol();
+                Rol.IdRol = Model.IdRol;
+                Rol.Rol = Model.Rol;
+                Rol.Descripcion = Model.Descripcion;
+                Rol.Estado = false;
+                if (Model.Estado == "on")
+                {
+                    Rol.Estado = true;
+                }
+                int FilasAfectadas = Negocios.Modificar(Rol);
                 if (FilasAfectadas > 0)
                 {
                     return Json("success");

@@ -1,13 +1,4 @@
-﻿$("#Confirmar").bootstrapValidator("destroy");
-$("#Confirmar").bootstrapValidator({
-    feedbackIcons: {
-        valid: "bx bx-check-double",
-        invalid: "bx bx-x",
-        validating: "bx bx-refresh"
-    }
-
-});
-$("#Confirmar").submit(function (e) {
+﻿$("#Confirmar").submit(function (e) {
     e.preventDefault();
     $.validator.setDefaults({ ignore: "" });
     var Formulario = $(this);
