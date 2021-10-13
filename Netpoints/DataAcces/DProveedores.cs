@@ -8,26 +8,23 @@ using System.Transactions;
 
 namespace DataAcces
 {
-    public class DUsuario
+    public class DProveedores
     {
         Enlaces_TelecomEntities db = new Enlaces_TelecomEntities();
         #region Agregar
-        public int Agregar(EUsuario obj)//Viene de la vista obj
+        public int Agregar(EProveedores obj)//Viene de la vista obj
         {
             try
             {
                 using (TransactionScope Ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
-                    Usuarios Objbd = new Usuarios();//Viene de la base de datos
-                    Objbd.Identificacion = obj.Identificacion;
-                    Objbd.IdRol = obj.IdRol;
-                    Objbd.Estado = obj.Estado;
-                    Objbd.Nombre = obj.Nombre;
-                    Objbd.Telefono = obj.Telefono;
-                    Objbd.Usuario = obj.Usuario;
-                    Objbd.Contrasena = obj.Contrasena;
+                    Proveedores Objbd = new Proveedores();//Viene de la base de datos
+                    Objbd.Comentario = obj.Comentario;
+                    Objbd.Contacto = obj.Contacto;
                     Objbd.Email = obj.Email;
-                    db.Usuarios.Add(Objbd);
+                    Objbd.NombreEmpresa = obj.NombreEmpresa;
+                    Objbd.Telefono = obj.Telefono;
+                    db.Proveedores.Add(Objbd);
 
                     int Resultado = db.SaveChanges();//Commit
 
@@ -92,7 +89,7 @@ namespace DataAcces
                     Usuarios Objbd = db.Usuarios.Find(Obj.IdUsuario);
                     //Asigna los valores traidos por la entidad traida de la vista a la entidad traida de la base de datos
                     Objbd.IdRol = Obj.IdRol;
-                    if(Obj.Contrasena!="Contra001")
+                    if (Obj.Contrasena != "Contra001")
                     {
                         Objbd.Contrasena = Obj.Contrasena;
                     }
@@ -156,71 +153,28 @@ namespace DataAcces
         #endregion
 
         #region Listar
-        public List<EUsuario> Mostrar()
+        public List<EProveedores> Mostrar()
         {
             try
             {
-                List<EUsuario> Obj = new List<EUsuario>();
-                var Objbd = db.Usuarios.ToList();
+                List<EProveedores> Obj = new List<EProveedores>();
+                var Objbd = db.Proveedores.ToList();
                 foreach (var Item in Objbd)
                 {
-                    Obj.Add(new EUsuario()
+                    Obj.Add(new EProveedores()
                     {
-                        IdRol = Item.IdRol,
-                        Nombre = Item.Nombre,
-                        Contrasena = Item.Contrasena,
+                        Comentario = Item.Comentario,
+                        Contacto = Item.Contacto,
                         Email = Item.Email,
-                        Estado = Item.Estado,
-                        Identificacion = Item.Identificacion,
-                        IdUsuario = Item.IdUsuario,
-                        Telefono = Item.Telefono,
-                        Usuario = Item.Usuario
+                        IdProveedor = Item.IdProveedor,
+                        NombreEmpresa = Item.NombreEmpresa,
+                        Telefono = Item.Telefono
                     });
                 }
                 return Obj;
             }
             catch (Exception ex)
             {
-                throw ex;
-            }
-        }
-        #endregion
-
-        #region Metodos Personalizados
-        public string Nombre_Rol(int id)
-        {
-            try
-            {
-                using (db)
-                {
-                    //Retorna el nombre del perfil correspondiente al id enviado al metodo
-                    return db.Roles.Find(id).Rol;
-                }
-            }
-            catch (Exception)
-            {
-                return "";
-            }
-        }
-        public List<ERol> llenarRoles()
-        {
-            try
-            {
-                List<ERol> lista1 = new List<ERol>();
-                //llena la lista que a su vez es una entidad
-                using (db)
-                {
-                    var Rol = db.Roles.Where(x => x.Estado == true).ToList();
-                    foreach (var item in Rol)
-                    {
-                        lista1.Add(new ERol { IdRol = item.IdRol, Descripcion = item.Descripcion, Estado = item.Estado, Rol = item.Rol });
-                    }
-                }
-                return lista1;
-            }
-            catch (Exception ex)
-            {
-
                 throw ex;
             }
         }

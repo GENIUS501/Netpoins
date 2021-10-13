@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Entidades.EProveedores>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <h1>Proveedores</h1> <br />
+    <div class="row">
+        <div class="col-2">
+            <button type="button" class="btn btn-outline-primary" onclick="ClickNew()"><i class='bx bx-add-to-queue'></i>Agregar</button>
+            <br />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-11">
+            <table id="GridProveedores" class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th>Proveedor</th>
+                        <th>Contacto</th>
+                        <th>Teléfono</th>
+                        <th>Correo Electronico</th>
+                        <th>Comentarios</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.NombreEmpresa</td>
+                            <td>@item.Contacto</td>
+                            <td>@item.Telefono</td>
+                            <td>@item.Email</td>
+                            <td>@item.Comentario</td>
+                            <td>
+                                <button type="button" class="btn btn-outline-primary" onclick="ClickUpdate(@item.IdProveedor)"><i class='bx bxs-edit'></i>Editar</button>
+                                <button type="button" class="btn btn-outline-primary" onclick="ClickDelete(@item.IdProveedor)"><i class='bx bxs-trash'></i>Eliminar</button>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="root">
+
+</div>
+
+@section scripts{
+    @if (ViewData.ContainsKey("msg"))
+    {
+        <script>
+            Swal.fire(
+                'Eliminado!',
+                'Su registro ha sido Eliminado..',
+                'Exitosamente'
+            );
+            var IsLoading = false;
+        </script>
+    }
+    else
+    {
+        <script>
+            var IsLoading = true;
+        </script>
+    }
+    <script src="~/Scripts/Proveedores/Index.js"></script>
+}

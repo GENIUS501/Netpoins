@@ -81,6 +81,7 @@ namespace Negocios
             }
         }
         #endregion
+
         #region Metodos Personalisados
         public string Nombre_Rol(int Id)
         {
