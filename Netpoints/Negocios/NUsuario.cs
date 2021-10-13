@@ -53,12 +53,12 @@ namespace Negocios
                 throw ex;
             }
         }
-        public int Desactivar(int IdRol)
+        public int Desactivar(int IdUsuario)
         {
             try
             {
-                DRol db = new DRol();
-                return db.Desactivar(IdRol);
+                DUsuario db = new DUsuario();
+                return db.Desactivar(IdUsuario);
             }
             catch (Exception ex)
             {

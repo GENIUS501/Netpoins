@@ -144,6 +144,21 @@ namespace Netpoints.Controllers
                 return Json("Error");
             }
         }
+        [HttpGet]
+        public ActionResult Delete(string id)
+        {
+            try
+            {
+                NUsuario Negocios = new NUsuario();
+                Negocios.Desactivar(int.Parse(id));
+                TempData["msg"] = "0";
+                return RedirectToAction("index");
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.Message);
+            }
+        }
         #region Traer el nombre del Rol
         public static string NombreRol(string id)
         {

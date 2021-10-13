@@ -122,14 +122,14 @@ namespace DataAcces
             }
 
         }
-        public int Desactivar(int IdRol)
+        public int Desactivar(int IdUsuario)
         {
             try
             {
                 using (TransactionScope Ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
                     //Esto llena la entidad con los datos correspondientes a la entidad traida de la bd
-                    Roles Objbd = db.Roles.Find(IdRol);
+                    Usuarios Objbd = db.Usuarios.Find(IdUsuario);
                     //Asigna los valores traidos por la entidad traida de la vista a la entidad traida de la base de datos
                     Objbd.Estado = false;
                     //Guarda los cambios en bd

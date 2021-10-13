@@ -10,12 +10,12 @@ var ClickUpdate = function (id) {
 var ClickDelete = function (id) {
 
     Swal.fire({
-        title: 'Estas seguro de Eliminar el registro?',
+        title: 'Estas seguro de desactivar el usuario?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Borra Registro!'
+        confirmButtonText: 'Desactivar Usuario!'
     }).then((result) => {
         if (result.isConfirmed) {
             window.location.href = "Usuarios/Delete/" + id;

@@ -60,12 +60,12 @@
 </div>
 
 @section scripts{
-    @if (ViewData.ContainsKey("msg"))
+    @if (TempData["msg"] == "0")
     {
         <script>
             Swal.fire(
-                'Eliminado!',
-                'Su registro ha sido Eliminado..',
+                'Desactivado!',
+                'El Usuario ha sido Desactivado..',
                 'Exitosamente'
             );
             var IsLoading = false;
