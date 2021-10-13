@@ -1,5 +1,6 @@
 ﻿using Entidades;
 using Negocios;
+using Netpoints.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Netpoints.Controllers
             Lista = Negocios.Mostrar();
             return View(Lista);
         }
-        public ActionResult Agregar(EUsuario Modelo)
+        public ActionResult Agregar(EUsuarioViewModel Modelo)
         {
             try
             {
@@ -46,7 +47,20 @@ namespace Netpoints.Controllers
                     return View();
                 }
                 NUsuario Negocios = new NUsuario();
-                int FilasAfectadas = Negocios.Agregar(Modelo);
+                EUsuario Usuario = new EUsuario();
+                Usuario.Contrasena = Helpers.Helper.EncodePassword(string.Concat(Modelo.Usuario.ToString(), Modelo.Contrasena.ToString()));
+                Usuario.Email = Modelo.Email;
+                Usuario.Estado = false;
+                if(Modelo.Estado=="on")
+                {
+                    Usuario.Estado = true;
+                }
+                Usuario.Identificacion = Modelo.Identificacion;
+                Usuario.IdRol = Modelo.IdRol;
+                Usuario.Nombre = Modelo.Nombre;
+                Usuario.Telefono = Modelo.Telefono;
+                Usuario.Usuario = Modelo.Usuario;
+                int FilasAfectadas = Negocios.Agregar(Usuario);
                 if (FilasAfectadas > 0)
                 {
                     return Json("success");

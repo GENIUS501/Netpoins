@@ -40,7 +40,7 @@
 </div>
 
 @section Scripts {
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Scripts/Roles/Edit.js"></script>
     <script>
         let Estado = '@Model.Estado';
