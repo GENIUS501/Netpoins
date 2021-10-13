@@ -1,0 +1,70 @@
+﻿@model Netpoints.Models.EUsuarioViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="usuariosEdit" class="container">
+    <div class="row" v-if="true">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Editar Usuario</h4>
+                    <form id="FormUsuarios" action="/Usuarios/Edit" method="POST">
+                        <input type="hidden" name="IdUsuario" value="@Model.IdUsuario"/>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="number" name="Identificacion" id="Identificacion" placeholder="Identificación" value="@Model.Identificacion" readonly required />
+                            <label for="Identificacion"> Identificación</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="Nombre" id="Nombre" placeholder="Nombre" value="@Model.Nombre" required />
+                            <label for="Nombre"> Nombre </label>
+                        </div>
+                        <div class="form-floating mb-3 form-group ">
+                            <input class="form-control" type="number" name="Telefono" id="Telefono" maxlength="8" placeholder="Teléfono" value="@Model.Telefono"required />
+                            <label for="Telefono"> Teléfono </label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="email" name="Email" id="Email" placeholder="Correo" value="@Model.Email" required />
+                            <label for="Email"> Email</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            @Html.DropDownList("IdRol", ViewBag.Roles as SelectList, new { @class = "form-control", @required = "required" })
+                            <label for="IdRol">Rol</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="Usuario" id="Usuario" placeholder="Usuario" value="@Model.Usuario" required />
+                            <label for="Usuario"> Usuario </label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input type="password" class="form-control" name="Contrasena" id="Contrasena" minlength="8" maxlength="15" placeholder="Contraseña" value="Contra001" required />
+                            <label for="Contrasena">Contraseña</label>
+                        </div>
+                        <div class="form-check form-group form-group">
+                            <input class="form-check-input" type="checkbox" id="Estado" name="Estado" />
+                            <label class="form-check-label" for="Estado">
+                                Estado
+                            </label>
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-outline-primary">Guardar <i class='bx bx-save'></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        let Estado = '@Model.Estado';
+        if (Estado === "True") {
+            $('#Estado').prop('checked', true);
+        }
+    </script>
+    <script src="~/Scripts/Usuarios/Edit.js"></script>
+    <script>CreateValidator("#usuariosEdit");</script>
+}

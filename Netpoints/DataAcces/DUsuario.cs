@@ -51,18 +51,23 @@ namespace DataAcces
         #endregion
 
         #region Mostrar Detallado
-        public ERol Mostrar_Detallado(int id)
+        public EUsuario Mostrar_Detallado(int id)
         {
             try
             {
                 using (db)
                 {
-                    ERol Obj = new ERol();
-                    var Objbd = db.Roles.Where(a => a.IdRol == id).FirstOrDefault();
+                    EUsuario Obj = new EUsuario();
+                    var Objbd = db.Usuarios.Where(a => a.IdUsuario == id).FirstOrDefault();
                     Obj.IdRol = Objbd.IdRol;
-                    Obj.Rol = Objbd.Rol;
-                    Obj.Descripcion = Objbd.Descripcion;
+                    Obj.Contrasena = Objbd.Contrasena;
+                    Obj.Email = Objbd.Email;
                     Obj.Estado = Objbd.Estado;
+                    Obj.Identificacion = Objbd.Identificacion;
+                    Obj.IdUsuario = Objbd.IdUsuario;
+                    Obj.Nombre = Objbd.Nombre;
+                    Obj.Telefono = Objbd.Telefono;
+                    Obj.Usuario = Objbd.Usuario;
                     return Obj;
                 }
             }
@@ -77,18 +82,25 @@ namespace DataAcces
         #endregion
 
         #region Modificar
-        public int Modificar(ERol Obj)
+        public int Modificar(EUsuario Obj)
         {
             try
             {
                 using (TransactionScope Ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
                     //Esto llena la entidad con los datos correspondientes a la entidad traida de la bd
-                    Roles Objbd = db.Roles.Find(Obj.IdRol);
+                    Usuarios Objbd = db.Usuarios.Find(Obj.IdUsuario);
                     //Asigna los valores traidos por la entidad traida de la vista a la entidad traida de la base de datos
-                    Objbd.Rol = Obj.Rol;
-                    Objbd.Descripcion = Obj.Descripcion;
+                    Objbd.IdRol = Obj.IdRol;
+                    if(Obj.Contrasena!="Contra001")
+                    {
+                        Objbd.Contrasena = Obj.Contrasena;
+                    }
+                    Objbd.Email = Obj.Email;
                     Objbd.Estado = Obj.Estado;
+                    Objbd.Nombre = Obj.Nombre;
+                    Objbd.Telefono = Obj.Telefono;
+                    Objbd.Usuario = Obj.Usuario;
                     //Guarda los cambios en bd
                     int Resultado = db.SaveChanges();//Commit
 

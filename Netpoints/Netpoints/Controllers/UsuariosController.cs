@@ -76,6 +76,74 @@ namespace Netpoints.Controllers
                 return Json("Error");
             }
         }
+        public ActionResult Edit(string Id)
+        {
+            #region Llenar drop down Roles
+            //llena la lista que a su vez es una entidad
+            NUsuario negocios = new NUsuario();
+            var lista1 = negocios.LlenarRoles();
+            //Asignar y convertir los valores a items
+            var items = new SelectList(lista1, "IdRol", "Descripcion");
+            ViewBag.Roles = items;
+            #endregion
+            NUsuario Negocios = new NUsuario();
+            var Usuario = Negocios.Mostrar_Detallado(int.Parse(Id));
+            EUsuarioViewModel UsuarioV = new EUsuarioViewModel();
+            UsuarioV.IdRol = Usuario.IdRol;
+            UsuarioV.Contrasena = Usuario.Contrasena;
+            UsuarioV.Email = Usuario.Email;
+            UsuarioV.Estado = Usuario.Estado.ToString();
+            UsuarioV.Identificacion = Usuario.Identificacion;
+            UsuarioV.IdUsuario = Usuario.IdUsuario;
+            UsuarioV.Nombre = Usuario.Nombre;
+            UsuarioV.Telefono = Usuario.Telefono;
+            UsuarioV.Usuario = Usuario.Usuario;
+            return View(UsuarioV);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(EUsuarioViewModel Modelo)
+        {
+            try
+            {
+                NUsuario Negocios = new NUsuario();
+                EUsuario Usuario = new EUsuario();
+                if (Modelo.Contrasena == "Contra001")
+                {
+                    Usuario.Contrasena = Modelo.Contrasena;
+                }
+                else
+                {
+                    Usuario.Contrasena = Helpers.Helper.EncodePassword(string.Concat(Modelo.Usuario.ToString(), Modelo.Contrasena.ToString()));
+                }
+                Usuario.Email = Modelo.Email;
+                Usuario.Estado = false;
+                if (Modelo.Estado == "on")
+                {
+                    Usuario.Estado = true;
+                }
+                Usuario.Identificacion = Modelo.Identificacion;
+                Usuario.IdRol = Modelo.IdRol;
+                Usuario.Nombre = Modelo.Nombre;
+                Usuario.Telefono = Modelo.Telefono;
+                Usuario.Usuario = Modelo.Usuario;
+                Usuario.IdUsuario = Modelo.IdUsuario;
+                int FilasAfectadas = Negocios.Modificar(Usuario);
+                if (FilasAfectadas > 0)
+                {
+                    return Json("success");
+                }
+                else
+                {
+                    return Json("Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Error", ex.Message);
+                return Json("Error");
+            }
+        }
         #region Traer el nombre del Rol
         public static string NombreRol(string id)
         {

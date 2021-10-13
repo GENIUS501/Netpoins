@@ -1,48 +1,52 @@
-﻿var UsuariosEdit = new Vue({
-    data: {
-        Model: {
-            Usuario: null,
-            Contrasena: null,
-            Nombre: null
-        },//fin Model
-        formulario: "#FormUsuarios"
-
-    },//fin Data
-
-    methods: {
-
-        Save: function () {
-            if (BValidateData(this.formulario)) {
-                Loading.fire("Registrando...");
-
-                axios.post("/Usuarios/Edit", this.Model).then(function (get) {
-                    var result = get.data;
-                    Loading.close();
-
-                    if (result.CodeError == 0) {
-                        Toast.fire({
-                            icon: 'success',
-                            title: "Su usuario se creo sastifactoriamente!"
-                        }).then(function () {
-                            window.location.href = "/Usuario";
-                        });
-                    } else {
-                        Toast.fire({
-                            icon: 'error',
-                            title: result.MsgError
-                        });
-                    }
-                });
-            } else {
+﻿$("#FormUsuarios").submit(function (e) {
+    e.preventDefault();
+    $.validator.setDefaults({ ignore: "" });
+    var Formulario = $(this);
+    if (!Formulario.valid()) {
+        return
+    }
+    var Url = Formulario.attr('action');
+    var DatosFormulario = new FormData(Formulario[0]);
+    Loading.fire("Guardando...");
+    $.ajax({
+        type: "POST",
+        url: Url,
+        data: DatosFormulario,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (data) {
+            debugger
+            if (data == "success") {
+                Loading.close();
                 Toast.fire({
-                    icon: "error",
-                    title: "Por favor Complete los campos requeridos!"
+                    icon: 'success',
+                    title: 'Usuario Editado'
+                });
+                sleep(2500).then(() => {
+                    window.location.href = "../Usuarios"
+                })
+            }
+            if (data == "Error") {
+                Loading.close();
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Error'
                 });
             }
-        },//fin LoginUsuario
-    },//fin methods
-    mounted: function () {
-        CreateValidator(this.formulario);
-    },//fin Mounted
+        },
+        error: function (xhr, error, status) {
+            Loading.close();
+            Toast.fire({
+                icon: 'error',
+                title: 'Error'
+            });
+        },
+        complete: function () {
+
+        }
+    });
 });
-UsuariosEdit.$mount("#UsuariosEdit");
+function sleep(time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+}

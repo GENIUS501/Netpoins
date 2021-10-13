@@ -26,11 +26,11 @@ namespace Negocios
         #endregion
 
         #region Mostrar Detallado
-        public ERol Mostrar_Detallado(int Id)
+        public EUsuario Mostrar_Detallado(int Id)
         {
             try
             {
-                DRol db = new DRol();
+                DUsuario db = new DUsuario();
                 return db.Mostrar_Detallado(Id);
             }
             catch (Exception ex)
@@ -41,11 +41,11 @@ namespace Negocios
         #endregion
 
         #region Modificar
-        public int Modificar(ERol obj)
+        public int Modificar(EUsuario obj)
         {
             try
             {
-                DRol db = new DRol();
+                DUsuario db = new DUsuario();
                 return db.Modificar(obj);
             }
             catch (Exception ex)
