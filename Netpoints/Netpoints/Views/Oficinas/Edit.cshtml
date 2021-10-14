@@ -1,0 +1,56 @@
+﻿@model Entidades.EOficinas
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="OficinasEdit" class="container">
+    <div class="row" v-if="true">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Nuevo Sitio</h4>
+                    <form id="FormOficinas" action="/Oficinas/Edit" method="POST">
+                        <input type="hidden" name="IdOficina" value="@Model.IdOficina" />
+
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="NombreOficina" id="NombreOficina" placeholder="Sitio" value="@Model.NombreOficina" required />
+                            <label for="NombreOficina"> Sitio</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="number" name="UE" id="UE" maxlength="8" placeholder="Unidad Ejecutora" value="@Model.UE" required />
+                            <label for="UE"> Unidad Ejecutora</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <select class=" form-select" name="Provincia" id="Provincia" arial-label="Default select example" placeholder="Provincia" value="@Model.Provincia" required>
+                                <option value="Alajuela">Alajuela</option>
+                                <option value="Cartago">Cartago</option>
+                                <option value="Guanacaste">Guanacaste</option>
+                                <option value="Heredia">Heredia</option>
+                                <option value="Limon">Limón</option>
+                                <option value="Puntarenas">Puntarenas</option>
+                                <option value="San Jose">San José</option>
+                            </select>
+                            <label for="Provincia"> Provincia </label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <textarea class="form-control" type="text" name="Comentario" id="textarea" placeholder="Comentarios" rows="3"> @Html.Raw(Model.Comentario) </textarea>
+                            <label for="Comentario"> Comentarios </label>
+                        </div>
+                        <br />
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-outline-primary">Guardar <i class='bx bx-save'></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/Oficinas/Agregar.js"></script>
+    <script>CreateValidator("#OficinasEdit");</script>
+}

@@ -128,6 +128,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OficinasController.cs" />
     <Compile Include="Controllers\ProveedoresController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -167,6 +168,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Oficinas\Agregar.js" />
+    <Content Include="Scripts\Oficinas\Edit.js" />
+    <Content Include="Scripts\Oficinas\Index.js" />
     <Content Include="Scripts\Proveedores\Agregar.js" />
     <Content Include="Scripts\Proveedores\Edit.js" />
     <Content Include="Scripts\Proveedores\Index.js" />
@@ -200,6 +204,9 @@
     <Content Include="Views\Proveedores\Index.cshtml" />
     <Content Include="Views\Proveedores\Agregar.cshtml" />
     <Content Include="Views\Proveedores\Edit.cshtml" />
+    <Content Include="Views\Oficinas\Index.cshtml" />
+    <Content Include="Views\Oficinas\Agregar.cshtml" />
+    <Content Include="Views\Oficinas\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
