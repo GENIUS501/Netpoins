@@ -62,6 +62,7 @@
     </Compile>
     <Compile Include="DOficinas.cs" />
     <Compile Include="DProveedores.cs" />
+    <Compile Include="DRedes.cs" />
     <Compile Include="DRol.cs" />
     <Compile Include="DUsuario.cs" />
     <Compile Include="Enlaces.cs">
