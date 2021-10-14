@@ -213,6 +213,7 @@
     <Content Include="Views\Oficinas\Edit.cshtml" />
     <Content Include="Views\Redes\Index.cshtml" />
     <Content Include="Views\Redes\Agregar.cshtml" />
+    <Content Include="Views\Redes\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
