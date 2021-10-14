@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace Negocios
 {
-    public class NProveedores
+    public class NOficina
     {
         #region Agregar
-        public int Agregar(EProveedores obj)
+        public int Agregar(EOficinas obj)
         {
             try
             {
-                DProveedores db = new DProveedores();
+                DOficina db = new DOficina();
                 return db.Agregar(obj);
             }
             catch (Exception ex)
@@ -26,11 +26,11 @@ namespace Negocios
         #endregion
 
         #region Mostrar Detallado
-        public EProveedores Mostrar_Detallado(int Id)
+        public EOficinas Mostrar_Detallado(int Id)
         {
             try
             {
-                DProveedores db = new DProveedores();
+                DOficina db = new DOficina();
                 return db.Mostrar_Detallado(Id);
             }
             catch (Exception ex)
@@ -41,11 +41,11 @@ namespace Negocios
         #endregion
 
         #region Modificar
-        public int Modificar(EProveedores obj)
+        public int Modificar(EOficinas obj)
         {
             try
             {
-                DProveedores db = new DProveedores();
+                DOficina db = new DOficina();
                 return db.Modificar(obj);
             }
             catch (Exception ex)
@@ -56,12 +56,12 @@ namespace Negocios
         #endregion
 
         #region Eliminar
-        public int Eliminar(int IDProveedores)
+        public int Eliminar(int IDOficina)
         {
             try
             {
-                DProveedores db = new DProveedores();
-                return db.Eliminar(IDProveedores);
+                DOficina db = new DOficina();
+                return db.Eliminar(IDOficina);
             }
             catch (Exception ex)
             {
@@ -71,11 +71,11 @@ namespace Negocios
         #endregion
 
         #region Listar
-        public List<EProveedores> Mostrar()
+        public List<EOficinas> Mostrar()
         {
             try
             {
-                DProveedores db = new DProveedores();
+                DOficina db = new DOficina();
                 return db.Mostrar();
             }
             catch (Exception ex)
