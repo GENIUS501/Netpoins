@@ -20,10 +20,10 @@
             if (data == "success") {
                 Toast.fire({
                     icon: 'success',
-                    title: 'Rol Guardado'
+                    title: 'Red Guardada'
                 });
                 sleep(2500).then(() => {
-                    window.location.href = "../Roles"
+                    window.location.href = "../Redes"
                 })
             }
             if (data == "Error") {

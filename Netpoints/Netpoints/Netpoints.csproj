@@ -175,6 +175,7 @@
     <Content Include="Scripts\Proveedores\Agregar.js" />
     <Content Include="Scripts\Proveedores\Edit.js" />
     <Content Include="Scripts\Proveedores\Index.js" />
+    <Content Include="Scripts\Redes\Agregar.js" />
     <Content Include="Scripts\Redes\Edit.js" />
     <Content Include="Scripts\Redes\Index.js" />
     <Content Include="Scripts\Roles\Agregar.js" />
@@ -211,6 +212,7 @@
     <Content Include="Views\Oficinas\Agregar.cshtml" />
     <Content Include="Views\Oficinas\Edit.cshtml" />
     <Content Include="Views\Redes\Index.cshtml" />
+    <Content Include="Views\Redes\Agregar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
