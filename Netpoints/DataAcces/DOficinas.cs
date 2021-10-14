@@ -9,7 +9,7 @@ using System.Transactions;
 
 namespace DataAcces
 {
-    public class DOficina
+    public class DOficinas
     {
         Enlaces_TelecomEntities db = new Enlaces_TelecomEntities();
         #region Agregar

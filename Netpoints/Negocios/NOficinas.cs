@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace Negocios
 {
-    public class NOficina
+    public class NOficinas
     {
         #region Agregar
         public int Agregar(EOficinas obj)
         {
             try
             {
-                DOficina db = new DOficina();
+                DOficinas db = new DOficinas();
                 return db.Agregar(obj);
             }
             catch (Exception ex)
@@ -30,7 +30,7 @@ namespace Negocios
         {
             try
             {
-                DOficina db = new DOficina();
+                DOficinas db = new DOficinas();
                 return db.Mostrar_Detallado(Id);
             }
             catch (Exception ex)
@@ -45,7 +45,7 @@ namespace Negocios
         {
             try
             {
-                DOficina db = new DOficina();
+                DOficinas db = new DOficinas();
                 return db.Modificar(obj);
             }
             catch (Exception ex)
@@ -60,7 +60,7 @@ namespace Negocios
         {
             try
             {
-                DOficina db = new DOficina();
+                DOficinas db = new DOficinas();
                 return db.Eliminar(IDOficina);
             }
             catch (Exception ex)
@@ -75,7 +75,7 @@ namespace Negocios
         {
             try
             {
-                DOficina db = new DOficina();
+                DOficinas db = new DOficinas();
                 return db.Mostrar();
             }
             catch (Exception ex)
