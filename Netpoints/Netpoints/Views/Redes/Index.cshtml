@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Entidades.EOficinas>
+﻿@model IEnumerable<Entidades.ERedes>
 
 @{
     ViewBag.Title = "Index";
@@ -6,7 +6,7 @@
 }
 
 <div class="container-fluid">
-    <h1>Sitios BCR</h1> <br />
+    <h1>Redes</h1> <br />
     <div class="row">
         <div class="col-2">
             <button type="button" class="btn btn-outline-primary" onclick="ClickNew()"><i class='bx bx-add-to-queue'></i>Agregar</button>
@@ -16,12 +16,15 @@
     <br />
     <div class="row">
         <div class="col-11">
-            <table id="GridOficinas" class="table table-dark table-hover">
+            <table id="GridRedes" class="table table-dark table-hover">
                 <thead>
                     <tr>
-                        <th>Provincia</th>
-                        <th>Ubicación</th>
-                        <th>Unidad Ejecutora</th>
+                        <th>Número de Linea</th>
+                        <th>IP Gateway</th>
+                        <th>Interface</th>
+                        <th>Tipo Enlace</th>
+                        <th>Bandwidth</th>
+                        <th>Medio Enlace</th>
                         <th>Comentarios</th>
                         <th>Acción</th>
                     </tr>
@@ -30,13 +33,16 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.Provincia</td>
-                            <td>@item.NombreOficina</td>
-                            <td>@item.UE</td>
+                            <td>@item.Linea</td>
+                            <td>@item.Gateway</td>
+                            <td>@item.Interface </td>
+                            <td>@item.TipoEnlace</td>
+                            <td>@item.Bandwidth</td>
+                            <td>@item.MedioEnlace</td>
                             <td>@item.Comentario</td>
                             <td>
-                                <button type="button" class="btn btn-outline-primary" onclick="ClickUpdate(@item.IdOficina)"><i class='bx bxs-edit'></i>Editar</button>
-                                <button type="button" class="btn btn-outline-primary" onclick="ClickDelete(@item.IdOficina)"><i class='bx bxs-trash'></i>Eliminar</button>
+                                <button type="button" class="btn btn-outline-primary" onclick="ClickUpdate(@item.IdRed)"><i class='bx bxs-edit'></i>Editar</button>
+                                <button type="button" class="btn btn-outline-primary" onclick="ClickDelete(@item.IdRed)"><i class='bx bxs-trash'></i>Eliminar</button>
 
                             </td>
                         </tr>
@@ -51,12 +57,12 @@
 </div>
 
 @section scripts{
-    @if (TempData["msg"]=="0")
+    @if (TempData["msg"] == "0")
     {
         <script>
             Swal.fire(
                 'Eliminado!',
-                'El sitio ha sido Eliminado..',
+                'La red ha sido Eliminado..',
                 'Exitosamente'
             );
             var IsLoading = false;
@@ -68,5 +74,6 @@
             var IsLoading = true;
         </script>
     }
-    <script src="~/Scripts/Oficinas/Index.js"></script>
+    <script src="~/Scripts/Redes/Index.js"></script>
 }
+

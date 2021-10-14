@@ -23,7 +23,7 @@
                             <label for="UE"> Unidad Ejecutora</label>
                         </div>
                         <div class="form-floating mb-3 form-group">
-                            <select class=" form-select" name="Provincia" id="Provincia" arial-label="Default select example" placeholder="Provincia" value="@Model.Provincia" required>
+                            <select class=" form-select" name="Provincia" id="Provincia" arial-label="Default select example" placeholder="Provincia"  required>
                                 <option value="Alajuela">Alajuela</option>
                                 <option value="Cartago">Cartago</option>
                                 <option value="Guanacaste">Guanacaste</option>
@@ -53,4 +53,5 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Scripts/Oficinas/Agregar.js"></script>
     <script>CreateValidator("#OficinasEdit");</script>
+    <script>$("#Provincia").val("@Model.Provincia");</script>
 }

@@ -130,6 +130,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OficinasController.cs" />
     <Compile Include="Controllers\ProveedoresController.cs" />
+    <Compile Include="Controllers\RedesController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
@@ -174,6 +175,8 @@
     <Content Include="Scripts\Proveedores\Agregar.js" />
     <Content Include="Scripts\Proveedores\Edit.js" />
     <Content Include="Scripts\Proveedores\Index.js" />
+    <Content Include="Scripts\Redes\Edit.js" />
+    <Content Include="Scripts\Redes\Index.js" />
     <Content Include="Scripts\Roles\Agregar.js" />
     <Content Include="Scripts\Roles\Edit.js" />
     <Content Include="Scripts\Roles\Index.js" />
@@ -207,6 +210,7 @@
     <Content Include="Views\Oficinas\Index.cshtml" />
     <Content Include="Views\Oficinas\Agregar.cshtml" />
     <Content Include="Views\Oficinas\Edit.cshtml" />
+    <Content Include="Views\Redes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
