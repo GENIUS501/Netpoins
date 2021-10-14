@@ -1,58 +1,48 @@
-﻿
-var Entity = $("model").data("entity");
-
-var redesEdit = new Vue({
-    //Data
-    data: {
-        model: Entity,
-        formulario: "#FormRedes",
-    },
-    //Metodos
-    methods: {
-
-        Save: function () {
-
-
-            if (BValidateData(this.formulario)) {
-                Loading.fire("Guardando...");
-                axios.post("Redes/Save", this.model).then(function (get) {
-                    Loading.close();
-                    var result = get.data;
-
-                    if (result.CodeError == 0) {
-                        Toast.fire({
-                            icon: 'success',
-                            title: 'Registro Guardado'
-                        });
-                        setTimeout(function () {
-                            window.location.href = "../Redes"
-                        }, 1500)
-                    } else {
-                        Toast.fire({
-                            icon: 'error',
-                            title: result.MsgError
-                        });
-                    }
-
-                });
-
-            } else {
-
+﻿$("#FormRedes").submit(function (e) {
+    e.preventDefault();
+    $.validator.setDefaults({ ignore: "" });
+    var Formulario = $(this);
+    if (!Formulario.valid()) {
+        return
+    }
+    var Url = Formulario.attr('action');
+    var DatosFormulario = new FormData(Formulario[0]);
+    Loading.fire("Guardando...");
+    $.ajax({
+        type: "POST",
+        url: Url,
+        data: DatosFormulario,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (data) {
+            if (data == "success") {
                 Toast.fire({
-                    icon: "error",
-                    title: "Porfavor Complete los campos requeridos!"
+                    icon: 'success',
+                    title: 'Red Guardada'
+                });
+                sleep(2500).then(() => {
+                    window.location.href = "../Redes"
+                })
+            }
+            if (data == "Error") {
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Error'
                 });
             }
+        },
+        error: function (xhr, error, status) {
+            Toast.fire({
+                icon: 'error',
+                title: 'Error'
+            });
+        },
+        complete: function () {
+
         }
-
-    },
-
-    mounted: function () {
-        CreateValidator(this.formulario);
-    }
-    //create
-
-
+    });
 });
-
-redesEdit.$mount("#RedesEdit");
+function sleep(time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+}
