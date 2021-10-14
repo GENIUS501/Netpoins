@@ -9,23 +9,22 @@ using System.Transactions;
 
 namespace DataAcces
 {
-    public class DProveedores
+    public class DOficina
     {
         Enlaces_TelecomEntities db = new Enlaces_TelecomEntities();
         #region Agregar
-        public int Agregar(EProveedores obj)//Viene de la vista obj
+        public int Agregar(EOficinas Obj)//Viene de la vista Obj
         {
             try
             {
                 using (TransactionScope Ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
-                    Proveedores Objbd = new Proveedores();//Viene de la base de datos
-                    Objbd.Comentario = obj.Comentario;
-                    Objbd.Contacto = obj.Contacto;
-                    Objbd.Email = obj.Email;
-                    Objbd.NombreEmpresa = obj.NombreEmpresa;
-                    Objbd.Telefono = obj.Telefono;
-                    db.Proveedores.Add(Objbd);
+                    Oficinas Objbd = new Oficinas();//Viene de la base de datos
+                    Objbd.Comentario = Obj.Comentario;
+                    Objbd.NombreOficina = Obj.NombreOficina;
+                    Objbd.Provincia = Obj.Provincia;
+                    Objbd.UE = Obj.UE;
+                    db.Oficinas.Add(Objbd);
 
                     int Resultado = db.SaveChanges();//Commit
 
@@ -49,20 +48,19 @@ namespace DataAcces
         #endregion
 
         #region Mostrar Detallado
-        public EProveedores Mostrar_Detallado(int id)
+        public EOficinas Mostrar_Detallado(int id)
         {
             try
             {
                 using (db)
                 {
-                    EProveedores Obj = new EProveedores();
-                    var Objbd = db.Proveedores.Where(a => a.IdProveedor == id).FirstOrDefault();
+                    EOficinas Obj = new EOficinas();
+                    var Objbd = db.Oficinas.Where(a => a.IdOficina == id).FirstOrDefault();
                     Obj.Comentario = Objbd.Comentario;
-                    Obj.Contacto = Objbd.Contacto;
-                    Obj.Email = Objbd.Email;
-                    Obj.IdProveedor = Objbd.IdProveedor;
-                    Obj.NombreEmpresa = Objbd.NombreEmpresa;
-                    Obj.Telefono = Objbd.Telefono;
+                    Obj.NombreOficina = Objbd.NombreOficina;
+                    Obj.Provincia = Objbd.Provincia;
+                    Obj.UE = Objbd.UE;
+                    Obj.IdOficina = Objbd.IdOficina;
                     return Obj;
                 }
             }
@@ -77,19 +75,18 @@ namespace DataAcces
         #endregion
 
         #region Modificar
-        public int Modificar(EProveedores Obj)
+        public int Modificar(EOficinas Obj)
         {
             try
             {
                 using (TransactionScope Ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
                     //Esto llena la entidad con los datos correspondientes a la entidad traida de la bd
-                    var Objbd = db.Proveedores.Find(Obj.IdProveedor);
+                    var Objbd = db.Oficinas.Find(Obj.IdOficina);
                     Objbd.Comentario = Obj.Comentario;
-                    Objbd.Contacto = Obj.Contacto;
-                    Objbd.Email = Obj.Email;
-                    Objbd.NombreEmpresa = Obj.NombreEmpresa;
-                    Objbd.Telefono = Obj.Telefono;
+                    Objbd.NombreOficina = Obj.NombreOficina;
+                    Objbd.Provincia = Obj.Provincia;
+                    Objbd.UE = Obj.UE;
                     //Guarda los cambios en bd
                     int Resultado = db.SaveChanges();//Commit
 
@@ -121,7 +118,7 @@ namespace DataAcces
                 using (TransactionScope Ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
                     //Esto llena la entidad con los datos correspondientes a la entidad traida de la bd
-                    Proveedores Objbd = db.Proveedores.Find(Id);
+                    Oficinas Objbd = db.Oficinas.Find(Id);
                     //Asigna los valores traidos por la entidad traida de la vista a la entidad traida de la base de datos
                     db.Entry(Objbd).State = EntityState.Deleted;
                     //Guarda los cambios en bd
@@ -148,22 +145,21 @@ namespace DataAcces
         #endregion
 
         #region Listar
-        public List<EProveedores> Mostrar()
+        public List<EOficinas> Mostrar()
         {
             try
             {
-                List<EProveedores> Obj = new List<EProveedores>();
-                var Objbd = db.Proveedores.ToList();
+                List<EOficinas> Obj = new List<EOficinas>();
+                var Objbd = db.Oficinas.ToList();
                 foreach (var Item in Objbd)
                 {
-                    Obj.Add(new EProveedores()
+                    Obj.Add(new EOficinas()
                     {
                         Comentario = Item.Comentario,
-                        Contacto = Item.Contacto,
-                        Email = Item.Email,
-                        IdProveedor = Item.IdProveedor,
-                        NombreEmpresa = Item.NombreEmpresa,
-                        Telefono = Item.Telefono
+                        NombreOficina = Item.NombreOficina,
+                        Provincia = Item.Provincia,
+                        UE = Item.UE,
+                        IdOficina = Item.IdOficina
                     });
                 }
                 return Obj;
