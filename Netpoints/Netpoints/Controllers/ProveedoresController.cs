@@ -43,5 +43,58 @@ namespace Netpoints.Controllers
                 return Json("Error");
             }
         }
+        [HttpGet]
+        public ActionResult Edit(string Id)
+        {
+            NProveedores Negocios = new NProveedores();
+            var Modelo = Negocios.Mostrar_Detallado(int.Parse(Id));
+            return View(Modelo);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(EProveedores Modelo)
+        {
+            try
+            {
+                NProveedores Negocios = new NProveedores();
+                int FilasAfectadas = Negocios.Modificar(Modelo);
+                if (FilasAfectadas > 0)
+                {
+                    return Json("success");
+                }
+                else
+                {
+                    return Json("Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Error", ex.Message);
+                return Json("Error");
+            }
+        }
+        [HttpGet]
+        public ActionResult Delete(string id)
+        {
+            try
+            {
+                NProveedores Negocios = new NProveedores();
+                int FilasAfectadas=Negocios.Eliminar(int.Parse(id));
+                if(FilasAfectadas>0)
+                {
+                    TempData["msg"] = "0";
+                }
+                else
+                {
+                    TempData["msg"] = "-1";
+                }
+                return RedirectToAction("index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Error", ex.Message);
+                return Redirect("Index");
+            }
+        }
     }
 }

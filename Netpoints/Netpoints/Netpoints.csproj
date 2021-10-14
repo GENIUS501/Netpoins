@@ -199,6 +199,7 @@
     <Content Include="Views\Usuarios\Edit.cshtml" />
     <Content Include="Views\Proveedores\Index.cshtml" />
     <Content Include="Views\Proveedores\Agregar.cshtml" />
+    <Content Include="Views\Proveedores\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

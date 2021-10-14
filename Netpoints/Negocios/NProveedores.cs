@@ -25,47 +25,47 @@ namespace Negocios
         }
         #endregion
 
-        //#region Mostrar Detallado
-        //public EProveedores Mostrar_Detallado(int Id)
-        //{
-        //    try
-        //    {
-        //        DProveedores db = new DProveedores();
-        //        return db.Mostrar_Detallado(Id);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
-        //#endregion
+        #region Mostrar Detallado
+        public EProveedores Mostrar_Detallado(int Id)
+        {
+            try
+            {
+                DProveedores db = new DProveedores();
+                return db.Mostrar_Detallado(Id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        #endregion
 
-        //#region Modificar
-        //public int Modificar(EProveedores obj)
-        //{
-        //    try
-        //    {
-        //        DProveedores db = new DProveedores();
-        //        return db.Modificar(obj);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
-        //public int Desactivar(int IDProveedores)
-        //{
-        //    try
-        //    {
-        //        DProveedores db = new DProveedores();
-        //        return db.Desactivar(IDProveedores);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
-        //#endregion
+        #region Modificar
+        public int Modificar(EProveedores obj)
+        {
+            try
+            {
+                DProveedores db = new DProveedores();
+                return db.Modificar(obj);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public int Eliminar(int IDProveedores)
+        {
+            try
+            {
+                DProveedores db = new DProveedores();
+                return db.Eliminar(IDProveedores);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        #endregion
 
         #region Listar
         public List<EProveedores> Mostrar()

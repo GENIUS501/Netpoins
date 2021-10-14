@@ -1,6 +1,7 @@
 ﻿using Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,23 +49,20 @@ namespace DataAcces
         #endregion
 
         #region Mostrar Detallado
-        public EUsuario Mostrar_Detallado(int id)
+        public EProveedores Mostrar_Detallado(int id)
         {
             try
             {
                 using (db)
                 {
-                    EUsuario Obj = new EUsuario();
-                    var Objbd = db.Usuarios.Where(a => a.IdUsuario == id).FirstOrDefault();
-                    Obj.IdRol = Objbd.IdRol;
-                    Obj.Contrasena = Objbd.Contrasena;
+                    EProveedores Obj = new EProveedores();
+                    var Objbd = db.Proveedores.Where(a => a.IdProveedor == id).FirstOrDefault();
+                    Obj.Comentario = Objbd.Comentario;
+                    Obj.Contacto = Objbd.Contacto;
                     Obj.Email = Objbd.Email;
-                    Obj.Estado = Objbd.Estado;
-                    Obj.Identificacion = Objbd.Identificacion;
-                    Obj.IdUsuario = Objbd.IdUsuario;
-                    Obj.Nombre = Objbd.Nombre;
+                    Obj.IdProveedor = Objbd.IdProveedor;
+                    Obj.NombreEmpresa = Objbd.NombreEmpresa;
                     Obj.Telefono = Objbd.Telefono;
-                    Obj.Usuario = Objbd.Usuario;
                     return Obj;
                 }
             }
@@ -79,25 +77,19 @@ namespace DataAcces
         #endregion
 
         #region Modificar
-        public int Modificar(EUsuario Obj)
+        public int Modificar(EProveedores Obj)
         {
             try
             {
                 using (TransactionScope Ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
                     //Esto llena la entidad con los datos correspondientes a la entidad traida de la bd
-                    Usuarios Objbd = db.Usuarios.Find(Obj.IdUsuario);
-                    //Asigna los valores traidos por la entidad traida de la vista a la entidad traida de la base de datos
-                    Objbd.IdRol = Obj.IdRol;
-                    if (Obj.Contrasena != "Contra001")
-                    {
-                        Objbd.Contrasena = Obj.Contrasena;
-                    }
+                    var Objbd = db.Proveedores.Find(Obj.IdProveedor);
+                    Objbd.Comentario = Obj.Comentario;
+                    Objbd.Contacto = Obj.Contacto;
                     Objbd.Email = Obj.Email;
-                    Objbd.Estado = Obj.Estado;
-                    Objbd.Nombre = Obj.Nombre;
+                    Objbd.NombreEmpresa = Obj.NombreEmpresa;
                     Objbd.Telefono = Obj.Telefono;
-                    Objbd.Usuario = Obj.Usuario;
                     //Guarda los cambios en bd
                     int Resultado = db.SaveChanges();//Commit
 
@@ -119,16 +111,16 @@ namespace DataAcces
             }
 
         }
-        public int Desactivar(int IdUsuario)
+        public int Eliminar(int Id)
         {
             try
             {
                 using (TransactionScope Ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
                     //Esto llena la entidad con los datos correspondientes a la entidad traida de la bd
-                    Usuarios Objbd = db.Usuarios.Find(IdUsuario);
+                    Proveedores Objbd = db.Proveedores.Find(Id);
                     //Asigna los valores traidos por la entidad traida de la vista a la entidad traida de la base de datos
-                    Objbd.Estado = false;
+                    db.Entry(Objbd).State = EntityState.Deleted;
                     //Guarda los cambios en bd
                     int Resultado = db.SaveChanges();//Commit
 
