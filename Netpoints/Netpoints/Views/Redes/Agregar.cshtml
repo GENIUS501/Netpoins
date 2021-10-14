@@ -11,14 +11,14 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Nueva Red</h4>
-                    <form id="FormRedes">
+                    <form id="FormRedes" action="/Redes/Agregar" method="POST">
                         <input type="hidden" name="IdRed" />
                         <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="text" name="Linea" id="Linea" maxlength="8" required />
+                            <input class="form-control" type="text" name="Linea" id="Linea" maxlength="8" placeholder="Linea" required />
                             <label for="Linea">Linea</label>
                         </div>
                         <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="text" name="Gateway" id="Gateway"  maxlength="15" required />
+                            <input class="form-control" type="text" name="Gateway" id="Gateway"  maxlength="15" placeholder="IP Gateway" required />
                             <label for="Gateway">IP Gateway </label>
                         </div>
                         <div class="form-floating mb-3 form-group">
@@ -36,7 +36,7 @@
                             <label for="TipoEnlace"> Tipo Enlace </label>
                         </div>
                         <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="number" name="Bandwidth" id="Bandwidth"  min="256" required />
+                            <input class="form-control" type="number" name="Bandwidth" id="Bandwidth"  min="256" placeholder="Bandwidth" required />
                             <label for="Bandwidth">Bandwidth </label>
                         </div>
                         <div class="form-floating mb-3 form-group">
@@ -48,7 +48,7 @@
                             <label for="MedioEnlace"> Medio Enlace </label>
                         </div>
                         <div class="form-floating mb-3 form-group">
-                            <textarea class="form-control" type="text" name="Comentario" id="textarea" rows="3"> </textarea>
+                            <textarea class="form-control" type="text" name="Comentario" id="textarea" rows="3" placeholder="Comentarios"> </textarea>
                             <label for="Comentario"> Comentarios </label>
                         </div>
                         <br />

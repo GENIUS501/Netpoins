@@ -1,4 +1,4 @@
-﻿$("#Confirmar").submit(function (e) {
+﻿$("#FormRedes").submit(function (e) {
     e.preventDefault();
     $.validator.setDefaults({ ignore: "" });
     var Formulario = $(this);
@@ -16,7 +16,6 @@
         contentType: false,
         processData: false,
         success: function (data) {
-            debugger
             if (data == "success") {
                 Toast.fire({
                     icon: 'success',

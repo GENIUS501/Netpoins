@@ -1,6 +1,6 @@
 ﻿
 var ClickNew = function () {
-    window.location.href = "Redes/Edit";
+    window.location.href = "Redes/Agregar";
 }
 
 var ClickUpdate = function (id) {
