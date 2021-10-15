@@ -60,6 +60,7 @@
     <Compile Include="BitacoraRegistros.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DEnlaces.cs" />
     <Compile Include="DOficinas.cs" />
     <Compile Include="DProveedores.cs" />
     <Compile Include="DRedes.cs" />
