@@ -59,7 +59,7 @@ namespace Netpoints.Controllers
                 Usuario.IdRol = Modelo.IdRol;
                 Usuario.Nombre = Modelo.Nombre;
                 Usuario.Telefono = Modelo.Telefono;
-                Usuario.Usuario = Modelo.Usuario;
+                Usuario.Usuario = Modelo.Identificacion;
                 int FilasAfectadas = Negocios.Agregar(Usuario);
                 if (FilasAfectadas > 0)
                 {

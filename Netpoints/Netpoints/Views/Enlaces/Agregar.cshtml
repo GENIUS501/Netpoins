@@ -10,14 +10,14 @@
         <div class="col-6">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">@(TypeForm.Value ? "Editar Enlace" : "Nuevo Enlace")</h4>
+                    <h4 class="card-title">Nuevo Enlace</h4>
                     <form id="FormEnlaces">
 
                         <input type="hidden" name="IdEnlace" v-model="model.IdEnlace" />
 
                         <div class="form-floating mb-3 form-group">
                             <select class="form-control" id="IdOficina" name="IdOficina" arial-label="Default select example" v-model="model.IdOficina" required>
-                                @foreach (var item in Model.ddlOficinas)
+                                @foreach (var item in ViewBag.ddlOficinas)
                                 {
                                     <option value="@item.IdOficina">@item.NombreOficina</option>
                                 }
@@ -26,7 +26,7 @@
                         </div>
                         <div class="form-floating mb-3 form-group">
                             <select class="form-control" id="IdOficina" name="IdOficina" arial-label="Default select example" v-model="model.IdOficina" required>
-                                @foreach (var item in Model.ddlOficinas)
+                                @foreach (var item in ViewBag.ddlOficinas)
                                 {
                                     <option value="@item.IdOficina">@item.UE</option>
                                 }
@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-floating mb-3 form-group">
                             <select class="form-control" id="IdOficina" name="IdOficina" arial-label="Default select example" v-model="model.IdOficina" required>
-                                @foreach (var item in Model.ddlOficinas)
+                                @foreach (var item in ViewBag.ddlOficinas)
                                 {
                                     <option value="@item.IdOficina">@item.Provincia</option>
                                 }
@@ -44,7 +44,7 @@
                         </div>
                         <div class="form-floating mb-3 form-group">
                             <select class="form-control" id="IOficina" name="IdOficina" arial-label="Default select example" v-model="model.IdOficina" required>
-                                @foreach (var item in Model.ddlOficinas)
+                                @foreach (var item in ViewBag.ddlOficinas)
                                 {
                                     <option value="@item.IdOficina">@item.Comentario</option>
                                 }
@@ -53,7 +53,7 @@
                         </div>
                         <div class="form-floating mb-3 form-group">
                             <select class="form-control" id="IdRed" name="IdRed" arial-label="Default select example" v-model="model.IdRed" required>
-                                @foreach (var item in Model.ddlRedes)
+                                @foreach (var item in ViewBag.ddlRedes)
                                 {
                                     <option value="@item.IdRed">@item.Linea</option>
                                 }
@@ -63,7 +63,7 @@
 
                         <div class="form-floating mb-3 form-group">
                             <select class="form-control" id="IdRed" name="IdRed" arial-label="Default select example" v-model="model.IdRed" required>
-                                @foreach (var item in Model.ddlRedes)
+                                @foreach (var item in ViewBag.ddlRedes)
                                 {
                                     <option value="@item.IdRed">@item.Gateway</option>
                                 }
@@ -72,7 +72,7 @@
                         </div>
                         <div class="form-floating mb-3 form-group">
                             <select class="form-control" id="IdRed" name="IdRed" arial-label="Default select example" v-model="model.IdRed" required>
-                                @foreach (var item in Model.ddlRedes)
+                                @foreach (var item in ViewBag.ddlRedes)
                                 {
                                     <option value="@item.IdRed">@item.Interface</option>
                                 }
@@ -81,7 +81,7 @@
                         </div>
                         <div class="form-floating mb-3 form-group">
                             <select class="form-control" id="IdRed" name="IdRed" arial-label="Default select example" v-model="model.IdRed" required>
-                                @foreach (var item in Model.ddlRedes)
+                                @foreach (var item in ViewBag.ddlRedes)
                                 {
                                     <option value="@item.IdRed">@item.TipoEnlace</option>
                                 }
@@ -90,7 +90,7 @@
                         </div>
                         <div class="form-floating mb-3 form-group">
                             <select class="form-control" id="IdRed" name="IdRed" arial-label="Default select example" v-model="model.IdRed" required>
-                                @foreach (var item in Model.ddlRedes)
+                                @foreach (var item in ViewBag.ddlRedes)
                                 {
                                     <option value="@item.IdRed">@item.Bandwidth</option>
                                 }
@@ -99,7 +99,7 @@
                         </div>
                         <div class="form-floating mb-3 form-group">
                             <select class="form-control" id="IdRed" name="IdRed" arial-label="Default select example" v-model="model.IdRed" required>
-                                @foreach (var item in Model.ddlRedes)
+                                @foreach (var item in ViewBag.ddlRedes)
                                 {
                                     <option value="@item.IdRed">@item.MedioEnlace</option>
                                 }
@@ -108,7 +108,7 @@
                         </div>
                         <div class="form-floating mb-3 form-group">
                             <select class="form-control" id="IdRed" name="IdRed" arial-label="Default select example" v-model="model.IdRed" required>
-                                @foreach (var item in Model.ddlRedes)
+                                @foreach (var item in ViewBag.ddlRedes)
                                 {
                                     <option value="@item.IdRed">@item.Comentario</option>
                                 }
@@ -117,7 +117,7 @@
                         </div>
                         <div class="form-floating mb-3 form-group">
                             <select class="form-control" id="IdProveedor" name="IdProveedor" arial-label="Default select example" v-model="model.IdProveedor" required>
-                                @foreach (var item in Model.ddlProveedores)
+                                @foreach (var item in ViewBag.ddlProveedores)
                                 {
                                     <option value="@item.IdProveedor">@item.NombreEmpresa</option>
                                 }
@@ -141,4 +141,5 @@
 @section scripts{
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Scripts/Enlaces/Agregar.js"></script>
+    <script>CreateValidator("#EnlacesEdit");</script>
 }

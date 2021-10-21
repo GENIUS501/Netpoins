@@ -22,26 +22,13 @@ namespace Netpoints.Controllers
         {
             try
             {
-                #region Llenar drop down Roles
-                //llena la lista que a su vez es una entidad
-                NUsuario negocios = new NUsuario();
-                var lista1 = negocios.LlenarRoles();
-                //Asignar y convertir los valores a items
-                var items = new SelectList(lista1, "IdRol", "Descripcion");
-                //List<SelectListItem> items = lista1.ConvertAll(d =>
-                //{
-                //    return new SelectListItem()
-                //    {
-                //        Text = d.Descripcion,
-                //        Value = d.IdRol.ToString(),
-                //        Selected = false
-                //    };
-                //}
-                //);
-                //enviar items a la vista
-                ViewBag.Roles = items;
-                #endregion
-                if (Modelo.IdOficina == null && Modelo.IdEnlace == null)
+                NOficinas Oficinas = new NOficinas();
+                NRedes Redes = new NRedes();
+                NProveedores Proveedores = new NProveedores();
+                ViewBag.ddlOficinas = Oficinas.Mostrar();
+                ViewBag.ddlRedes = Redes.Mostrar();
+                ViewBag.ddlProveedores = Proveedores.Mostrar(); 
+                if (Modelo.IdOficina == 0 && Modelo.IdEnlace == 0)
                 {
                     return View();
                 }
