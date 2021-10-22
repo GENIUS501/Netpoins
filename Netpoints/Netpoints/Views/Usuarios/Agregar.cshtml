@@ -17,7 +17,7 @@
                         <div class="form-floating mb-3 form-group ">
                             <input class="form-control" type="number" name="Identificacion" id="Identificacion" placeholder="Identificación" required />
                             <label for="Identificacion"> Identificación</label>
-                            <button onclick="Verificar()" class="btn btn-outline-primary">Verificar <i class='bx bx-check-square'></i></button>
+                            <button onclick="Verificar()" class="btn btn-outline-primary" id="serificar">Verificar <i class='bx bx-check-square'></i></button>
                         </div>
                         <div id="Datos">
                             <div class="form-floating mb-3 form-group">
@@ -89,6 +89,7 @@
                         let data = $('#Identificacion').val();
                         $('#Usuario').val(data);
                         $('#Usuario').prop('readonly', true);
+                        $('#serificar').prop('disabled', true);
                     }
                     if (data == "Error") {
                         Loading.close();

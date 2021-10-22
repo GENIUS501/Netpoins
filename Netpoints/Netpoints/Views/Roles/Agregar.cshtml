@@ -4,7 +4,6 @@
     ViewBag.Title = "Agregar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div id="RolesEdit" class="container">
     <div class="row" v-if="true">
         <div class="col-6">
@@ -16,19 +15,22 @@
                         <div class="form-floating mb-3 form-group">
                             <input class="form-control" type="text" name="Rol" id="Rol" maxlength="20" placeholder="Rol" required />
                             <label for="Rol"> Rol</label>
+                            <button onclick="Verificar()" class="btn btn-outline-primary" id="serificar">Verificar <i class='bx bx-check-square'></i></button>
                         </div>
-                        <div class="form-floating mb-3 form-group ">
-                            <input class="form-control" type="text" name="Descripcion" id="Descripcion" maxlength="200" placeholder="Descripción" required />
-                            <label for="Descripcion"> Descripción</label>
-                        </div>
-                        <div class="form-check form-group form-group">
-                            <input class="form-check-input" type="checkbox" id="Estado" name="Estado" />
-                            <label class="form-check-label" for="Estado">
-                                Estado
-                            </label>
-                        </div>
-                        <div class="mb-3">
-                            <button type="submit" class="btn btn-outline-primary">Guardar <i class='bx bx-save'></i></button>
+                        <div id="Datos">
+                            <div class="form-floating mb-3 form-group ">
+                                <input class="form-control" type="text" name="Descripcion" id="Descripcion" maxlength="200" placeholder="Descripción" required />
+                                <label for="Descripcion"> Descripción</label>
+                            </div>
+                            <div class="form-check form-group form-group">
+                                <input class="form-check-input" type="checkbox" id="Estado" name="Estado" />
+                                <label class="form-check-label" for="Estado">
+                                    Estado
+                                </label>
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-outline-primary">Guardar <i class='bx bx-save'></i></button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -40,5 +42,44 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Scripts/Roles/Agregar.js"></script>
-    <script>CreateValidator("#RolesEdit");</script>
+    <script>
+        CreateValidator("#RolesEdit");
+        $("#Datos").hide();
+        function Verificar() {
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("Verificar", "Roles")" + "?" + "id=" + $('#Rol').val(),
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    Loading.fire("Verificando...");
+                    if (data == "success") {
+                        Loading.close();
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Rol Valido'
+                        });
+                        $("#Datos").show();
+                        $('#Rol').prop('readonly', true);
+                        $('#serificar').prop('disabled', true);
+                    }
+                    if (data == "Error") {
+                        Loading.close();
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Rol invalido'
+                        });
+                    }
+                },
+                error: function (xhr, error, status) {
+                    Loading.close();
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Error'
+                    });
+                },
+            });
+        }
+    </script>
 }

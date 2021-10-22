@@ -81,5 +81,20 @@ namespace Negocios
             }
         }
         #endregion
+
+        #region Metodos Personalizados
+        public async Task<bool> Verificar(string Id)
+        {
+            try
+            {
+                DRol db = new DRol();
+                return await db.Verificar(Id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        #endregion
     }
 }

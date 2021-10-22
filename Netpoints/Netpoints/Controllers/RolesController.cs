@@ -4,6 +4,7 @@ using Netpoints.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -115,6 +116,27 @@ namespace Netpoints.Controllers
             catch (Exception ex)
             {
                 return Content(ex.Message);
+            }
+        }
+        [HttpGet]
+        public async Task<ActionResult> Verificar(string id)
+        {
+            try
+            {
+                NRol Negocios = new NRol();
+                bool NoExiste = await Negocios.Verificar(id);
+                if (NoExiste)
+                {
+                    return Json("success", JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json("Error", JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception)
+            {
+                return Json("Error", JsonRequestBehavior.AllowGet);
             }
         }
     }

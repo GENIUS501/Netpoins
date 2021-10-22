@@ -1,6 +1,7 @@
 ﻿using Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -165,5 +166,30 @@ namespace DataAcces
         }
         #endregion
 
+        #region Metodos personalizados
+        public async Task<bool> Verificar(string id)
+        {
+            try
+            {
+                using (db)
+                {
+                    //Retorna el nombre del perfil correspondiente al id enviado al metodo
+                    var Identificacion = await db.Roles.Where(x => x.Rol == id).FirstOrDefaultAsync();
+                    if (Identificacion != null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        #endregion
     }
 }
