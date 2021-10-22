@@ -107,6 +107,18 @@ namespace Negocios
                 throw ex;
             }
         }
+        public async Task<bool> Verificar(string Id)
+        {
+            try
+            {
+                DUsuario db = new DUsuario();
+                return await db.Verificar(Id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         #endregion
     }
 }

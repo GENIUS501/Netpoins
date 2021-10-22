@@ -4,6 +4,7 @@ using Netpoints.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -42,7 +43,7 @@ namespace Netpoints.Controllers
                 //enviar items a la vista
                 ViewBag.Roles = items;
                 #endregion
-                if (Modelo.Identificacion == null && Modelo.Usuario == null)
+                if (Modelo.Identificacion == null || Modelo.Usuario == null)
                 {
                     return View();
                 }
@@ -170,6 +171,26 @@ namespace Netpoints.Controllers
             catch (Exception)
             {
                 return "";
+            }
+        }
+        public async Task<ActionResult> Verificar(string id)
+        {
+            try
+            {
+                NUsuario Negocios = new NUsuario();
+                bool NoExiste = await Negocios.Verificar(id);
+                if (NoExiste)
+                {
+                    return Json("success", JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json("Error", JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception)
+            {
+                return Json("Error", JsonRequestBehavior.AllowGet);
             }
         }
         #endregion

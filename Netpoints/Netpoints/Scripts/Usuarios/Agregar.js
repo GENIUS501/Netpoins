@@ -16,7 +16,6 @@
         contentType: false,
         processData: false,
         success: function (data) {
-            debugger
             if (data == "success") {
                 Loading.close();
                 Toast.fire({

@@ -1,6 +1,7 @@
 ﻿using Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -200,6 +201,29 @@ namespace DataAcces
             catch (Exception)
             {
                 return "";
+            }
+        }
+        public async Task<bool> Verificar(string id)
+        {
+            try
+            {
+                using (db)
+                {
+                    //Retorna el nombre del perfil correspondiente al id enviado al metodo
+                     var Identificacion = await db.Usuarios.Where(x => x.Identificacion==id).FirstOrDefaultAsync();
+                    if (Identificacion!=null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
         public List<ERol> llenarRoles()

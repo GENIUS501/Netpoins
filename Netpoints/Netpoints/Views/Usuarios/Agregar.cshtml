@@ -15,41 +15,44 @@
                         <input type="hidden" name="IdUsuario" />
 
                         <div class="form-floating mb-3 form-group ">
-                            <input class="form-control" type="number" name="Identificacion" id="Identificacion" placeholder="Identificación" required /><button onclick="Verificar()" class="btn btn-outline-primary">Verificar <i class='bx bx-check-square'></i></button>
+                            <input class="form-control" type="number" name="Identificacion" id="Identificacion" placeholder="Identificación" required />
                             <label for="Identificacion"> Identificación</label>
+                            <button onclick="Verificar()" class="btn btn-outline-primary">Verificar <i class='bx bx-check-square'></i></button>
                         </div>
-                        <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="text" name="Nombre" id="Nombre" placeholder="Nombre" required />
-                            <label for="Nombre"> Nombre </label>
-                        </div>
-                        <div class="form-floating mb-3 form-group ">
-                            <input class="form-control" type="number" name="Telefono" id="Telefono" maxlength="8" placeholder="Teléfono" required />
-                            <label for="Telefono"> Teléfono </label>
-                        </div>
-                        <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="email" name="Email" id="Email" placeholder="Correo" required />
-                            <label for="Email"> Email</label>
-                        </div>
-                        <div class="form-floating mb-3 form-group">
-                            @Html.DropDownList("IdRol", ViewBag.Roles as SelectList, new { @class = "form-control", @required = "required" })
-                            <label for="IdRol">Rol</label>
-                        </div>
-                        <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="text" name="Usuario" id="Usuario" placeholder="Usuario" onchange="Asigna_Usuario()" required />
-                            <label for="Usuario"> Usuario </label>
-                        </div>
-                        <div class="form-floating mb-3 form-group">
-                            <input type="password" class="form-control" name="Contrasena" id="Contrasena" minlength="8" maxlength="15" placeholder="Contraseña" required />
-                            <label for="Contrasena">Contraseña</label>
-                        </div>
-                        <div class="form-check form-group form-group">
-                            <input class="form-check-input" type="checkbox" id="Estado" name="Estado" />
-                            <label class="form-check-label" for="Estado">
-                                Estado
-                            </label>
-                        </div>
-                        <div class="mb-3">
-                            <button type="submit" class="btn btn-outline-primary">Guardar <i class='bx bx-save'></i></button>
+                        <div id="Datos">
+                            <div class="form-floating mb-3 form-group">
+                                <input class="form-control" type="text" name="Nombre" id="Nombre" placeholder="Nombre" required />
+                                <label for="Nombre"> Nombre </label>
+                            </div>
+                            <div class="form-floating mb-3 form-group ">
+                                <input class="form-control" type="number" name="Telefono" id="Telefono" maxlength="8" placeholder="Teléfono" required />
+                                <label for="Telefono"> Teléfono </label>
+                            </div>
+                            <div class="form-floating mb-3 form-group">
+                                <input class="form-control" type="email" name="Email" id="Email" placeholder="Correo" required />
+                                <label for="Email"> Email</label>
+                            </div>
+                            <div class="form-floating mb-3 form-group">
+                                @Html.DropDownList("IdRol", ViewBag.Roles as SelectList, new { @class = "form-control", @required = "required" })
+                                <label for="IdRol">Rol</label>
+                            </div>
+                            <div class="form-floating mb-3 form-group">
+                                <input class="form-control" type="text" name="Usuario" id="Usuario" placeholder="Usuario" required />
+                                <label for="Usuario"> Usuario </label>
+                            </div>
+                            <div class="form-floating mb-3 form-group">
+                                <input type="password" class="form-control" name="Contrasena" id="Contrasena" minlength="8" maxlength="15" placeholder="Contraseña" required />
+                                <label for="Contrasena">Contraseña</label>
+                            </div>
+                            <div class="form-check form-group form-group">
+                                <input class="form-check-input" type="checkbox" id="Estado" name="Estado" />
+                                <label class="form-check-label" for="Estado">
+                                    Estado
+                                </label>
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-outline-primary">Guardar <i class='bx bx-save'></i></button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -63,15 +66,46 @@
     <script src="~/Scripts/Usuarios/Agregar.js"></script>
     <script>
         CreateValidator("#usuariosEdit");
-        $("#Nombre").hide();
+        $("#Datos").hide();
     </script>
     <script>
-        function Asigna_Usuario() {
-            let data = $('#Identificacion').val();
-            $('#Usuario').val(data);
-        }
         function Verificar() {
-            $("#Nombre").show();
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("Verificar", "Usuarios")" + "?" + "id=" + $('#Identificacion').val(),
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    Loading.fire("Verificando...");
+                    if (data == "success") {
+                        Loading.close();
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Identificacion Valida'
+                        });
+                        $("#Datos").show();
+                        $('#Identificacion').prop('readonly', true);
+                        let data = $('#Identificacion').val();
+                        $('#Usuario').val(data);
+                        $('#Usuario').prop('readonly', true);
+                    }
+                    if (data == "Error") {
+                        Loading.close();
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Identificacion invalida'
+                        });
+                    }
+                },
+                error: function (xhr, error, status) {
+                    Loading.close();
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Error'
+                    });
+                },
+            });
         }
     </script>
 }
