@@ -19,6 +19,8 @@
         <AssociationConnector Association="Enlaces_TelecomModel.FK_Enlaces_Proveedores" ManuallyRouted="false" />
         <AssociationConnector Association="Enlaces_TelecomModel.FK_Enlaces_Redes" ManuallyRouted="false" />
         <AssociationConnector Association="Enlaces_TelecomModel.FK_Usuarios_Roles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Enlaces_TelecomModel.Roles_Permisos" Width="1.5" PointX="3" PointY="10.375" />
+        <AssociationConnector Association="Enlaces_TelecomModel.Fk_Per_Rol" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
