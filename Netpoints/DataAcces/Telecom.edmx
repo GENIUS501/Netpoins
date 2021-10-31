@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Enlaces_TelecomModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Enlaces_TelecomModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BitacoraCambios">
           <Key>
             <PropertyRef Name="IdCambio" />
@@ -87,6 +87,16 @@
           <Property Name="Agregar" Type="varchar" MaxLength="2" />
           <Property Name="Modificar" Type="varchar" MaxLength="2" />
           <Property Name="Eliminar" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -195,6 +205,7 @@
           <EntitySet Name="Redes" EntityType="Self.Redes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles_Permisos" EntityType="Self.Roles_Permisos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BitacoraCambios_Usuarios" Association="Self.FK_BitacoraCambios_Usuarios">
             <End Role="Usuarios" EntitySet="Usuarios" />
@@ -225,7 +236,8 @@
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Enlaces_TelecomModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -308,8 +320,30 @@
           <Property Name="Rol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Roles_Permisos" Relationship="Self.Fk_Per_Rol" FromRole="Roles" ToRole="Roles_Permisos" />
           <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_Roles" FromRole="Roles" ToRole="Usuarios" />
-          <NavigationProperty Name="Roles_Permisos" Relationship="Enlaces_TelecomModel.Fk_Per_Rol" FromRole="Roles" ToRole="Roles_Permisos" />
+        </EntityType>
+        <EntityType Name="Roles_Permisos">
+          <Key>
+            <PropertyRef Name="IdPermiso" />
+          </Key>
+          <Property Name="IdPermiso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Rol" Type="Int32" />
+          <Property Name="Modulo" Type="Int32" />
+          <Property Name="Agregar" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Modificar" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Eliminar" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Roles" Relationship="Self.Fk_Per_Rol" FromRole="Roles_Permisos" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -388,6 +422,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Fk_Per_Rol">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Roles_Permisos" Type="Self.Roles_Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="Roles_Permisos">
+              <PropertyRef Name="Id_Rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Usuarios_Roles">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
@@ -400,7 +446,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Enlaces_TelecomEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Enlaces_TelecomEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BitacoraCambios" EntityType="Self.BitacoraCambios" />
           <EntitySet Name="BitacoraRegistros" EntityType="Self.BitacoraRegistros" />
           <EntitySet Name="Enlaces" EntityType="Self.Enlaces" />
@@ -408,6 +454,8 @@
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" />
           <EntitySet Name="Redes" EntityType="Self.Redes" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Roles_Permisos" EntityType="Self.Roles_Permisos" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
           <AssociationSet Name="FK_BitacoraCambios_Usuarios" Association="Self.FK_BitacoraCambios_Usuarios">
             <End Role="Usuarios" EntitySet="Usuarios" />
@@ -429,46 +477,21 @@
             <End Role="Redes" EntitySet="Redes" />
             <End Role="Enlaces" EntitySet="Enlaces" />
           </AssociationSet>
+          <AssociationSet Name="Fk_Per_Rol" Association="Self.Fk_Per_Rol">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Roles_Permisos" EntitySet="Roles_Permisos" />
+          </AssociationSet>
           <AssociationSet Name="FK_Usuarios_Roles" Association="Self.FK_Usuarios_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
-          <EntitySet Name="Roles_Permisos" EntityType="Enlaces_TelecomModel.Roles_Permisos" />
-          <AssociationSet Name="Fk_Per_Rol" Association="Enlaces_TelecomModel.Fk_Per_Rol">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="Roles_Permisos" EntitySet="Roles_Permisos" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Roles_Permisos">
-          <Key>
-            <PropertyRef Name="IdPermiso" />
-          </Key>
-          <Property Name="IdPermiso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Id_Rol" Type="Int32" />
-          <Property Name="Modulo" Type="Int32" />
-          <Property Name="Agregar" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="Modificar" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="Eliminar" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Roles" Relationship="Enlaces_TelecomModel.Fk_Per_Rol" FromRole="Roles_Permisos" ToRole="Roles" />
-        </EntityType>
-        <Association Name="Fk_Per_Rol">
-          <End Type="Enlaces_TelecomModel.Roles" Role="Roles" Multiplicity="0..1" />
-          <End Type="Enlaces_TelecomModel.Roles_Permisos" Role="Roles_Permisos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="IdRol" />
-            </Principal>
-            <Dependent Role="Roles_Permisos">
-              <PropertyRef Name="Id_Rol" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Enlaces_TelecomModelStoreContainer" CdmEntityContainer="Enlaces_TelecomEntities">
+        <EntityContainerMapping StorageEntityContainer="Enlaces_TelecomModelStoreContainer" CdmEntityContainer="Enlaces_TelecomEntities1">
           <EntitySetMapping Name="BitacoraCambios">
             <EntityTypeMapping TypeName="Enlaces_TelecomModel.BitacoraCambios">
               <MappingFragment StoreEntitySet="BitacoraCambios">
@@ -548,6 +571,29 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Roles_Permisos">
+            <EntityTypeMapping TypeName="Enlaces_TelecomModel.Roles_Permisos">
+              <MappingFragment StoreEntitySet="Roles_Permisos">
+                <ScalarProperty Name="IdPermiso" ColumnName="IdPermiso" />
+                <ScalarProperty Name="Id_Rol" ColumnName="Id_Rol" />
+                <ScalarProperty Name="Modulo" ColumnName="Modulo" />
+                <ScalarProperty Name="Agregar" ColumnName="Agregar" />
+                <ScalarProperty Name="Modificar" ColumnName="Modificar" />
+                <ScalarProperty Name="Eliminar" ColumnName="Eliminar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Enlaces_TelecomModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="Enlaces_TelecomModel.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
@@ -560,18 +606,6 @@
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Roles_Permisos">
-            <EntityTypeMapping TypeName="Enlaces_TelecomModel.Roles_Permisos">
-              <MappingFragment StoreEntitySet="Roles_Permisos">
-                <ScalarProperty Name="Eliminar" ColumnName="Eliminar" />
-                <ScalarProperty Name="Modificar" ColumnName="Modificar" />
-                <ScalarProperty Name="Agregar" ColumnName="Agregar" />
-                <ScalarProperty Name="Modulo" ColumnName="Modulo" />
-                <ScalarProperty Name="Id_Rol" ColumnName="Id_Rol" />
-                <ScalarProperty Name="IdPermiso" ColumnName="IdPermiso" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

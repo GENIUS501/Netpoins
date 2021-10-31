@@ -17,6 +17,7 @@ namespace DataAcces
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Roles()
         {
+            this.Roles_Permisos = new HashSet<Roles_Permisos>();
             this.Usuarios = new HashSet<Usuarios>();
         }
     
@@ -25,6 +26,8 @@ namespace DataAcces
         public string Descripcion { get; set; }
         public bool Estado { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Roles_Permisos> Roles_Permisos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Usuarios> Usuarios { get; set; }
     }
