@@ -157,8 +157,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagenes\netpoints.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Files\Ayuda.pdf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Enlaces\Agregar.js" />
     <Content Include="Scripts\Enlaces\Edit.js" />
@@ -220,6 +222,7 @@
     <Content Include="Views\Redes\Edit.cshtml" />
     <Content Include="Views\Enlaces\Index.cshtml" />
     <Content Include="Views\Enlaces\Agregar.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
