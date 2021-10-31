@@ -132,6 +132,7 @@
     <Compile Include="Controllers\OficinasController.cs" />
     <Compile Include="Controllers\ProveedoresController.cs" />
     <Compile Include="Controllers\RedesController.cs" />
+    <Compile Include="Controllers\ReporteProveedorController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
@@ -162,6 +163,30 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Files\Ayuda.pdf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\datatable\css\buttons.dataTables.min.css" />
+    <Content Include="Scripts\datatable\css\colReorder.dataTables.min.css" />
+    <Content Include="Scripts\datatable\css\jquery.dataTables.css" />
+    <Content Include="Scripts\datatable\css\responsive.dataTables.min.css" />
+    <Content Include="Scripts\datatable\css\select.dataTables.min.css" />
+    <Content Include="Scripts\datatable\images\sort_asc.png" />
+    <Content Include="Scripts\datatable\images\sort_asc_disabled.png" />
+    <Content Include="Scripts\datatable\images\sort_both.png" />
+    <Content Include="Scripts\datatable\images\sort_desc.png" />
+    <Content Include="Scripts\datatable\images\sort_desc_disabled.png" />
+    <Content Include="Scripts\datatable\js\buttons.colVis.min.js" />
+    <Content Include="Scripts\datatable\js\buttons.flash.min.js" />
+    <Content Include="Scripts\datatable\js\buttons.html5.min.js" />
+    <Content Include="Scripts\datatable\js\buttons.print.min.js" />
+    <Content Include="Scripts\datatable\js\buttons.select.min.js" />
+    <Content Include="Scripts\datatable\js\dataTables.buttons.min.js" />
+    <Content Include="Scripts\datatable\js\dataTables.colReorder.min.js" />
+    <Content Include="Scripts\datatable\js\dataTables.responsive.min.js" />
+    <Content Include="Scripts\datatable\js\dataTables.select.min.js" />
+    <Content Include="Scripts\datatable\js\initTable.js" />
+    <Content Include="Scripts\datatable\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\datatable\js\jszip.min.js" />
+    <Content Include="Scripts\datatable\js\pdfmake.min.js" />
+    <Content Include="Scripts\datatable\js\vfs_fonts.js" />
     <Content Include="Scripts\Enlaces\Agregar.js" />
     <Content Include="Scripts\Enlaces\Edit.js" />
     <Content Include="Scripts\Enlaces\Index.js" />
@@ -223,6 +248,7 @@
     <Content Include="Views\Enlaces\Index.cshtml" />
     <Content Include="Views\Enlaces\Agregar.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\ReporteProveedor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Entidades.EProveedores>
+
+@{
+    ViewBag.Title = "Reporte de proveedores";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table" id="Reporte">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProveedor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreEmpresa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contacto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comentario)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdProveedor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreEmpresa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Contacto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefono)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Comentario)
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+@section scripts{
+    <script>
+            $(document).ready(function () {
+                $('#Reporte').DataTable({
+                    "searching": false,// false to disable pagination (or any other option)
+                    "lengthChange": false,
+                    dom: 'Bfrtip',
+                    buttons: [
+                        {
+                            "extend": 'pdfHtml5',
+                            "text": '<button class="btn btn-outline-primary">Exportar a PDF<i class="bx bxs-file-pdf" ></i></button>',
+                            "titleAttr": 'pdf',
+                            "className": '',
+                            "exportOptions": {
+                                "columns": ":visible",
+                            },
+                            filename: 'Proveedores',
+                            title: 'Proveedores',
+                            "autoFilter": true,
+                            "sheetName": 'Datos exportado ANE'
+                        },
+                        {
+                            "extend": 'print',
+                            "text": '<button class="btn btn-outline-primary">Imprimir<i class="bx bxs-printer"></i></button>',
+                            "titleAttr": 'Imprimir',
+                            "exportOptions": {
+                                "columns": ":visible"
+                            },
+                            title: 'Proveedores',
+                            "className": ''
+                        },
+                    ],
+                });
+            });
+    </script>
+}
