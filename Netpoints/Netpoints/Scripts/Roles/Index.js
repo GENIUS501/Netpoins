@@ -46,7 +46,7 @@ $(document).ready(function () {
             },
         }
     });
-
+    //
     setTimeout(function () {
         if (IsLoading) Loading.close();
     }, 500)
