@@ -5,16 +5,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
-<table class="table" id="Reporte">
+<div class="row">
+    <div class="col-3">
+        <div class="card">
+            <div class="card-body">
+                <form>
+                    <div class="form-floating mb-3 form-group">
+                        <input class="form-control" type="text" name="Nombre" id="Nombre" placeholder="Proveedor" required />
+                        <label for="Nombre"> Proveedor </label>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-outline-primary">Buscar<i class='bx bx-search'></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<table class="table table-dark table-hover" id="Reporte">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.IdProveedor)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NombreEmpresa)
+                Proveedor
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Contacto)
@@ -60,38 +76,74 @@
     </tbody>
 </table>
 @section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/pdfmake.min.js" integrity="sha512-Yf733gmgLgGUo+VfWq4r5HAEaxftvuTes86bKvwTpqOY3oH0hHKtX/9FfKYUcpaxeBJxeXvcN4EY3J6fnmc9cA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/vfs_fonts.js"></script>
     <script>
-            $(document).ready(function () {
-                $('#Reporte').DataTable({
-                    "searching": false,// false to disable pagination (or any other option)
-                    "lengthChange": false,
-                    dom: 'Bfrtip',
-                    buttons: [
-                        {
-                            "extend": 'pdfHtml5',
-                            "text": '<button class="btn btn-outline-primary">Exportar a PDF<i class="bx bxs-file-pdf" ></i></button>',
-                            "titleAttr": 'pdf',
-                            "className": '',
-                            "exportOptions": {
-                                "columns": ":visible",
-                            },
-                            filename: 'Proveedores',
-                            title: 'Proveedores',
-                            "autoFilter": true,
-                            "sheetName": 'Datos exportado ANE'
-                        },
-                        {
-                            "extend": 'print',
-                            "text": '<button class="btn btn-outline-primary">Imprimir<i class="bx bxs-printer"></i></button>',
-                            "titleAttr": 'Imprimir',
-                            "exportOptions": {
-                                "columns": ":visible"
-                            },
-                            title: 'Proveedores',
-                            "className": ''
-                        },
-                    ],
-                });
+        $(document).ready(function () {
+            var f = new Date();
+            var d = f.getDate() + "/" + f.getMonth() + "/" + f.getFullYear() + " " + f.getHours() + ":" + f.getMinutes();
+            $('#Reporte').DataTable({
+                "searching": false,// false to disable pagination (or any other option)
+                "lengthChange": false,
+                dom: 'Bfrtip',
+
+                buttons: [
+                    {
+                        extend: "pdf",
+                        text: '<button class="btn btn-outline-primary">Exportar a PDF<i class="bx bxs-file-pdf" ></i></button>',
+                        filename: 'Reporte de Proveedores',
+                        title: 'BCR \n Netpoints \n Reporte de proveedores \n Fecha:' + d,
+                        customize: function (doc) {
+                            doc['footer'] = (function (page, pages) {
+                                return {
+                                    columns: [
+                                        {
+                                            alignment: 'left',
+                                            text:
+                                                [
+                                                    { text: 'Usuario: Juan Perez', italics: true }
+                                                ]
+                                        },
+                                        {
+                                            alignment: 'right',
+                                            text: [
+                                                'Pagina ',
+                                                { text: page.toString(), italics: true },
+                                                ' de ',
+                                                { text: pages.toString(), italics: true }
+                                            ]
+                                        }],
+                                    margin: [10, 0]
+                                }
+                            });
+                        }
+                    }
+                ]
+
+                //buttons: [
+                //    {
+                //        "extend": 'pdfHtml5',
+                //        "text": '<button class="btn btn-outline-primary">Exportar a PDF<i class="bx bxs-file-pdf" ></i></button>',
+                //        "titleAttr": 'pdf',
+                //        "className": '',
+                //        "exportOptions": {
+                //            "columns": ":visible",
+                //        },
+                //        "autoFilter": true,
+                //        "sheetName": 'Datos exportado ANE'
+                //    },
+                //    {
+                //        "extend": 'print',
+                //        "text": '<button class="btn btn-outline-primary">Imprimir<i class="bx bxs-printer"></i></button>',
+                //        "titleAttr": 'Imprimir',
+                //        "exportOptions": {
+                //            "columns": ":visible"
+                //        },
+                //        title: 'Proveedores',
+                //        "className": ''
+                //    },
+                //],
             });
+        });
     </script>
 }
