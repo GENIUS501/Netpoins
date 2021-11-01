@@ -83,7 +83,7 @@ namespace Netpoints.Controllers
                 Rol.Rol = Model.Rol;
                 Rol.Descripcion = Model.Descripcion;
                 Rol.Estado = false;
-                if (Model.Estado == "on")
+                if (Model.Estado == "False")
                 {
                     Rol.Estado = true;
                 }

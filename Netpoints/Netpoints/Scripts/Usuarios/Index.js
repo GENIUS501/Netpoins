@@ -26,46 +26,26 @@ var ClickDelete = function (id) {
 if (IsLoading) Loading.fire("Cargando Datos..");
 $(document).ready(function () {
     $('#GridUsuarios').DataTable({
-        buttons: [
-            {
-                "extend": 'excelHtml5',
-                "text": '<i class="icon-line-awesome-file-excel-o"><span>Exportar a excel</span></i>',
-                "titleAttr": 'Excel',
-                "className": '',
-                "exportOptions": {
-                    "columns": ":visible",
-
-                },
-                filename: 'Cursos INA',
-                title: 'Cursos INA \n Nombre: ',
-                "autoFilter": true,
-                "sheetName": 'Datos exportado ANE'
+        language: {
+            sLengthMenu: "_MENU_",
+            decimal: "",
+            emptyTable: "No hay información",
+            info: "Mostrando _START_ a _END_ de _TOTAL_",
+            infoEmpty: "Mostrando 0 de 0",
+            infoPostFix: "",
+            search:"Buscar",
+            thousands: ",",
+            loadingRecords: "Cargando...",
+            processing: "<div class='lds-dual-ring'></div>",
+            zeroRecords: "No se encontraron resultados",
+            paginate: {
+                "first": "Primero",
+                "last": "Último",
+                "next": "Siguiente",
+                "previous": "Anterior"
             },
-            {
-                "extend": 'print',
-                "text": '<i class= "icon-feather-printer"><span>Imprimir</span></i>',
-                "titleAttr": 'Imprimir',
-                "exportOptions": {
-                    "columns": ":visible"
-                },
-                title: 'Cursos INA \n Nombre:',
-                "className": ''
-            },
-            {
-                "extend": 'pdfHtml5',
-                "text": '<i class="icon-line-awesome-file-pdf-o"><span>Exportar a PDF</span></i>',
-                "titleAttr": 'pdf',
-                "className": '',
-                "exportOptions": {
-                    "columns": ":visible",
-
-                },
-                filename: 'Cursos INA',
-                title: 'Cursos INA \n Nombre:',
-                "autoFilter": true,
-                "sheetName": 'Datos exportado ANE'
-            },
-        ]});
+        }
+    });
 
     setTimeout(function () {
         if (IsLoading) Loading.close();
