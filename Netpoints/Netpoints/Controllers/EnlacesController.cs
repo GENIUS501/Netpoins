@@ -26,6 +26,7 @@ namespace Netpoints.Controllers
                 NOficinas Oficinas = new NOficinas();
                 NRedes Redes = new NRedes();
                 NProveedores Proveedores = new NProveedores();
+                NEnlaces Enlaces = new NEnlaces();
                 ViewBag.ddlOficinas = Oficinas.Mostrar();
                 ViewBag.ddlRedes = Redes.Mostrar();
                 ViewBag.ddlProveedores = Proveedores.Mostrar(); 
@@ -33,35 +34,59 @@ namespace Netpoints.Controllers
                 {
                     return View();
                 }
-                return View();
-                //NUsuario Negocios = new NUsuario();
-                //EUsuario Usuario = new EUsuario();
-                //Usuario.Contrasena = Helpers.Helper.EncodePassword(string.Concat(Modelo.Usuario.ToString(), Modelo.Contrasena.ToString()));
-                //Usuario.Email = Modelo.Email;
-                //Usuario.Estado = false;
-                //if (Modelo.Estado == "on")
-                //{
-                //    Usuario.Estado = true;
-                //}
-                //Usuario.Identificacion = Modelo.Identificacion;
-                //Usuario.IdRol = Modelo.IdRol;
-                //Usuario.Nombre = Modelo.Nombre;
-                //Usuario.Telefono = Modelo.Telefono;
-                //Usuario.Usuario = Modelo.Usuario;
-                //int FilasAfectadas = Negocios.Agregar(Usuario);
-                //if (FilasAfectadas > 0)
-                //{
-                //    return Json("success");
-                //}
-                //else
-                //{
-                //    return Json("Error");
-                //}
+                int FilasAfectadas = Enlaces.Agregar(Modelo);
+                if (FilasAfectadas > 0)
+                {
+                    return Json("success");
+                }
+                else
+                {
+                    return Json("Error");
+                }
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError("Error", ex.Message);
                 return Json("Error");
+            }
+        }
+        public static EOficinas Oficinas(string Id)
+        {
+            try
+            {
+                NOficinas Negocios = new NOficinas();
+                var Obj = Negocios.Mostrar_Detallado(int.Parse(Id));
+                return Obj;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public static ERedes Redes(string Id)
+        {
+            try
+            {
+                NRedes Negocios = new NRedes();
+                var Obj = Negocios.Mostrar_Detallado(int.Parse(Id));
+                return Obj;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public static EProveedores Proveedores(string Id)
+        {
+            try
+            {
+                NProveedores Negocios = new NProveedores();
+                var Obj = Negocios.Mostrar_Detallado(int.Parse(Id));
+                return Obj;
+            }
+            catch (Exception ex)
+            {
+                return null;
             }
         }
         public ActionResult TraerOficina(string Id)

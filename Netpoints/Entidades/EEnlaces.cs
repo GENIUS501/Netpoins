@@ -13,9 +13,5 @@ namespace Entidades
         public int IdRed { get; set; }
         public int IdProveedor { get; set; }
         public string Comentario { get; set; }
-
-        public virtual EOficinas Oficinas { get; set; }
-        public virtual EProveedores Proveedores { get; set; }
-        public virtual ERedes Redes { get; set; }
     }
 }

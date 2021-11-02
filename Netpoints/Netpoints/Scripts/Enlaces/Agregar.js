@@ -1,40 +1,51 @@
-﻿function ChangeOficina() {
-    console.log(UrlOficina);
-    if ($('#IdOficina').val() != "") {
-        $.ajax({
-            type: "GET",
-            url: UrlOficina,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function (data) {
-                Loading.fire("Cargando...");
-                if (data == "Error") {
-                    Loading.close();
-                    Toast.fire({
-                        icon: 'error',
-                        title: 'La identificación ya se encuentra registrada!'
-                    });
-                }
-                if (data != "") {
-                    //debugger
-                    Loading.close();
-                    $('#UE').val(data['UE']);
-                    $('#Provincia').val(data['Provincia']);
-                    $('#Comentario').val(data['Comentario']);
-                }
-            },
-            error: function (xhr, error, status) {
+﻿$("#FormEnlaces").submit(function (e) {
+    e.preventDefault();
+    $.validator.setDefaults({ ignore: "" });
+    var Formulario = $(this);
+    if (!Formulario.valid()) {
+        return
+    }
+    var Url = Formulario.attr('action');
+    var DatosFormulario = new FormData(Formulario[0]);
+    Loading.fire("Guardando...");
+    $.ajax({
+        type: "POST",
+        url: Url,
+        data: DatosFormulario,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (data) {
+            if (data == "success") {
+                Loading.close();
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Sitio Guardado'
+                });
+                sleep(2500).then(() => {
+                    window.location.href = "../Enlaces"
+                })
+            }
+            if (data == "Error") {
                 Loading.close();
                 Toast.fire({
                     icon: 'error',
                     title: 'Error'
                 });
-            },
-        });
-    } else {
-        $('#UE').val("");
-        $('#Provincia').val("");
-        $('#Comentario').val("");
-    }
+            }
+        },
+        error: function (xhr, error, status) {
+            Loading.close();
+            Toast.fire({
+                icon: 'error',
+                title: 'Error'
+            });
+        },
+        complete: function () {
+
+        }
+    });
+});
+function sleep(time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
 }

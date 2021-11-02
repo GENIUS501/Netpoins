@@ -37,16 +37,16 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.Oficinas.Provincia</td>
-                            <td>@item.Oficinas.NombreOficina</td>
-                            <td>@item.Oficinas.UE</td>
-                            <td>@item.Redes.Linea</td>
-                            <td>@item.Redes.Gateway</td>
-                            <td>@item.Redes.Interface</td>
-                            <td>@item.Redes.TipoEnlace</td>
-                            <td>@item.Redes.Bandwidth</td>
-                            <td>@item.Redes.MedioEnlace</td>
-                            <td>@item.Proveedores.NombreEmpresa</td>
+                            <td>@Netpoints.Controllers.EnlacesController.Oficinas(item.IdOficina.ToString()).Provincia</td>
+                            <td>@Netpoints.Controllers.EnlacesController.Oficinas(item.IdOficina.ToString()).NombreOficina</td>
+                            <td>@Netpoints.Controllers.EnlacesController.Oficinas(item.IdOficina.ToString()).UE</td>
+                            <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdOficina.ToString()).Linea</td>
+                            <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdOficina.ToString()).Gateway</td>
+                            <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdOficina.ToString()).Interface</td>
+                            <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdOficina.ToString()).TipoEnlace</td>
+                            <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdOficina.ToString()).Bandwidth</td>
+                            <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdOficina.ToString()).MedioEnlace</td>
+                            <td>@Netpoints.Controllers.EnlacesController.Proveedores(item.IdOficina.ToString()).NombreEmpresa</td>
                             <td>@item.Comentario</td>
                             <td>
                                 <button type="button" class="btn btn-outline-primary" onclick="ClickUpdate(@item.IdEnlace)"><i class='bx bxs-edit'></i>Editar</button>
