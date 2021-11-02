@@ -1,6 +1,6 @@
 ﻿
 var ClickNew = function () {
-    window.location.href = "Enlaces/Edit";
+    window.location.href = "Enlaces/Agregar";
 }
 
 var ClickUpdate = function (id) {

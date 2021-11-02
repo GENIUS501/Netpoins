@@ -1,5 +1,6 @@
 ﻿using Entidades;
 using Negocios;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,6 +57,42 @@ namespace Netpoints.Controllers
                 //{
                 //    return Json("Error");
                 //}
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Error", ex.Message);
+                return Json("Error");
+            }
+        }
+        public ActionResult TraerOficina(string Id)
+        {
+            try
+            {
+                NOficinas Negocios = new NOficinas();
+                var Obj = Negocios.Mostrar_Detallado(int.Parse(Id));
+                if(Obj==null)
+                {
+                    return Json("Error", JsonRequestBehavior.AllowGet);
+                }
+                return Json(Obj, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Error", ex.Message);
+                return Json("Error");
+            }
+        }
+        public ActionResult TraerRedes(string Id)
+        {
+            try
+            {
+                NRedes Negocios = new NRedes();
+                var Obj = Negocios.Mostrar_Detallado(int.Parse(Id));
+                if (Obj == null)
+                {
+                    return Json("Error", JsonRequestBehavior.AllowGet);
+                }
+                return Json(Obj, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
