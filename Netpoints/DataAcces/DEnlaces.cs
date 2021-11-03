@@ -55,11 +55,12 @@ namespace DataAcces
                 using (db)
                 {
                     EEnlaces Obj = new EEnlaces();
-                    var Objbd = db.Enlaces.Where(a => a.IdRed == id).FirstOrDefault();
+                    var Objbd = db.Enlaces.Where(a => a.IdEnlace == id).FirstOrDefault();
                     Obj.Comentario = Objbd.Comentario;
                     Obj.IdOficina = Objbd.IdOficina;
                     Obj.IdProveedor = Objbd.IdProveedor;
                     Obj.IdRed = Objbd.IdRed;
+                    Obj.IdEnlace = Objbd.IdEnlace;
                     return Obj;
                 }
             }
@@ -157,7 +158,8 @@ namespace DataAcces
                         Comentario = Item.Comentario,
                         IdOficina = Item.IdOficina,
                         IdProveedor = Item.IdProveedor,
-                        IdRed = Item.IdRed
+                        IdRed = Item.IdRed,
+                        IdEnlace = Item.IdEnlace
                 });
                 }
                 return Obj;

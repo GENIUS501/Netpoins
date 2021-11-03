@@ -249,6 +249,7 @@
     <Content Include="Views\Enlaces\Agregar.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\ReporteProveedor\Index.cshtml" />
+    <Content Include="Views\Enlaces\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

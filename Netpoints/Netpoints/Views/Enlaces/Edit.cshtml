@@ -1,9 +1,10 @@
 ﻿@model Entidades.EEnlaces
 
 @{
-    ViewBag.Title = "Agregar";
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div id="EnlacesEdit" class="container">
 
     <div class="row" v-if="true">
@@ -16,28 +17,22 @@
                         <input type="hidden" name="IdEnlace" v-model="model.IdEnlace" />
 
                         <div class="form-floating mb-3 form-group">
-                            <select class="form-control" id="IdOficina" name="IdOficina" arial-label="Default select example" onchange="ChangeOficina()" required>
-                                <option value="">Seleccionar</option>
-                                @foreach (var item in ViewBag.ddlOficinas)
-                                {
-                                    <option value="@item.IdOficina">@item.NombreOficina</option>
-                                }
-                            </select>
+                            @Html.DropDownList("IdOficina", ViewBag.ddloficinas as SelectList, new { @class = "form-control", @required = "required" })
                             <label for="IdOficina">Sitio</label>
                         </div>
                         <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="text" name="UE" id="UE" placeholder="Unidad Ejecutora" readonly required />
+                            <input class="form-control" type="text" name="UE" id="UE" placeholder="Unidad Ejecutora" value="@ViewBag.Oficinas.UE" readonly required />
                             <label for="UE">Unidad Ejecutora</label>
                         </div>
                         <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="text" name="Provincia" id="Provincia" placeholder="Provincia" readonly required />
+                            <input class="form-control" type="text" name="Provincia" id="Provincia" placeholder="Provincia" value="@ViewBag.Oficinas.Provincia" readonly required />
                             <label for="Provincia">Provincia</label>
                         </div>
                         <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="text" name="Comentariob" id="Comentariob" placeholder="Comentario" readonly />
+                            <input class="form-control" type="text" name="Comentariob" id="Comentariob" placeholder="Comentario" value="@ViewBag.Oficinas.Comentario"  readonly />
                             <label for="Comentariob">Comentario</label>
                         </div>
-                        <div class="form-floating mb-3 form-group">
+                        @*<div class="form-floating mb-3 form-group">
                             <select class="form-control" id="IdRed" name="IdRed" arial-label="Default select example" onchange="ChangeLinea()" required>
                                 <option value="">Seleccionar</option>
                                 @foreach (var item in ViewBag.ddlRedes)
@@ -83,10 +78,10 @@
                         <div class="form-floating mb-3 form-group">
                             <textarea class="form-control" type="text" name="Comentario" id="textarea" rows="3"> </textarea>
                             <label for="Comentario"> Comentarios </label>
-                        </div>
+                        </div>*@
                         <br />
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-outline-primary">Guardar <i class='bx bx-save'></i></button>
+                            <button type="submit" class="btn btn-outline-primary">Guardar <i class='bx bx-edit'></i></button>
                         </div>
                     </form>
                 </div>

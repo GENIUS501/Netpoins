@@ -50,6 +50,33 @@ namespace Netpoints.Controllers
                 return Json("Error");
             }
         }
+        public ActionResult Edit(string Id)
+        {
+            #region Llenar drop down oficinas
+            NOficinas Negociosofi = new NOficinas();
+            var lista1 = Negociosofi.Mostrar();
+            var items = new SelectList(lista1, "IdOficina", "NombreOficina");
+            ViewBag.ddloficinas = items;
+            #endregion
+            #region Llenar drop down redes
+            NRedes Negociosredes = new NRedes();
+            var listaredes = Negociosredes.Mostrar();
+            var itemsredes = new SelectList(lista1, "IdRed", "Linea");
+            ViewBag.ddlredes = itemsredes;
+            #endregion
+            #region Llenar drop down proveedores
+            NProveedores Negociosprov = new NProveedores();
+            var listaprov = Negociosprov.Mostrar();
+            var itemsprov = new SelectList(lista1, "IdProveedor", "NombreEmpresa");
+            ViewBag.ddlproveedores = itemsprov;
+            #endregion
+            NEnlaces Negocios = new NEnlaces();
+            var Modelo = Negocios.Mostrar_Detallado(int.Parse(Id));
+            ViewBag.Oficinas = Oficinas(Modelo.IdOficina.ToString());
+            ViewBag.Redes = Redes(Modelo.IdRed.ToString());
+            ViewBag.Proveedores = Proveedores(Modelo.IdProveedor.ToString());
+            return View(Modelo);
+        }
         public static EOficinas Oficinas(string Id)
         {
             try
