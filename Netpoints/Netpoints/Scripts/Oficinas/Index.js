@@ -1,9 +1,11 @@
 ﻿
 var ClickNew = function () {
+    Loading.fire("Cargando...");
     window.location.href = "Oficinas/Agregar";
 }
 
 var ClickUpdate = function (id) {
+    Loading.fire("Cargando...");
     window.location.href = "Oficinas/Edit/" + id;
 }
 

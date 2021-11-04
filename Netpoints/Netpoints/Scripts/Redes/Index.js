@@ -1,9 +1,11 @@
 ﻿
 var ClickNew = function () {
+    Loading.fire("Cargando...");
     window.location.href = "Redes/Agregar";
 }
 
 var ClickUpdate = function (id) {
+    Loading.fire("Cargando...");
     window.location.href = "Redes/Edit/" + id;
 }
 

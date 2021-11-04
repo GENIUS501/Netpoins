@@ -77,6 +77,51 @@ namespace Netpoints.Controllers
             ViewBag.Proveedores = Proveedores(Modelo.IdProveedor.ToString());
             return View(Modelo);
         }
+        [HttpPost]
+        public ActionResult Edit(EEnlaces Modelo)
+        {
+            try
+            {
+                NEnlaces Negocios = new NEnlaces();
+                int FilasAfectadas = Negocios.Modificar(Modelo);
+                if (FilasAfectadas > 0)
+                {
+                    return Json("success");
+                }
+                else
+                {
+                    return Json("Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Error", ex.Message);
+                return Json("Error");
+            }
+        }
+        [HttpGet]
+        public ActionResult Delete(string id)
+        {
+            try
+            {
+                NEnlaces Negocios = new NEnlaces();
+                int FilasAfectadas = Negocios.Eliminar(int.Parse(id));
+                if (FilasAfectadas > 0)
+                {
+                    TempData["msg"] = "0";
+                }
+                else
+                {
+                    TempData["msg"] = "-1";
+                }
+                return RedirectToAction("index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Error", ex.Message);
+                return Redirect("Index");
+            }
+        }
         public static EOficinas Oficinas(string Id)
         {
             try

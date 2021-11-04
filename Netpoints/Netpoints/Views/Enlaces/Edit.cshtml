@@ -12,9 +12,9 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Nuevo Enlace</h4>
-                    <form id="FormEnlaces" action="/Enlaces/Agregar" method="POST">
+                    <form id="FormEnlaces" action="/Enlaces/Edit" method="POST">
 
-                        <input type="hidden" name="IdEnlace" v-model="model.IdEnlace" />
+                        <input type="hidden" name="IdEnlace" value="@Model.IdEnlace" />
 
                         <div class="form-floating mb-3 form-group">
                             @Html.DropDownList("IdOficina", ViewBag.ddloficinas as SelectList, new { @class = "form-control", @required = "required", @onchange = "ChangeOficina()" })
@@ -80,7 +80,7 @@
 </div>
 @section scripts{
     @Scripts.Render("~/bundles/jqueryval")
-    <script src="~/Scripts/Enlaces/Agregar.js" defer></script>
+    <script src="~/Scripts/Enlaces/Edit.js" defer></script>
     <script>CreateValidator("#EnlacesEdit");</script>
     <script>
         function ChangeOficina() {

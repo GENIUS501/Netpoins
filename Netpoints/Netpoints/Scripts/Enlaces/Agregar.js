@@ -20,7 +20,7 @@
                 Loading.close();
                 Toast.fire({
                     icon: 'success',
-                    title: 'Sitio Guardado'
+                    title: 'Enlace Guardado'
                 });
                 sleep(2500).then(() => {
                     window.location.href = "../Enlaces"
