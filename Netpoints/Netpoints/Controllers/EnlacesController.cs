@@ -61,13 +61,13 @@ namespace Netpoints.Controllers
             #region Llenar drop down redes
             NRedes Negociosredes = new NRedes();
             var listaredes = Negociosredes.Mostrar();
-            var itemsredes = new SelectList(lista1, "IdRed", "Linea");
+            var itemsredes = new SelectList(listaredes, "IdRed", "Linea");
             ViewBag.ddlredes = itemsredes;
             #endregion
             #region Llenar drop down proveedores
             NProveedores Negociosprov = new NProveedores();
             var listaprov = Negociosprov.Mostrar();
-            var itemsprov = new SelectList(lista1, "IdProveedor", "NombreEmpresa");
+            var itemsprov = new SelectList(listaprov, "IdProveedor", "NombreEmpresa");
             ViewBag.ddlproveedores = itemsprov;
             #endregion
             NEnlaces Negocios = new NEnlaces();

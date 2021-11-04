@@ -17,7 +17,7 @@
                         <input type="hidden" name="IdEnlace" v-model="model.IdEnlace" />
 
                         <div class="form-floating mb-3 form-group">
-                            @Html.DropDownList("IdOficina", ViewBag.ddloficinas as SelectList, new { @class = "form-control", @required = "required" })
+                            @Html.DropDownList("IdOficina", ViewBag.ddloficinas as SelectList, new { @class = "form-control", @required = "required", @onchange = "ChangeOficina()" })
                             <label for="IdOficina">Sitio</label>
                         </div>
                         <div class="form-floating mb-3 form-group">
@@ -32,53 +32,42 @@
                             <input class="form-control" type="text" name="Comentariob" id="Comentariob" placeholder="Comentario" value="@ViewBag.Oficinas.Comentario"  readonly />
                             <label for="Comentariob">Comentario</label>
                         </div>
-                        @*<div class="form-floating mb-3 form-group">
-                            <select class="form-control" id="IdRed" name="IdRed" arial-label="Default select example" onchange="ChangeLinea()" required>
-                                <option value="">Seleccionar</option>
-                                @foreach (var item in ViewBag.ddlRedes)
-                                {
-                                    <option value="@item.IdRed">@item.Linea</option>
-                                }
-                            </select>
-                            <label for="Redes">Número de Linea</label>
+                        <div class="form-floating mb-3 form-group">
+                            @Html.DropDownList("IdRed", ViewBag.ddlredes as SelectList, new { @class = "form-control", @required = "required", onchange = "ChangeLinea()" })
+                            <label for="IdRed">Número de Linea</label>
                         </div>
                         <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="text" name="Gateway" id="Gateway" placeholder="IP Gateway" readonly />
+                            <input class="form-control" type="text" name="Gateway" id="Gateway" placeholder="IP Gateway" value="@ViewBag.Redes.Gateway" readonly />
                             <label for="Gateway">IP Gateway</label>
                         </div>
                         <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="text" name="Interface" id="Interface" placeholder="Interface" readonly />
+                            <input class="form-control" type="text" name="Interface" id="Interface" placeholder="Interface" value="@ViewBag.Redes.Interface" readonly />
                             <label for="Gateway">Interface</label>
                         </div>
                         <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="text" name="TipoEnlace" id="TipoEnlace" placeholder="Tipo Enlace" readonly />
+                            <input class="form-control" type="text" name="TipoEnlace" id="TipoEnlace" placeholder="Tipo Enlace" value="@ViewBag.Redes.TipoEnlace" readonly />
                             <label for="TipoEnlace">Tipo Enlace</label>
                         </div>
                         <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="text" name="Bandwidth" id="Bandwidth" placeholder="Bandwidth" readonly />
+                            <input class="form-control" type="text" name="Bandwidth" id="Bandwidth" placeholder="Bandwidth" value="@ViewBag.Redes.Bandwidth" readonly />
                             <label for="Bandwidth">Bandwidth</label>
                         </div>
                         <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="text" name="MedioEnlace" id="MedioEnlace" placeholder="Medio Enlace" readonly />
+                            <input class="form-control" type="text" name="MedioEnlace" id="MedioEnlace" placeholder="Medio Enlace" value="@ViewBag.Redes.MedioEnlace" readonly />
                             <label for="MedioEnlace">Medio Enlace</label>
                         </div>
                         <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="text" name="Comentarioa" id="Comentarioa" placeholder="Comentario" readonly />
+                            <input class="form-control" type="text" name="Comentarioa" id="Comentarioa" placeholder="Comentario" value="@ViewBag.Redes.Comentario" readonly />
                             <label for="Comentarioa">Comentario</label>
                         </div>
                         <div class="form-floating mb-3 form-group">
-                            <select class="form-control" id="IdProveedor" name="IdProveedor" arial-label="Default select example" required>
-                                @foreach (var item in ViewBag.ddlProveedores)
-                                {
-                                    <option value="@item.IdProveedor">@item.NombreEmpresa</option>
-                                }
-                            </select>
-                            <label for="Proveedores">Proveedor</label>
+                            @Html.DropDownList("IdProveedor", ViewBag.ddlproveedores as SelectList, new { @class = "form-control", @required = "required" })
+                            <label for="IdProveedor">Proveedor</label>
                         </div>
                         <div class="form-floating mb-3 form-group">
-                            <textarea class="form-control" type="text" name="Comentario" id="textarea" rows="3"> </textarea>
+                            <textarea class="form-control" type="text" name="Comentario" id="textarea" rows="3">@Model.Comentario </textarea>
                             <label for="Comentario"> Comentarios </label>
-                        </div>*@
+                        </div>
                         <br />
                         <div class="mb-3">
                             <button type="submit" class="btn btn-outline-primary">Guardar <i class='bx bx-edit'></i></button>
