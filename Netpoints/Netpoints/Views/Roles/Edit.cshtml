@@ -32,7 +32,7 @@
                         <div class="row ">
                             <!--Permisos-->
                             <div class="col-3">
-                                <input type="checkbox" name="radusu" value="true" onchange='Usuarios(this);' @if (Model.radusu == true) { @Html.Raw("checked='checked'"); }>
+                                <input type="checkbox" id="radusu" name="radusu" value="true" onchange='Usuarios(this);' @if (Model.radusu == true) { @Html.Raw("checked='checked'"); }>
                                 <label for="radusu">Usuarios</label>
                                 <br />
                                 <div id="Usuarios">
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                             <div class="col-3">
-                                <input type="checkbox" name="radrol" value="true" onchange='Roles(this);' @if (Model.radrol == true) { @Html.Raw("checked='checked'"); }>
+                                <input type="checkbox" name="radrol" id="radrol" value="true" onchange='Roles(this);' @if (Model.radrol == true) { @Html.Raw("checked='checked'"); }>
                                 <label for="radrol">Roles</label>
                                 <br />
                                 <div id="Roles">
@@ -62,7 +62,7 @@
                                 </div>
                             </div>
                             <div class="col-3">
-                                <input type="checkbox" name="radprov" value="true" onchange='Proveedores(this);' @if (Model.radprov == true) { @Html.Raw("checked='checked'"); }>
+                                <input type="checkbox" name="radprov" id="radprov" value="true" onchange='Proveedores(this);' @if (Model.radprov == true) { @Html.Raw("checked='checked'"); }>
                                 <label for="radprov">Proveedores</label>
                                 <br />
                                 <div id="Proveedores">
@@ -80,7 +80,7 @@
                         <div class="row">
                             <br />
                             <div class="col-3">
-                                <input type="checkbox" name="radred" value="true" onchange='Redes(this);' @if (Model.radred == true) { @Html.Raw("checked='checked'"); }>
+                                <input type="checkbox" name="radred" id="radred" value="true" onchange='Redes(this);' @if (Model.radred == true) { @Html.Raw("checked='checked'"); }>
                                 <label for="radred">Redes</label>
                                 <br />
                                 <div id="Redes">
@@ -95,7 +95,7 @@
                                 </div>
                             </div>
                             <div class="col-3">
-                                <input type="checkbox" name="radsitios" value="true" onchange='Sitios(this);' @if (Model.radsitios == true) { @Html.Raw("checked='checked'"); }>
+                                <input type="checkbox" name="radsitios" id="radsitios" value="true" onchange='Sitios(this);' @if (Model.radsitios == true) { @Html.Raw("checked='checked'"); }>
                                 <label for="radsitios">Sitios</label>
                                 <br />
                                 <div id="Sitios">
@@ -110,7 +110,7 @@
                                 </div>
                             </div>
                             <div class="col-3">
-                                <input type="checkbox" name="radenlace" value="true" onchange='Enlaces(this);' @if (Model.radenlace == true) { @Html.Raw("checked='checked'"); }>
+                                <input type="checkbox" name="radenlace" id="radenlace" value="true" onchange='Enlaces(this);' @if (Model.radenlace == true) { @Html.Raw("checked='checked'"); }>
                                 <label for="radenlace">Enlaces</label>
                                 <br />
                                 <div id="Enlaces">
@@ -168,5 +168,74 @@
             $('#Estado').prop('checked', true);
         }
     </script>
-    <script>CreateValidator("#RolesEdit");</script>
+    <script>
+        CreateValidator("#RolesEdit");
+        $("#Datos").hide();
+        $("#Usuarios").hide();
+        $("#Roles").hide();
+        $("#Proveedores").hide();
+        $("#Redes").hide();
+        $("#Sitios").hide();
+        $("#Enlaces").hide();
+        if ($("#radusu").prop('checked')) {
+            $("#Usuarios").show();
+        }
+        if ($("#radrol").prop('checked')) {
+            $("#Roles").show();
+        }
+        if ($("#radprov").prop('checked')) {
+            $("#Proveedores").show();
+        }
+        if ($("#radred").prop('checked')) {
+            $("#Redes").show();
+        }
+        if ($("#radsitios").prop('checked')) {
+            $("#Sitios").show();
+        }
+        if ($("#radenlace").prop('checked')) {
+            $("#Enlaces").show();
+        }
+        function Usuarios(checkbox) {
+            if (checkbox.checked == true) {
+                $("#Usuarios").show();
+            } else {
+                $("#Usuarios").hide();
+            }
+        }
+        function Roles(checkbox) {
+            if (checkbox.checked == true) {
+                $("#Roles").show();
+            } else {
+                $("#Roles").hide();
+            }
+        }
+        function Proveedores(checkbox) {
+            if (checkbox.checked == true) {
+                $("#Proveedores").show();
+            } else {
+                $("#Proveedores").hide();
+            }
+        }
+        function Redes(checkbox) {
+            if (checkbox.checked == true) {
+                $("#Redes").show();
+            } else {
+                $("#Redes").hide();
+            }
+        }
+        function Sitios(checkbox) {
+            if (checkbox.checked == true) {
+                $("#Sitios").show();
+            } else {
+                $("#Sitios").hide();
+            }
+        }
+        function Enlaces(checkbox) {
+            if (checkbox.checked == true) {
+                $("#Enlaces").show();
+            } else {
+                $("#Enlaces").hide();
+            }
+        }
+    </script>
 }

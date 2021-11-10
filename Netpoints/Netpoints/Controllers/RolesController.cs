@@ -193,7 +193,7 @@ namespace Netpoints.Controllers
                 #endregion
 
                 #region Modulo Redes 4
-                if (Modelo.radprov == false)
+                if (Modelo.radred == false)
                 {
 
                 }
@@ -331,7 +331,7 @@ namespace Netpoints.Controllers
                 #endregion
 
                 #region Bitacora Cambios 10
-                if (Modelo.repproveedor == true)
+                if (Modelo.bitcam == true)
                 {
                     ERoles_Permisos perm = new ERoles_Permisos();
                     perm.Id_Rol = Modelo.IdRol;
@@ -590,7 +590,7 @@ namespace Netpoints.Controllers
                 Rol.Rol = Model.Rol;
                 Rol.Descripcion = Model.Descripcion;
                 Rol.Estado = false;
-                if (Model.Estado == "False")
+                if (Model.Estado == "False" || Model.Estado=="True")
                 {
                     Rol.Estado = true;
                 }
@@ -598,14 +598,7 @@ namespace Netpoints.Controllers
                 var Permisos = Grabar(Model);
                 NRoles_Permisos Negocios_Permisos = new NRoles_Permisos();
                 int FilasAfectadasPermisos = Negocios_Permisos.Agregar(Permisos);
-                if (FilasAfectadas > 0)
-                {
-                    return Json("success");
-                }
-                else
-                {
-                    return Json("Error");
-                }
+                return Json("success");        
             }
             catch (Exception ex)
             {
