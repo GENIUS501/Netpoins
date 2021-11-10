@@ -343,7 +343,7 @@ namespace Netpoints.Controllers
                 }
                 #endregion
 
-                #region Modulo Sitios 11
+                #region Modulo enlaces 11
                 if (Modelo.radenlace == false)
                 {
 
@@ -394,6 +394,171 @@ namespace Netpoints.Controllers
             }
         }
         #endregion
+
+        #region Metodo para cargar los permisos
+        public ERolViewModel CargarPermisos(ERolViewModel Model)
+        {
+            try
+            {
+                NRoles_Permisos Negocios = new NRoles_Permisos();
+                var Permisos = Negocios.Mostrar(Model.IdRol);
+                foreach (var list in Permisos)
+                {
+                    #region Usuarios
+                    if (list.Modulo == 1)
+                    {
+                        Model.radusu = true;              
+                        if (list.Agregar == "S")
+                        {
+                            Model.checkusuA = true;
+                        }
+                        if (list.Modificar == "S")
+                        {
+                            Model.checkusuE = true;
+                        }
+                        if (list.Eliminar == "S")
+                        {
+                            Model.checkusuD = true;
+                        }
+                    }
+                    #endregion
+
+                    #region Rol
+                    if (list.Modulo == 2)
+                    {
+                        Model.radrol = true;
+                        if (list.Agregar == "S")
+                        {
+                            Model.checkrolA = true;
+                        }
+                        if (list.Modificar == "S")
+                        {
+                            Model.checkrolE = true;
+                        }
+                        if (list.Eliminar == "S")
+                        {
+                            Model.checkrolD = true;
+                        }
+                    }
+                    #endregion
+
+                    #region Proveedores
+                    if (list.Modulo == 3)
+                    {
+                        Model.radprov = true;
+                        if (list.Agregar == "S")
+                        {
+                            Model.checkprovA = true;
+                        }
+                        if (list.Modificar == "S")
+                        {
+                            Model.checkprovE = true;
+                        }
+                        if (list.Eliminar == "S")
+                        {
+                            Model.checkprovD = true;
+                        }
+                    }
+                    #endregion
+
+                    #region Redes
+                    if (list.Modulo == 4)
+                    {
+                        Model.radred = true;
+                        if (list.Agregar == "S")
+                        {
+                            Model.checkredA = true;
+                        }
+                        if (list.Modificar == "S")
+                        {
+                            Model.checkredE = true;
+                        }
+                        if (list.Eliminar == "S")
+                        {
+                            Model.checkredD = true;
+                        }
+                    }
+                    #endregion
+
+                    #region Sitios
+                    if (list.Modulo == 5)
+                    {
+                        Model.radsitios = true;
+                        if (list.Agregar == "S")
+                        {
+                            Model.checksitA = true;
+                        }
+                        if (list.Modificar == "S")
+                        {
+                            Model.checksitE = true;
+                        }
+                        if (list.Eliminar == "S")
+                        {
+                            Model.checksitD = true;
+                        }
+                    }
+                    #endregion
+
+                    #region Reporte de proveedores
+                    if (list.Modulo == 6)
+                    {
+                        Model.repproveedor = true;
+                    }
+                    #endregion
+
+                    #region Reporte de ubicacion
+                    if (list.Modulo == 7)
+                    {
+                        Model.repubicacion = true;
+                    }
+                    #endregion
+
+                    #region Reporte de usuarios
+                    if (list.Modulo == 8)
+                    {
+                        Model.repusuarios = true;
+                    }
+                    #endregion
+
+                    #region Bitacora de registro
+                    if (list.Modulo == 9)
+                    {
+                        Model.bitreg = true;
+                    }
+                    #endregion
+                    #region Bitacora de cambios
+                    if (list.Modulo == 10)
+                    {
+                        Model.bitcam = true;
+                    }
+                    #endregion
+                    #region Enlaces
+                    if (list.Modulo == 11)
+                    {
+                        Model.radenlace = true;
+                        if (list.Agregar == "S")
+                        {
+                            Model.checkenlA = true;
+                        }
+                        if (list.Modificar == "S")
+                        {
+                            Model.checkenlE = true;
+                        }
+                        if (list.Eliminar == "S")
+                        {
+                            Model.checkenlD = true;
+                        }
+                    }
+                    #endregion
+                }
+                return Model;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        #endregion
         public ActionResult Edit(string Id)
         {
             NRol Negocios = new NRol();
@@ -403,7 +568,8 @@ namespace Netpoints.Controllers
             RolV.Rol = Rol.Rol;
             RolV.Descripcion = Rol.Descripcion;
             RolV.Estado = Rol.Estado.ToString();
-            return View(RolV);
+            var RolFinal = CargarPermisos(RolV);
+            return View(RolFinal);
         }
         //Le indica al metodo que reciba los datos por el metodo post
         [HttpPost]

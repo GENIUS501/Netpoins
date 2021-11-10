@@ -166,7 +166,32 @@ namespace DataAcces
                         Modulo = Item.Modulo,
                         Agregar = Item.Agregar,
                         Eliminar = Item.Eliminar,
-                    }); 
+                    });
+                }
+                return Obj;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<ERoles_Permisos> Mostrar(int Id)
+        {
+            try
+            {
+                List<ERoles_Permisos> Obj = new List<ERoles_Permisos>();
+                var Objbd = db.Roles_Permisos.Where(x => x.Id_Rol == Id).ToList();
+                foreach (var Item in Objbd)
+                {
+                    Obj.Add(new ERoles_Permisos()
+                    {
+                        IdPermiso = Item.IdPermiso,
+                        Id_Rol = Item.Id_Rol,
+                        Modificar = Item.Modificar,
+                        Modulo = Item.Modulo,
+                        Agregar = Item.Agregar,
+                        Eliminar = Item.Eliminar,
+                    });
                 }
                 return Obj;
             }

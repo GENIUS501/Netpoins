@@ -83,6 +83,18 @@ namespace Negocios
                 throw ex;
             }
         }
+        public List<ERoles_Permisos> Mostrar(int Id)
+        {
+            try
+            {
+                DRoles_Permisos db = new DRoles_Permisos();
+                return db.Mostrar(Id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         #endregion
     }
 }
