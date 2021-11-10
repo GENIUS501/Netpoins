@@ -38,6 +38,10 @@ namespace Netpoints.Controllers
                     Rol.Estado = true;
                 }
                 int FilasAfectadas = Negocios.Agregar(Rol);
+                Modelo.IdRol = FilasAfectadas;
+                var Permisos = Grabar(Modelo);
+                NRoles_Permisos Negocios_Permisos = new NRoles_Permisos();
+                int FilasAfectadasPermisos = Negocios_Permisos.Agregar(Permisos);
                 if (FilasAfectadas > 0)
                 {
                     return Json("success");
@@ -54,7 +58,7 @@ namespace Netpoints.Controllers
             }
         }
         #region Metodo para guardar los permisos
-        private void Grabar(ERolViewModel Modelo)
+        private List<ERoles_Permisos> Grabar(ERolViewModel Modelo)
         {
             try
             {
@@ -338,6 +342,51 @@ namespace Netpoints.Controllers
                     permisos.Add(perm);
                 }
                 #endregion
+
+                #region Modulo Sitios 11
+                if (Modelo.radenlace == false)
+                {
+
+                }
+                else
+                {
+                    ERoles_Permisos perm = new ERoles_Permisos();
+                    perm.Id_Rol = Modelo.IdRol;
+                    perm.Modulo = 11;
+                    //Agregar
+                    if (Modelo.checkenlA == true)
+                    {
+                        perm.Agregar = "S";
+                    }
+                    else
+                    {
+                        perm.Agregar = "N";
+                    }
+                    //Actualizar
+                    if (Modelo.checkenlE == true)
+                    {
+                        perm.Modificar = "S";
+                    }
+                    else
+                    {
+                        perm.Modificar = "N";
+                    }
+                    //Eliminar
+                    if (Modelo.checkenlD == true)
+                    {
+                        perm.Eliminar = "S";
+                    }
+                    else
+                    {
+                        perm.Eliminar = "N";
+                    }
+
+                    //Grabar
+                    permisos.Add(perm);
+                }
+                #endregion
+
+                return permisos;
             }
             catch (Exception ex)
             {

@@ -25,8 +25,8 @@ namespace DataAcces
                     Objbd.Descripcion = obj.Descripcion;
                     Objbd.Estado = obj.Estado;
                     db.Roles.Add(Objbd);
-
-                    int Resultado = db.SaveChanges();//Commit
+                    db.SaveChanges();//Commit
+                    int Resultado = Objbd.IdRol;
 
                     if (Resultado > 0)
                     {

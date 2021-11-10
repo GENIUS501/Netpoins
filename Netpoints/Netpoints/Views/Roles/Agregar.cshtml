@@ -33,30 +33,34 @@
                             <div class="row ">
                                 <!--Permisos-->
                                 <div class="col-3">
-                                    <input type="checkbox" name="radusu" value="true">
+                                    <input type="checkbox" name="radusu" value="true" onchange='Usuarios(this);'>
                                     <label for="radusu">Usuarios</label>
                                     <br />
-                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkusuA" value="true">
-                                    <label for="checkusuA">Agregar</label>
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkusuE" value="true">
-                                    <label for="checkusuE">Editar</label>
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkusuD" value="true">
-                                    <label for="checkusuD">Desactivar</label>
+                                    <div id="Usuarios">
+                                        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkusuA" value="true">
+                                        <label for="checkusuA">Agregar</label>
+                                        <br />
+                                        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkusuE" value="true">
+                                        <label for="checkusuE">Editar</label>
+                                        <br />
+                                        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkusuD" value="true">
+                                        <label for="checkusuD">Desactivar</label>
+                                    </div>
                                 </div>
                                 <div class="col-3">
-                                    <input type="checkbox" name="radrol" value="true">
+                                    <input type="checkbox" name="radrol" value="true" onchange='Roles(this);'>
                                     <label for="radrol">Roles</label>
                                     <br />
-                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkrolA" value="true">
-                                    <label for="checkrolA">Agregar</label>
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkrolE" value="true">
-                                    <label for="checkrolE">Editar</label>
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkrolD" value="true">
-                                    <label for="checkrolD">Desactivar</label>
+                                    <div id="Roles">
+                                        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkrolA" value="true">
+                                        <label for="checkrolA">Agregar</label>
+                                        <br />
+                                        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkrolE" value="true">
+                                        <label for="checkrolE">Editar</label>
+                                        <br />
+                                        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkrolD" value="true">
+                                        <label for="checkrolD">Desactivar</label>
+                                    </div>
                                 </div>
                                 <div class="col-3">
                                     <input type="checkbox" name="radprov" value="true">
@@ -88,21 +92,8 @@
                                     <label for="checkredD">Eliminar</label>
                                 </div>
                                 <div class="col-3">
-                                    <input type="checkbox" name="radred" value="true">
-                                    <label for="radred">Sitios</label>
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkredA" value="true">
-                                    <label for="Agregarred">Agregar</label>
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkredE" value="true">
-                                    <label for="AgregarEdit">Editar</label>
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkredD" value="true">
-                                    <label for="AgregarDes">Eliminar</label>
-                                </div>
-                                <div class="col-3">
                                     <input type="checkbox" name="radsitios" value="true">
-                                    <label for="radsitios">Enlaces</label>
+                                    <label for="radsitios">Sitios</label>
                                     <br />
                                     &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checksitA" value="true">
                                     <label for="checksitA">Agregar</label>
@@ -112,6 +103,19 @@
                                     <br />
                                     &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checksitD" value="true">
                                     <label for="checksitD">Eliminar</label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="checkbox" name="radenlace" value="true">
+                                    <label for="radenlace">Enlaces</label>
+                                    <br />
+                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkenlA" value="true">
+                                    <label for="checkenlA">Agregar</label>
+                                    <br />
+                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkenlE" value="true">
+                                    <label for="checkenlE">Editar</label>
+                                    <br />
+                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkenlD" value="true">
+                                    <label for="checkenlD">Eliminar</label>
                                 </div>
                             </div>
                             <div class="row">
@@ -154,6 +158,7 @@
     <script>
         CreateValidator("#RolesEdit");
         $("#Datos").hide();
+        $("#Usuarios").hide();
         function Verificar() {
             $.ajax({
                 type: "GET",
@@ -189,6 +194,15 @@
                     });
                 },
             });
+        }
+        function Usuarios(checkbox)
+        {
+            if (checkbox.checked == true) {
+                $("#Usuarios").show();
+            }else
+            {
+                $("#Usuarios").hide();
+            }
         }
     </script>
 }

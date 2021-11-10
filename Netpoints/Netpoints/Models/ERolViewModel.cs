@@ -41,6 +41,12 @@ namespace Netpoints.Models
         public bool checksitE { get; set; }
         public bool checksitD { get; set; }
         #endregion
+        #region "Enlaces"
+        public bool radenlace { get; set; }
+        public bool checkenlA { get; set; }
+        public bool checkenlE { get; set; }
+        public bool checkenlD { get; set; }
+        #endregion
         public bool repproveedor { get; set; }
         public bool repubicacion { get; set; }
         public bool repusuarios { get; set; }
