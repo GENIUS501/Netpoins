@@ -46,6 +46,7 @@
     <Compile Include="NProveedores.cs" />
     <Compile Include="NRedes.cs" />
     <Compile Include="NRol.cs" />
+    <Compile Include="NRoles_Permisos.cs" />
     <Compile Include="NUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
