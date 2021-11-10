@@ -63,59 +63,67 @@
                                     </div>
                                 </div>
                                 <div class="col-3">
-                                    <input type="checkbox" name="radprov" value="true">
+                                    <input type="checkbox" name="radprov" value="true" onchange='Proveedores(this);'>
                                     <label for="radprov">Proveedores</label>
                                     <br />
-                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkprovA" value="true">
-                                    <label for="checkprovA">Agregar</label>
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkprovE" value="true">
-                                    <label for="checkprovE">Editar</label>
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkprovD" value="true">
-                                    <label for="checkprovD">Eliminar</label>
+                                    <div id="Proveedores">
+                                        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkprovA" value="true">
+                                        <label for="checkprovA">Agregar</label>
+                                        <br />
+                                        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkprovE" value="true">
+                                        <label for="checkprovE">Editar</label>
+                                        <br />
+                                        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkprovD" value="true">
+                                        <label for="checkprovD">Eliminar</label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <br />
                                 <div class="col-3">
-                                    <input type="checkbox" name="radred" value="true">
+                                    <input type="checkbox" name="radred" value="true" onchange='Redes(this);'>
                                     <label for="radred">Redes</label>
                                     <br />
-                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkredA" value="true">
-                                    <label for="checkredA">Agregar</label>
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkredE" value="true">
-                                    <label for="checkredE">Editar</label>
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkredD" value="true">
-                                    <label for="checkredD">Eliminar</label>
+                                    <div id="Redes">
+                                        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkredA" value="true">
+                                        <label for="checkredA">Agregar</label>
+                                        <br />
+                                        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkredE" value="true">
+                                        <label for="checkredE">Editar</label>
+                                        <br />
+                                        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkredD" value="true">
+                                        <label for="checkredD">Eliminar</label>
+                                    </div>
                                 </div>
                                 <div class="col-3">
-                                    <input type="checkbox" name="radsitios" value="true">
+                                    <input type="checkbox" name="radsitios" value="true" onchange='Sitios(this);'>
                                     <label for="radsitios">Sitios</label>
                                     <br />
-                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checksitA" value="true">
-                                    <label for="checksitA">Agregar</label>
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checksitE" value="true">
-                                    <label for="checksitE">Editar</label>
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checksitD" value="true">
-                                    <label for="checksitD">Eliminar</label>
+                                    <div id="Sitios">
+                                        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checksitA" value="true">
+                                        <label for="checksitA">Agregar</label>
+                                        <br />
+                                        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checksitE" value="true">
+                                        <label for="checksitE">Editar</label>
+                                        <br />
+                                        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checksitD" value="true">
+                                        <label for="checksitD">Eliminar</label>
+                                    </div>
                                 </div>
                                 <div class="col-3">
-                                    <input type="checkbox" name="radenlace" value="true">
+                                    <input type="checkbox" name="radenlace" value="true" onchange='Enlaces(this);'>
                                     <label for="radenlace">Enlaces</label>
                                     <br />
-                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkenlA" value="true">
-                                    <label for="checkenlA">Agregar</label>
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkenlE" value="true">
-                                    <label for="checkenlE">Editar</label>
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkenlD" value="true">
-                                    <label for="checkenlD">Eliminar</label>
+                                    <div id="Enlaces">
+                                        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkenlA" value="true">
+                                        <label for="checkenlA">Agregar</label>
+                                        <br />
+                                        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkenlE" value="true">
+                                        <label for="checkenlE">Editar</label>
+                                        <br />
+                                        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="checkenlD" value="true">
+                                        <label for="checkenlD">Eliminar</label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
@@ -159,6 +167,11 @@
         CreateValidator("#RolesEdit");
         $("#Datos").hide();
         $("#Usuarios").hide();
+        $("#Roles").hide();
+        $("#Proveedores").hide();
+        $("#Redes").hide();
+        $("#Sitios").hide();
+        $("#Enlaces").hide();
         function Verificar() {
             $.ajax({
                 type: "GET",
@@ -202,6 +215,41 @@
             }else
             {
                 $("#Usuarios").hide();
+            }
+        }
+        function Roles(checkbox) {
+            if (checkbox.checked == true) {
+                $("#Roles").show();
+            } else {
+                $("#Roles").hide();
+            }
+        }
+        function Proveedores(checkbox) {
+            if (checkbox.checked == true) {
+                $("#Proveedores").show();
+            } else {
+                $("#Proveedores").hide();
+            }
+        }
+        function Redes(checkbox) {
+            if (checkbox.checked == true) {
+                $("#Redes").show();
+            } else {
+                $("#Redes").hide();
+            }
+        }
+        function Sitios(checkbox) {
+            if (checkbox.checked == true) {
+                $("#Sitios").show();
+            } else {
+                $("#Sitios").hide();
+            }
+        }
+        function Enlaces(checkbox) {
+            if (checkbox.checked == true) {
+                $("#Enlaces").show();
+            } else {
+                $("#Enlaces").hide();
             }
         }
     </script>
