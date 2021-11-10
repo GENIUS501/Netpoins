@@ -19,12 +19,12 @@ namespace DataAcces
             {
                 using (TransactionScope Ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
-                    //Roles_Permisos Objbd = new Roles_Permisos();//Viene de la base de datos
-                    //Objbd.Comentario = obj.Comentario;
-                    //Objbd.Contacto = obj.Contacto;
-                    //Objbd.Email = obj.Email;
-                    //Objbd.NombreEmpresa = obj.NombreEmpresa;
-                    //Objbd.Telefono = obj.Telefono;
+                    int Idrol = int.Parse(obj[0].Id_Rol.ToString());
+                    var Permisos_Anteriores = db.Roles_Permisos.Where(x => x.Id_Rol == Idrol).ToList();
+                    if (Permisos_Anteriores.Count > 0)
+                    {
+                        db.Roles_Permisos.RemoveRange(Permisos_Anteriores);
+                    }
                     string Objason = JsonConvert.SerializeObject(obj);
                     List<Roles_Permisos> Permisos = JsonConvert.DeserializeObject<List<Roles_Permisos>>(Objason);
                     db.Roles_Permisos.AddRange(Permisos);

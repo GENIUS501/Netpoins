@@ -595,6 +595,9 @@ namespace Netpoints.Controllers
                     Rol.Estado = true;
                 }
                 int FilasAfectadas = Negocios.Modificar(Rol);
+                var Permisos = Grabar(Model);
+                NRoles_Permisos Negocios_Permisos = new NRoles_Permisos();
+                int FilasAfectadasPermisos = Negocios_Permisos.Agregar(Permisos);
                 if (FilasAfectadas > 0)
                 {
                     return Json("success");
