@@ -35,7 +35,7 @@ namespace Netpoints.Filters
                     filterContext.Result = new RedirectResult("~/Shared/Error");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //Envia el error a pantalla
                 filterContext.Result = new RedirectResult("~/Shared/Error");

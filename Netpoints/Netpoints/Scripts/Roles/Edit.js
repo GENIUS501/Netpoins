@@ -24,7 +24,7 @@
                     title: 'Rol Editado'
                 });
                 sleep(2500).then(() => {
-                    window.location.href = "../Roles"
+                    window.location.href = "../Roles/Index"
                 })
             }
             if (data == "Error") {

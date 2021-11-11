@@ -23,7 +23,7 @@
                     title: 'Enlace Guardado'
                 });
                 sleep(2500).then(() => {
-                    window.location.href = "../Enlaces"
+                    window.location.href = "../Enlaces/Index"
                 })
             }
             if (data == "Error") {

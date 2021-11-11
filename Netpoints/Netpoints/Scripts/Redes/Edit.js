@@ -22,7 +22,7 @@
                     title: 'Red Guardada'
                 });
                 sleep(2500).then(() => {
-                    window.location.href = "../Redes"
+                    window.location.href = "../Redes/Index"
                 })
             }
             if (data == "Error") {

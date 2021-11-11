@@ -82,7 +82,7 @@ namespace Negocios
         }
         #endregion
 
-        #region Metodos Personalisados
+        #region Metodos Personalizados
         public string Nombre_Rol(int Id)
         {
             try
@@ -113,6 +113,18 @@ namespace Negocios
             {
                 DUsuario db = new DUsuario();
                 return await db.Verificar(Id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public  EUsuario Login(string Usuario, string Pass)
+        {
+            try
+            {
+                DUsuario db = new DUsuario();
+                return db.Login(Usuario,Pass);
             }
             catch (Exception ex)
             {

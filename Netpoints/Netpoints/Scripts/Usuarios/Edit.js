@@ -24,7 +24,7 @@
                     title: 'Usuario Editado'
                 });
                 sleep(2500).then(() => {
-                    window.location.href = "../Usuarios"
+                    window.location.href = "../Usuarios/Index"
                 })
             }
             if (data == "Error") {

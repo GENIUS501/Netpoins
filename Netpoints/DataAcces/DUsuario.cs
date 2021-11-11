@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -93,7 +94,7 @@ namespace DataAcces
                     Usuarios Objbd = db.Usuarios.Find(Obj.IdUsuario);
                     //Asigna los valores traidos por la entidad traida de la vista a la entidad traida de la base de datos
                     Objbd.IdRol = Obj.IdRol;
-                    if(Obj.Contrasena!="Contra001")
+                    if (Obj.Contrasena != "Contra001")
                     {
                         Objbd.Contrasena = Obj.Contrasena;
                     }
@@ -210,8 +211,8 @@ namespace DataAcces
                 using (db)
                 {
                     //Retorna el nombre del perfil correspondiente al id enviado al metodo
-                     var Identificacion = await db.Usuarios.Where(x => x.Identificacion==id).FirstOrDefaultAsync();
-                    if (Identificacion!=null)
+                    var Identificacion = await db.Usuarios.Where(x => x.Identificacion == id).FirstOrDefaultAsync();
+                    if (Identificacion != null)
                     {
                         return false;
                     }
@@ -241,6 +242,38 @@ namespace DataAcces
                     }
                 }
                 return lista1;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public EUsuario Login(string Usuario, string Pass)
+        {
+            try
+            {
+                Usuarios Objbd = new Usuarios();
+                using (db)
+                {
+                    Objbd = db.Usuarios.Where(x => x.Usuario == Usuario && x.Contrasena == Pass).FirstOrDefault();
+                }
+                if (Objbd != null)
+                {
+                    EUsuario Obj = new EUsuario();
+                    Obj.IdRol = Objbd.IdRol;
+                    Obj.Contrasena = Objbd.Contrasena;
+                    Obj.Email = Objbd.Email;
+                    Obj.Estado = Objbd.Estado;
+                    Obj.Identificacion = Objbd.Identificacion;
+                    Obj.IdUsuario = Objbd.IdUsuario;
+                    Obj.Nombre = Objbd.Nombre;
+                    Obj.Telefono = Objbd.Telefono;
+                    Obj.Usuario = Objbd.Usuario;
+                    return Obj;
+                }
+                return null;
             }
             catch (Exception ex)
             {

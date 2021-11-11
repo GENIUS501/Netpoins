@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Netpoints.Models.LoginViewModel
+@{
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
 <!DOCTYPE html>
@@ -19,27 +20,28 @@
                             <div class="card-body">
                                 <img src="~/Imagenes/netpoints.png" />
                                 <h5 class="card-title text-center"></h5>
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="Usuario" placeholder="Nombre" v-model="Model.Usuario">
-                                    <label for="Usuario"><i class='bx bx-user'></i>Usuario</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="Clave" placeholder="Clave" v-model="Model.Clave">
-                                    <label for="Clave"> <i class='bx bxs-lock'></i>Contraseña</label>
-                                </div>
-                                <br />
-                                <div class="row justify-content-Center">
-                                    <div div class="col-3">
-                                        <button type="button" class="btn btn-outline-secondary" @@click="LoginUsuario">Ingresar</button>
-
+                                <form action="/Home/Login" method="POST">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="Usuario" id="Usuario" placeholder="Nombre">
+                                        <label for="Usuario"><i class='bx bx-user'></i>Usuario</label>
                                     </div>
-                                    <div div class="col-5">
-                                        <button type="button" class="btn btn-outline-secondary"
-                                                onclick="window.location.href = '/Login';">
-                                            Cancelar
-                                        </button>
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control" name="Pass" id="Pass" placeholder="Clave">
+                                        <label for="Pass"> <i class='bx bxs-lock'></i>Contraseña</label>
                                     </div>
-                                </div>
+                                    <br />
+                                    <div class="row justify-content-Center">
+                                        <div div class="col-3">
+                                            <button type="submit" class="btn btn-outline-secondary">Ingresar</button>
+                                        </div>
+                                        <div div class="col-5">
+                                            <button type="button" class="btn btn-outline-secondary"
+                                                    onclick="window.location.href = '/Login';">
+                                                Cancelar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

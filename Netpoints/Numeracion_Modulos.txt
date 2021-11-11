@@ -9,3 +9,6 @@ Reporte Usuarios 8
 Bitacora registro 9
 Bitacora cambios 10
 Enlaces 11
+
+123456789 Usuario
+Admin123

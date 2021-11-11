@@ -33,7 +33,7 @@ namespace Netpoints.Filters
             catch (Exception)
             {
                 //Si hay un error lo devuelve al login
-                filterContext.Result = new RedirectResult("~/Acceso/Login");
+                filterContext.Result = new RedirectResult("~/Home/Login");
             }
 
         }

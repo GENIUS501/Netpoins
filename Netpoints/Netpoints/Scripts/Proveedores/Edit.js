@@ -23,7 +23,7 @@
                     title: 'Proveedor Editado'
                 });
                 sleep(2500).then(() => {
-                    window.location.href = "../Proveedores"
+                    window.location.href = "../Proveedores/Index"
                 })
             }
             if (data == "Error") {

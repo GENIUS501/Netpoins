@@ -23,7 +23,7 @@
                     title: 'Sitio Guardado'
                 });
                 sleep(2500).then(() => {
-                    window.location.href = "../Oficinas"
+                    window.location.href = "../Oficinas/Index"
                 })
             }
             if (data == "Error") {
