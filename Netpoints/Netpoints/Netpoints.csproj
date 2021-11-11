@@ -135,6 +135,9 @@
     <Compile Include="Controllers\ReporteProveedorController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
+    <Compile Include="Filters\AuthorizeUser.cs" />
+    <Compile Include="Filters\AuthorizeUserPermises.cs" />
+    <Compile Include="Filters\Verificarsession.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -201,5 +201,63 @@ namespace DataAcces
             }
         }
         #endregion
+
+        #region Metodos personalizados
+        public List<ERoles_Permisos> Lista_de_Operaciones(int Idrol, int IdModulo)
+        {
+            try
+            {
+                using (db)
+                {
+                    List<Roles_Permisos> Objbd = new List<Roles_Permisos>();
+                    Objbd = db.Roles_Permisos.Where(x => x.Id_Rol == Idrol && x.Modulo == IdModulo).ToList();
+                    List<ERoles_Permisos> Permisos = new List<ERoles_Permisos>();
+                    if (Objbd.Count() > 0)
+                    {
+                        string Objason = JsonConvert.SerializeObject(Objbd);
+                        Permisos = JsonConvert.DeserializeObject<List<ERoles_Permisos>>(Objason);
+                    }
+                    return Permisos;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<ERoles_Permisos> Lista_de_Operaciones_Accion(int Idrol, int IdModulo, string Accion)
+        {
+            try
+            {
+                using (db)
+                {
+                    List<Roles_Permisos> Objbd = new List<Roles_Permisos>();
+                    if (Accion == "A")
+                    {
+                        Objbd = db.Roles_Permisos.Where(x => x.Id_Rol==Idrol && x.Modulo==IdModulo && x.Agregar=="S").ToList();
+                    }
+                    if (Accion == "E")
+                    {
+                        Objbd = db.Roles_Permisos.Where(x => x.Id_Rol == Idrol && x.Modulo == IdModulo && x.Modificar == "S").ToList();
+                    }
+                    if (Accion == "D")
+                    {
+                        Objbd = db.Roles_Permisos.Where(x => x.Id_Rol == Idrol && x.Modulo == IdModulo && x.Eliminar == "S").ToList();
+                    }
+                    List<ERoles_Permisos> Permisos = new List<ERoles_Permisos>();
+                    if (Objbd.Count()>0)
+                    {
+                        string Objason = JsonConvert.SerializeObject(Objbd);
+                        Permisos = JsonConvert.DeserializeObject<List<ERoles_Permisos>>(Objason);
+                    }
+                    return Permisos;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        #endregion
     }
 }

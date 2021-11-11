@@ -1,0 +1,45 @@
+﻿using Entidades;
+using Negocios;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace Netpoints.Filters
+{
+    //No permite mulitples
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
+    public class AuthorizeUser : AuthorizeAttribute
+    {
+        //Declaracion de variables
+        private int numero_modulo;
+        //Captura el numero del modulo al que se desea acceder 
+        public AuthorizeUser(int idmodulo = 0)
+        {
+            this.numero_modulo = idmodulo;
+        }
+        public override void OnAuthorization(AuthorizationContext filterContext)
+        {
+            try
+            {
+                //Le asigna el valor de la sesion al objeto de tipo entidad usuario
+                var Usuario = (EUsuario)HttpContext.Current.Session["User"];
+                //Llena la entidad permisos con los valores de la tabla permisos de base de datos si existen
+                NRoles_Permisos Negocios = new NRoles_Permisos();
+                var lstMisOperaciones = Negocios.ListaOperaciones(Usuario.IdRol,numero_modulo);
+                //Si es meno o igual a cero es que el permiso no existe y por lo tanto no puede acceder al modulo
+                if (lstMisOperaciones.ToList().Count() <= 0)
+                {
+                    //Envia el error a pantalla
+                    filterContext.Result = new RedirectResult("~/Shared/Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                //Envia el error a pantalla
+                filterContext.Result = new RedirectResult("~/Shared/Error");
+            }
+        }
+    }
+}

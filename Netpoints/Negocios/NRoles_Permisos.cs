@@ -96,5 +96,31 @@ namespace Negocios
             }
         }
         #endregion
+        #region Metodos Personalizados
+        public List<ERoles_Permisos> ListaOperaciones(int Idrol, int Idmodulo)
+        {
+            try
+            {
+                DRoles_Permisos db = new DRoles_Permisos();
+                return db.Lista_de_Operaciones(Idrol,Idmodulo);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<ERoles_Permisos> ListaOperaciones(int Idrol, int Idmodulo,string Accion)
+        {
+            try
+            {
+                DRoles_Permisos db = new DRoles_Permisos();
+                return db.Lista_de_Operaciones_Accion(Idrol, Idmodulo,Accion);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        #endregion
     }
 }
