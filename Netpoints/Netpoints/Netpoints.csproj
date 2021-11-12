@@ -127,6 +127,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccesoController.cs" />
     <Compile Include="Controllers\EnlacesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OficinasController.cs" />
@@ -251,9 +252,10 @@
     <Content Include="Views\Redes\Edit.cshtml" />
     <Content Include="Views\Enlaces\Index.cshtml" />
     <Content Include="Views\Enlaces\Agregar.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\ReporteProveedor\Index.cshtml" />
     <Content Include="Views\Enlaces\Edit.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Acceso\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

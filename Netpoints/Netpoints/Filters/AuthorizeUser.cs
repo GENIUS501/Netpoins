@@ -25,20 +25,28 @@ namespace Netpoints.Filters
             {
                 //Le asigna el valor de la sesion al objeto de tipo entidad usuario
                 var Usuario = (EUsuario)HttpContext.Current.Session["User"];
-                //Llena la entidad permisos con los valores de la tabla permisos de base de datos si existen
-                NRoles_Permisos Negocios = new NRoles_Permisos();
-                var lstMisOperaciones = Negocios.ListaOperaciones(Usuario.IdRol,numero_modulo);
-                //Si es meno o igual a cero es que el permiso no existe y por lo tanto no puede acceder al modulo
-                if (lstMisOperaciones.ToList().Count() <= 0)
+                if (Usuario == null)
                 {
                     //Envia el error a pantalla
-                    filterContext.Result = new RedirectResult("~/Shared/Error");
+                    filterContext.Result = new RedirectResult("~/Home/Login");
+                }
+                else
+                {
+                    //Llena la entidad permisos con los valores de la tabla permisos de base de datos si existen
+                    NRoles_Permisos Negocios = new NRoles_Permisos();
+                    var lstMisOperaciones = Negocios.ListaOperaciones(Usuario.IdRol, numero_modulo);
+                    //Si es meno o igual a cero es que el permiso no existe y por lo tanto no puede acceder al modulo
+                    if (lstMisOperaciones.ToList().Count() <= 0)
+                    {
+                        //Envia el error a pantalla
+                        filterContext.Result = new RedirectResult("~/Home/Error");
+                    }
                 }
             }
             catch (Exception)
             {
                 //Envia el error a pantalla
-                filterContext.Result = new RedirectResult("~/Shared/Error");
+                filterContext.Result = new RedirectResult("~/Home/Error");
             }
         }
     }

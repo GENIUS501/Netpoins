@@ -1,5 +1,6 @@
 ﻿using Entidades;
 using Negocios;
+using Netpoints.Filters;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ namespace Netpoints.Controllers
     public class EnlacesController : Controller
     {
         // GET: Enlaces
+        //Autorizar acceso al modulo
+        [AuthorizeUser(idmodulo: 11)]
         public ActionResult Index()
         {
             NEnlaces Negocios = new NEnlaces();
@@ -19,6 +22,8 @@ namespace Netpoints.Controllers
             Lista = Negocios.Mostrar();
             return View(Lista);
         }
+        // Autorizar acceso a la accion
+        [AuthorizeUserPermises(accion: "A", idmodulo: 11)]
         public ActionResult Agregar(EEnlaces Modelo)
         {
             try
@@ -50,6 +55,8 @@ namespace Netpoints.Controllers
                 return Json("Error");
             }
         }
+        // Autorizar acceso a la accion
+        [AuthorizeUserPermises(accion: "E", idmodulo: 11)]
         public ActionResult Edit(string Id)
         {
             #region Llenar drop down oficinas
@@ -77,6 +84,8 @@ namespace Netpoints.Controllers
             ViewBag.Proveedores = Proveedores(Modelo.IdProveedor.ToString());
             return View(Modelo);
         }
+        // Autorizar acceso a la accion
+        [AuthorizeUserPermises(accion: "E", idmodulo: 11)]
         [HttpPost]
         public ActionResult Edit(EEnlaces Modelo)
         {
@@ -99,6 +108,8 @@ namespace Netpoints.Controllers
                 return Json("Error");
             }
         }
+        // Autorizar acceso a la accion
+        [AuthorizeUserPermises(accion: "D", idmodulo: 11)]
         [HttpGet]
         public ActionResult Delete(string id)
         {

@@ -214,8 +214,20 @@ namespace DataAcces
                     List<ERoles_Permisos> Permisos = new List<ERoles_Permisos>();
                     if (Objbd.Count() > 0)
                     {
-                        string Objason = JsonConvert.SerializeObject(Objbd);
-                        Permisos = JsonConvert.DeserializeObject<List<ERoles_Permisos>>(Objason);
+                        foreach (var Item in Objbd)
+                        {
+                            Permisos.Add(new ERoles_Permisos()
+                            {
+                                IdPermiso = Item.IdPermiso,
+                                Id_Rol = Item.Id_Rol,
+                                Modificar = Item.Modificar,
+                                Modulo = Item.Modulo,
+                                Agregar = Item.Agregar,
+                                Eliminar = Item.Eliminar,
+                            });
+                        
+                        }
+                        return Permisos;
                     }
                     return Permisos;
                 }
@@ -247,8 +259,20 @@ namespace DataAcces
                     List<ERoles_Permisos> Permisos = new List<ERoles_Permisos>();
                     if (Objbd.Count()>0)
                     {
-                        string Objason = JsonConvert.SerializeObject(Objbd);
-                        Permisos = JsonConvert.DeserializeObject<List<ERoles_Permisos>>(Objason);
+                        foreach (var Item in Objbd)
+                        {
+                            Permisos.Add(new ERoles_Permisos()
+                            {
+                                IdPermiso = Item.IdPermiso,
+                                Id_Rol = Item.Id_Rol,
+                                Modificar = Item.Modificar,
+                                Modulo = Item.Modulo,
+                                Agregar = Item.Agregar,
+                                Eliminar = Item.Eliminar,
+                            });
+
+                        }
+                        return Permisos;
                     }
                     return Permisos;
                 }

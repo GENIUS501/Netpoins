@@ -23,9 +23,9 @@ namespace Netpoints.Filters
                 if (Ent_Usuario == null)
                 {
                     //Si es nula redirige a la pagina de login
-                    if (filterContext.Controller is HomeController == false)
+                    if (filterContext.Controller is AccesoController == false)
                     {
-                        filterContext.HttpContext.Response.Redirect("/Home/Login");
+                        filterContext.HttpContext.Response.Redirect("/Acceso/Login");
                     }
                 }
                 //Si esta llena no hace nada
@@ -33,7 +33,7 @@ namespace Netpoints.Filters
             catch (Exception)
             {
                 //Si hay un error lo devuelve al login
-                filterContext.Result = new RedirectResult("~/Home/Login");
+                filterContext.Result = new RedirectResult("~/Acceso/Login");
             }
 
         }
