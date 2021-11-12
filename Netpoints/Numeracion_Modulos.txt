@@ -9,3 +9,18 @@ Reporte Usuarios 8
 Bitacora registro 9
 Bitacora cambios 10
 Enlaces 11
+  INSERT INTO Roles(Rol,Descripcion,Estado)VALUES('Admin','Admin',1)
+  INSERT INTO Roles_Permisos(Id_Rol,Modulo,Agregar,Modificar,Eliminar)VALUES(colocarnumerodelrol,1,'S','S','S');
+  INSERT INTO Roles_Permisos(Id_Rol,Modulo,Agregar,Modificar,Eliminar)VALUES(colocarnumerodelrol,2,'S','S','S');
+  INSERT INTO Roles_Permisos(Id_Rol,Modulo,Agregar,Modificar,Eliminar)VALUES(colocarnumerodelrol,3,'S','S','S');
+  INSERT INTO Roles_Permisos(Id_Rol,Modulo,Agregar,Modificar,Eliminar)VALUES(colocarnumerodelrol,4,'S','S','S');
+  INSERT INTO Roles_Permisos(Id_Rol,Modulo,Agregar,Modificar,Eliminar)VALUES(colocarnumerodelrol,5,'S','S','S');
+  INSERT INTO Roles_Permisos(Id_Rol,Modulo,Agregar,Modificar,Eliminar)VALUES(colocarnumerodelrol,6,'S','S','S');
+  INSERT INTO Roles_Permisos(Id_Rol,Modulo,Agregar,Modificar,Eliminar)VALUES(colocarnumerodelrol,7,'S','S','S');
+  INSERT INTO Roles_Permisos(Id_Rol,Modulo,Agregar,Modificar,Eliminar)VALUES(colocarnumerodelrol,8,'S','S','S');
+  INSERT INTO Roles_Permisos(Id_Rol,Modulo,Agregar,Modificar,Eliminar)VALUES(colocarnumerodelrol,9,'S','S','S');
+  INSERT INTO Roles_Permisos(Id_Rol,Modulo,Agregar,Modificar,Eliminar)VALUES(colocarnumerodelrol,10,'S','S','S');
+  INSERT INTO Roles_Permisos(Id_Rol,Modulo,Agregar,Modificar,Eliminar)VALUES(colocarnumerodelrol,11,'S','S','S');
+  INSERT INTO Usuarios(IdRol,Identificacion,Nombre,Telefono,Email,Usuario,Contrasena,Estado)VALUES(colocarnumerodelrol,123456789,'Admin',12345678,'1@1.com','123456789','VPl7XdIBPN069XWg4ieBqnXnbXo=',1)
+123456789 Usuario
+Admin123 Clave
