@@ -1,5 +1,6 @@
 ﻿using Entidades;
 using Negocios;
+using Netpoints.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Netpoints.Controllers
     public class ReporteProveedorController : Controller
     {
         // GET: ReporteProveedor
+        [AuthorizeUser(idmodulo: 6)]
         public ActionResult Index()
         {
             NProveedores Negocios = new NProveedores();

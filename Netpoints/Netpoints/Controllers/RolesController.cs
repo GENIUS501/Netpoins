@@ -1,5 +1,6 @@
 ﻿using Entidades;
 using Negocios;
+using Netpoints.Filters;
 using Netpoints.Models;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace Netpoints.Controllers
     public class RolesController : Controller
     {
         // GET: Roles
+        [AuthorizeUser(idmodulo: 2)]
         public ActionResult Index()
         {
             NRol Negocios = new NRol();
@@ -20,6 +22,7 @@ namespace Netpoints.Controllers
             Lista = Negocios.Mostrar();
             return View(Lista);
         }
+        [AuthorizeUserPermises(accion: "A", idmodulo: 2)]
         public ActionResult Agregar(ERolViewModel Modelo)
         {
             try
@@ -559,6 +562,7 @@ namespace Netpoints.Controllers
             }
         }
         #endregion
+        [AuthorizeUserPermises(accion: "E", idmodulo: 2)]
         public ActionResult Edit(string Id)
         {
             NRol Negocios = new NRol();
@@ -571,6 +575,7 @@ namespace Netpoints.Controllers
             var RolFinal = CargarPermisos(RolV);
             return View(RolFinal);
         }
+        [AuthorizeUserPermises(accion: "E", idmodulo: 2)]
         //Le indica al metodo que reciba los datos por el metodo post
         [HttpPost]
         ////Evita que se inicie de otro formulario
@@ -606,6 +611,7 @@ namespace Netpoints.Controllers
                 return Json("Error");
             }
         }
+        [AuthorizeUserPermises(accion: "D", idmodulo: 2)]
         [HttpGet]
         public ActionResult Delete(string id)
         {

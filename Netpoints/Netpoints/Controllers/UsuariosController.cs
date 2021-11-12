@@ -1,5 +1,6 @@
 ﻿using Entidades;
 using Negocios;
+using Netpoints.Filters;
 using Netpoints.Models;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace Netpoints.Controllers
     public class UsuariosController : Controller
     {
         // GET: Usuarios
+        [AuthorizeUser(idmodulo: 1)]
         public ActionResult Index()
         {
             NUsuario Negocios = new NUsuario();
@@ -20,6 +22,7 @@ namespace Netpoints.Controllers
             Lista = Negocios.Mostrar();
             return View(Lista);
         }
+        [AuthorizeUserPermises(accion: "A", idmodulo: 1)]
         public ActionResult Agregar(EUsuarioViewModel Modelo)
         {
             try
@@ -77,6 +80,7 @@ namespace Netpoints.Controllers
                 return Json("Error");
             }
         }
+        [AuthorizeUserPermises(accion: "E", idmodulo: 1)]
         public ActionResult Edit(string Id)
         {
             #region Llenar drop down Roles
@@ -101,7 +105,7 @@ namespace Netpoints.Controllers
             UsuarioV.Usuario = Usuario.Usuario;
             return View(UsuarioV);
         }
-
+        [AuthorizeUserPermises(accion: "E", idmodulo: 1)]
         [HttpPost]
         public ActionResult Edit(EUsuarioViewModel Modelo)
         {
@@ -145,6 +149,7 @@ namespace Netpoints.Controllers
                 return Json("Error");
             }
         }
+        [AuthorizeUserPermises(accion: "D", idmodulo: 1)]
         [HttpGet]
         public ActionResult Delete(string id)
         {

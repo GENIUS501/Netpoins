@@ -2,13 +2,10 @@ Usuario 1
 Roles 2
 Proveedores 3
 Redes 4
-Sitios 5
+Oficinas 5
 Reporte Proveedores 6
 Reporte Ubicacion 7
 Reporte Usuarios 8
 Bitacora registro 9
 Bitacora cambios 10
 Enlaces 11
-
-123456789 Usuario
-Admin123

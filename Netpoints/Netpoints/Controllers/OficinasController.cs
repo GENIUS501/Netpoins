@@ -1,5 +1,6 @@
 ﻿using Entidades;
 using Negocios;
+using Netpoints.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Netpoints.Controllers
     public class OficinasController : Controller
     {
         // GET: Oficinas
+        [AuthorizeUser(idmodulo: 5)]
         public ActionResult Index()
         {
             NOficinas Negocios = new NOficinas();
@@ -18,6 +20,7 @@ namespace Netpoints.Controllers
             Lista = Negocios.Mostrar();
             return View(Lista);
         }
+        [AuthorizeUserPermises(accion: "A", idmodulo: 5)]
         public ActionResult Agregar(EOficinas Modelo)
         {
             try
@@ -43,6 +46,7 @@ namespace Netpoints.Controllers
                 return Json("Error");
             }
         }
+        [AuthorizeUserPermises(accion: "E", idmodulo: 5)]
         [HttpGet]
         public ActionResult Edit(string Id)
         {
@@ -50,7 +54,7 @@ namespace Netpoints.Controllers
             var Modelo = Negocios.Mostrar_Detallado(int.Parse(Id));
             return View(Modelo);
         }
-
+        [AuthorizeUserPermises(accion: "E", idmodulo: 5)]
         [HttpPost]
         public ActionResult Edit(EOficinas Modelo)
         {
@@ -73,6 +77,7 @@ namespace Netpoints.Controllers
                 return Json("Error");
             }
         }
+        [AuthorizeUserPermises(accion: "D", idmodulo: 5)]
         [HttpGet]
         public ActionResult Delete(string id)
         {
