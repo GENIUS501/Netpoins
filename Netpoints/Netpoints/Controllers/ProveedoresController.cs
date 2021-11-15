@@ -30,7 +30,8 @@ namespace Netpoints.Controllers
                     return View();
                 }
                 NProveedores Negocios = new NProveedores();
-                int FilasAfectadas = Negocios.Agregar(Modelo);
+                EUsuario User = (EUsuario)Session["User"];
+                int FilasAfectadas = Negocios.Agregar(Modelo,User.IdUsuario);
                 if (FilasAfectadas > 0)
                 {
                     return Json("success");

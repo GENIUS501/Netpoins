@@ -29,7 +29,8 @@ namespace Netpoints.Controllers
                     return View();
                 }
                 NRedes Negocios = new NRedes();
-                int FilasAfectadas = Negocios.Agregar(Modelo);
+                EUsuario User = (EUsuario)Session["User"];
+                int FilasAfectadas = Negocios.Agregar(Modelo,User.IdUsuario);
                 if (FilasAfectadas > 0)
                 {
                     return Json("success");
@@ -60,7 +61,8 @@ namespace Netpoints.Controllers
             try
             {
                 NRedes Negocios = new NRedes();
-                int FilasAfectadas = Negocios.Modificar(Modelo);
+                EUsuario User = (EUsuario)Session["User"];
+                int FilasAfectadas = Negocios.Modificar(Modelo,User.IdUsuario);
                 if (FilasAfectadas > 0)
                 {
                     return Json("success");
@@ -83,7 +85,8 @@ namespace Netpoints.Controllers
             try
             {
                 NRedes Negocios = new NRedes();
-                int FilasAfectadas = Negocios.Eliminar(int.Parse(id));
+                EUsuario User = (EUsuario)Session["User"];
+                int FilasAfectadas = Negocios.Eliminar(int.Parse(id),User.IdUsuario);
                 if (FilasAfectadas > 0)
                 {
                     TempData["msg"] = "0";

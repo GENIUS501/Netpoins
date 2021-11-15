@@ -63,6 +63,7 @@
     <Compile Include="BitacoraRegistros.cs">
       <DependentUpon>Telecom.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBitacoraCambios.cs" />
     <Compile Include="DEnlaces.cs" />
     <Compile Include="DOficinas.cs" />
     <Compile Include="DProveedores.cs" />

@@ -11,12 +11,12 @@ namespace Negocios
     public class NProveedores
     {
         #region Agregar
-        public int Agregar(EProveedores obj)
+        public int Agregar(EProveedores obj, int Usuario)
         {
             try
             {
                 DProveedores db = new DProveedores();
-                return db.Agregar(obj);
+                return db.Agregar(obj, Usuario);
             }
             catch (Exception ex)
             {
@@ -41,12 +41,12 @@ namespace Negocios
         #endregion
 
         #region Modificar
-        public int Modificar(EProveedores obj)
+        public int Modificar(EProveedores obj, int Usuario)
         {
             try
             {
                 DProveedores db = new DProveedores();
-                return db.Modificar(obj);
+                return db.Modificar(obj, Usuario);
             }
             catch (Exception ex)
             {
@@ -56,12 +56,12 @@ namespace Negocios
         #endregion
 
         #region Eliminar
-        public int Eliminar(int IDProveedores)
+        public int Eliminar(int IDProveedores,int Usuario)
         {
             try
             {
                 DProveedores db = new DProveedores();
-                return db.Eliminar(IDProveedores);
+                return db.Eliminar(IDProveedores,Usuario);
             }
             catch (Exception ex)
             {

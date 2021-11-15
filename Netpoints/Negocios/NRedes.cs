@@ -11,12 +11,12 @@ namespace Negocios
     public class NRedes
     {
         #region Agregar
-        public int Agregar(ERedes obj)
+        public int Agregar(ERedes obj,int IdUsuario)
         {
             try
             {
                 DRedes db = new DRedes();
-                return db.Agregar(obj);
+                return db.Agregar(obj,IdUsuario);
             }
             catch (Exception ex)
             {
@@ -41,12 +41,12 @@ namespace Negocios
         #endregion
 
         #region Modificar
-        public int Modificar(ERedes obj)
+        public int Modificar(ERedes obj, int IdUsuario)
         {
             try
             {
                 DRedes db = new DRedes();
-                return db.Modificar(obj);
+                return db.Modificar(obj,IdUsuario);
             }
             catch (Exception ex)
             {
@@ -56,12 +56,12 @@ namespace Negocios
         #endregion
 
         #region Eliminar
-        public int Eliminar(int IDRedes)
+        public int Eliminar(int IDRedes, int IdUsuario)
         {
             try
             {
                 DRedes db = new DRedes();
-                return db.Eliminar(IDRedes);
+                return db.Eliminar(IDRedes, IdUsuario);
             }
             catch (Exception ex)
             {

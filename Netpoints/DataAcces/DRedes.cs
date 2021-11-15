@@ -12,8 +12,10 @@ namespace DataAcces
     public class DRedes
     {
         Enlaces_TelecomEntities db = new Enlaces_TelecomEntities();
+        EBitacoraCambios EntidadBitacora = new EBitacoraCambios();
+        DBitacoraCambios Bitacora = new DBitacoraCambios();
         #region Agregar
-        public int Agregar(ERedes Obj)//Viene de la vista Obj
+        public int Agregar(ERedes Obj,int Usuario)//Viene de la vista Obj
         {
             try
             {
@@ -34,6 +36,11 @@ namespace DataAcces
                     if (Resultado > 0)
                     {
                         Ts.Complete();
+                        EntidadBitacora.IdUsuario = Usuario;
+                        EntidadBitacora.Tipo = "Agregar";
+                        EntidadBitacora.Detalle = "Redes";
+                        EntidadBitacora.FechaHora = DateTime.Now;
+                        Bitacora.Agregar(EntidadBitacora);
                         return Resultado;
                     }
                     else
@@ -81,7 +88,7 @@ namespace DataAcces
         #endregion
 
         #region Modificar
-        public int Modificar(ERedes Obj)
+        public int Modificar(ERedes Obj,int Usuario)
         {
             try
             {
@@ -102,6 +109,11 @@ namespace DataAcces
                     if (Resultado > 0)
                     {
                         Ts.Complete();
+                        EntidadBitacora.IdUsuario = Usuario;
+                        EntidadBitacora.Tipo = "Editar";
+                        EntidadBitacora.Detalle = "Redes";
+                        EntidadBitacora.FechaHora = DateTime.Now;
+                        Bitacora.Agregar(EntidadBitacora);
                         return Resultado;
                     }
                     else
@@ -120,7 +132,7 @@ namespace DataAcces
         #endregion
 
         #region Eliminar
-        public int Eliminar(int Id)
+        public int Eliminar(int Id,int Usuario)
         {
             try
             {
@@ -136,6 +148,11 @@ namespace DataAcces
                     if (Resultado > 0)
                     {
                         Ts.Complete();
+                        EntidadBitacora.IdUsuario = Usuario;
+                        EntidadBitacora.Tipo = "Eliminar";
+                        EntidadBitacora.Detalle = "Redes";
+                        EntidadBitacora.FechaHora = DateTime.Now;
+                        Bitacora.Agregar(EntidadBitacora);
                         return Resultado;
                     }
                     else

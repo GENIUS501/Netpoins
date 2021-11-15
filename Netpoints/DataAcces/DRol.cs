@@ -12,9 +12,10 @@ namespace DataAcces
     public class DRol
     {
         Enlaces_TelecomEntities db = new Enlaces_TelecomEntities();
-
+        EBitacoraCambios EntidadBitacora = new EBitacoraCambios();
+        DBitacoraCambios Bitacora = new DBitacoraCambios();
         #region "Agregar"
-        public int Agregar(ERol obj)//Viene de la vista obj
+        public int Agregar(ERol obj,int Usuario)//Viene de la vista obj
         {
             try
             {
@@ -31,6 +32,11 @@ namespace DataAcces
                     if (Resultado > 0)
                     {
                         Ts.Complete();
+                        EntidadBitacora.IdUsuario = Usuario;
+                        EntidadBitacora.Tipo = "Agregar";
+                        EntidadBitacora.Detalle = "Roles";
+                        EntidadBitacora.FechaHora = DateTime.Now;
+                        Bitacora.Agregar(EntidadBitacora);
                         return Resultado;
                     }
                     else
@@ -74,7 +80,7 @@ namespace DataAcces
         #endregion
 
         #region Modificar
-        public int Modificar(ERol Obj)
+        public int Modificar(ERol Obj,int Usuario)
         {
             try
             {
@@ -92,6 +98,11 @@ namespace DataAcces
                     if (Resultado > 0)
                     {
                         Ts.Complete();
+                        EntidadBitacora.IdUsuario = Usuario;
+                        EntidadBitacora.Tipo = "Editar";
+                        EntidadBitacora.Detalle = "Roles";
+                        EntidadBitacora.FechaHora = DateTime.Now;
+                        Bitacora.Agregar(EntidadBitacora);
                         return Resultado;
                     }
                     else
@@ -107,7 +118,7 @@ namespace DataAcces
             }
 
         }
-        public int Desactivar(int IdRol)
+        public int Desactivar(int IdRol,int Usuario)
         {
             try
             {
@@ -123,6 +134,11 @@ namespace DataAcces
                     if (Resultado > 0)
                     {
                         Ts.Complete();
+                        EntidadBitacora.IdUsuario = Usuario;
+                        EntidadBitacora.Tipo = "Desactivar";
+                        EntidadBitacora.Detalle = "Roles";
+                        EntidadBitacora.FechaHora = DateTime.Now;
+                        Bitacora.Agregar(EntidadBitacora);
                         return Resultado;
                     }
                     else

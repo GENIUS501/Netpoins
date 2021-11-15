@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EBitacoraCambios.cs" />
     <Compile Include="EEnlaces.cs" />
     <Compile Include="EOficinas.cs" />
     <Compile Include="EProveedores.cs" />

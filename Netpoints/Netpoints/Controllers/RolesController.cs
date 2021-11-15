@@ -40,7 +40,8 @@ namespace Netpoints.Controllers
                 {
                     Rol.Estado = true;
                 }
-                int FilasAfectadas = Negocios.Agregar(Rol);
+                EUsuario User = (EUsuario)Session["User"];
+                int FilasAfectadas = Negocios.Agregar(Rol,User.IdUsuario);
                 Modelo.IdRol = FilasAfectadas;
                 var Permisos = Grabar(Modelo);
                 NRoles_Permisos Negocios_Permisos = new NRoles_Permisos();
@@ -599,7 +600,8 @@ namespace Netpoints.Controllers
                 {
                     Rol.Estado = true;
                 }
-                int FilasAfectadas = Negocios.Modificar(Rol);
+                EUsuario User = (EUsuario)Session["User"];
+                int FilasAfectadas = Negocios.Modificar(Rol,User.IdUsuario);
                 var Permisos = Grabar(Model);
                 NRoles_Permisos Negocios_Permisos = new NRoles_Permisos();
                 int FilasAfectadasPermisos = Negocios_Permisos.Agregar(Permisos);
@@ -617,8 +619,9 @@ namespace Netpoints.Controllers
         {
             try
             {
+                EUsuario User = (EUsuario)Session["User"];
                 NRol Negocios = new NRol();
-                Negocios.Desactivar(int.Parse(id));
+                Negocios.Desactivar(int.Parse(id),User.IdUsuario);
                 TempData["msg"] = "0";
                 return RedirectToAction("index");
             }

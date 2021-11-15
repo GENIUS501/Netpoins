@@ -13,8 +13,11 @@ namespace DataAcces
     public class DUsuario
     {
         Enlaces_TelecomEntities db = new Enlaces_TelecomEntities();
+        DBitacoraCambios Bitacora = new DBitacoraCambios();
+        EBitacoraCambios EntidadBitacora = new EBitacoraCambios();
+
         #region Agregar
-        public int Agregar(EUsuario obj)//Viene de la vista obj
+        public int Agregar(EUsuario obj,int Usuario)//Viene de la vista obj
         {
             try
             {
@@ -36,6 +39,11 @@ namespace DataAcces
                     if (Resultado > 0)
                     {
                         Ts.Complete();
+                        EntidadBitacora.IdUsuario = Usuario;
+                        EntidadBitacora.Tipo = "Agregar";
+                        EntidadBitacora.Detalle = "Usuarios";
+                        EntidadBitacora.FechaHora = DateTime.Now;
+                        Bitacora.Agregar(EntidadBitacora);
                         return Resultado;
                     }
                     else
@@ -84,7 +92,7 @@ namespace DataAcces
         #endregion
 
         #region Modificar
-        public int Modificar(EUsuario Obj)
+        public int Modificar(EUsuario Obj,int Usuario)
         {
             try
             {
@@ -109,6 +117,11 @@ namespace DataAcces
                     if (Resultado > 0)
                     {
                         Ts.Complete();
+                        EntidadBitacora.IdUsuario = Usuario;
+                        EntidadBitacora.Tipo = "Editar";
+                        EntidadBitacora.Detalle = "Usuarios";
+                        EntidadBitacora.FechaHora = DateTime.Now;
+                        Bitacora.Agregar(EntidadBitacora);
                         return Resultado;
                     }
                     else
@@ -124,7 +137,7 @@ namespace DataAcces
             }
 
         }
-        public int Desactivar(int IdUsuario)
+        public int Desactivar(int IdUsuario,int Usuario)
         {
             try
             {
@@ -140,6 +153,11 @@ namespace DataAcces
                     if (Resultado > 0)
                     {
                         Ts.Complete();
+                        EntidadBitacora.IdUsuario = Usuario;
+                        EntidadBitacora.Tipo = "Desactivar";
+                        EntidadBitacora.Detalle = "Usuarios";
+                        EntidadBitacora.FechaHora = DateTime.Now;
+                        Bitacora.Agregar(EntidadBitacora);
                         return Resultado;
                     }
                     else

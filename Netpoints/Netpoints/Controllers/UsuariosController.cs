@@ -55,7 +55,7 @@ namespace Netpoints.Controllers
                 Usuario.Contrasena = Helpers.Helper.EncodePassword(string.Concat(Modelo.Usuario.ToString(), Modelo.Contrasena.ToString()));
                 Usuario.Email = Modelo.Email;
                 Usuario.Estado = false;
-                if(Modelo.Estado=="on")
+                if (Modelo.Estado == "on")
                 {
                     Usuario.Estado = true;
                 }
@@ -64,7 +64,8 @@ namespace Netpoints.Controllers
                 Usuario.Nombre = Modelo.Nombre;
                 Usuario.Telefono = Modelo.Telefono;
                 Usuario.Usuario = Modelo.Identificacion;
-                int FilasAfectadas = Negocios.Agregar(Usuario);
+                EUsuario User = (EUsuario)Session["User"];
+                int FilasAfectadas = Negocios.Agregar(Usuario,User.IdUsuario);
                 if (FilasAfectadas > 0)
                 {
                     return Json("success");
@@ -133,7 +134,8 @@ namespace Netpoints.Controllers
                 Usuario.Telefono = Modelo.Telefono;
                 Usuario.Usuario = Modelo.Usuario;
                 Usuario.IdUsuario = Modelo.IdUsuario;
-                int FilasAfectadas = Negocios.Modificar(Usuario);
+                EUsuario User = (EUsuario)Session["User"];
+                int FilasAfectadas = Negocios.Modificar(Usuario,User.IdUsuario);
                 if (FilasAfectadas > 0)
                 {
                     return Json("success");
@@ -156,7 +158,8 @@ namespace Netpoints.Controllers
             try
             {
                 NUsuario Negocios = new NUsuario();
-                Negocios.Desactivar(int.Parse(id));
+                EUsuario User = (EUsuario)Session["User"];
+                Negocios.Desactivar(int.Parse(id),User.IdUsuario);
                 TempData["msg"] = "0";
                 return RedirectToAction("index");
             }

@@ -12,8 +12,11 @@ namespace DataAcces
     public class DProveedores
     {
         Enlaces_TelecomEntities db = new Enlaces_TelecomEntities();
+        EBitacoraCambios EntidadBitacora = new EBitacoraCambios();
+        DBitacoraCambios Bitacora = new DBitacoraCambios();
+
         #region Agregar
-        public int Agregar(EProveedores obj)//Viene de la vista obj
+        public int Agregar(EProveedores obj,int Usuario)//Viene de la vista obj
         {
             try
             {
@@ -32,6 +35,11 @@ namespace DataAcces
                     if (Resultado > 0)
                     {
                         Ts.Complete();
+                        EntidadBitacora.IdUsuario = Usuario;
+                        EntidadBitacora.Tipo = "Agregar";
+                        EntidadBitacora.Detalle = "Proveedores";
+                        EntidadBitacora.FechaHora = DateTime.Now;
+                        Bitacora.Agregar(EntidadBitacora);
                         return Resultado;
                     }
                     else
@@ -77,7 +85,7 @@ namespace DataAcces
         #endregion
 
         #region Modificar
-        public int Modificar(EProveedores Obj)
+        public int Modificar(EProveedores Obj,int Usuario)
         {
             try
             {
@@ -96,6 +104,11 @@ namespace DataAcces
                     if (Resultado > 0)
                     {
                         Ts.Complete();
+                        EntidadBitacora.IdUsuario = Usuario;
+                        EntidadBitacora.Tipo = "Modificar";
+                        EntidadBitacora.Detalle = "Proveedores";
+                        EntidadBitacora.FechaHora = DateTime.Now;
+                        Bitacora.Agregar(EntidadBitacora);
                         return Resultado;
                     }
                     else
@@ -114,7 +127,7 @@ namespace DataAcces
         #endregion
 
         #region Eliminar
-        public int Eliminar(int Id)
+        public int Eliminar(int Id,int Usuario)
         {
             try
             {
@@ -130,6 +143,11 @@ namespace DataAcces
                     if (Resultado > 0)
                     {
                         Ts.Complete();
+                        EntidadBitacora.IdUsuario = Usuario;
+                        EntidadBitacora.Tipo = "Eliminar";
+                        EntidadBitacora.Detalle = "Proveedores";
+                        EntidadBitacora.FechaHora = DateTime.Now;
+                        Bitacora.Agregar(EntidadBitacora);
                         return Resultado;
                     }
                     else

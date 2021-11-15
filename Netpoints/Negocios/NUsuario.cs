@@ -11,12 +11,12 @@ namespace Negocios
     public class NUsuario
     {
         #region Agregar
-        public int Agregar(EUsuario obj)
+        public int Agregar(EUsuario obj,int Usuario)
         {
             try
             {
                 DUsuario db = new DUsuario();
-                return db.Agregar(obj);
+                return db.Agregar(obj,Usuario);
             }
             catch (Exception ex)
             {
@@ -41,24 +41,24 @@ namespace Negocios
         #endregion
 
         #region Modificar
-        public int Modificar(EUsuario obj)
+        public int Modificar(EUsuario obj,int idusuario)
         {
             try
             {
                 DUsuario db = new DUsuario();
-                return db.Modificar(obj);
+                return db.Modificar(obj,idusuario);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-        public int Desactivar(int IdUsuario)
+        public int Desactivar(int IdUsuario,int idusuarioses)
         {
             try
             {
                 DUsuario db = new DUsuario();
-                return db.Desactivar(IdUsuario);
+                return db.Desactivar(IdUsuario,idusuarioses);
             }
             catch (Exception ex)
             {

@@ -11,12 +11,12 @@ namespace Negocios
     public class NRol
     {
         #region Agregar
-        public int Agregar(ERol obj)
+        public int Agregar(ERol obj, int Usuario)
         {
             try
             {
                 DRol db = new DRol();
-                return db.Agregar(obj);
+                return db.Agregar(obj,Usuario);
             }
             catch (Exception ex)
             {
@@ -41,24 +41,24 @@ namespace Negocios
         #endregion
 
         #region Modificar
-        public int Modificar(ERol obj)
+        public int Modificar(ERol obj, int Usuario)
         {
             try
             {
                 DRol db = new DRol();
-                return db.Modificar(obj);
+                return db.Modificar(obj,Usuario);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-        public int Desactivar(int IdRol)
+        public int Desactivar(int IdRol,int Usuario)
         {
             try
             {
                 DRol db = new DRol();
-                return db.Desactivar(IdRol);
+                return db.Desactivar(IdRol, Usuario);
             }
             catch (Exception ex)
             {
