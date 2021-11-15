@@ -39,7 +39,8 @@ namespace Netpoints.Controllers
                 {
                     return View();
                 }
-                int FilasAfectadas = Enlaces.Agregar(Modelo);
+                EUsuario User = (EUsuario)Session["User"];
+                int FilasAfectadas = Enlaces.Agregar(Modelo,User.IdUsuario);
                 if (FilasAfectadas > 0)
                 {
                     return Json("success");
@@ -92,7 +93,8 @@ namespace Netpoints.Controllers
             try
             {
                 NEnlaces Negocios = new NEnlaces();
-                int FilasAfectadas = Negocios.Modificar(Modelo);
+                EUsuario User = (EUsuario)Session["User"];
+                int FilasAfectadas = Negocios.Modificar(Modelo,User.IdUsuario);
                 if (FilasAfectadas > 0)
                 {
                     return Json("success");
@@ -116,7 +118,8 @@ namespace Netpoints.Controllers
             try
             {
                 NEnlaces Negocios = new NEnlaces();
-                int FilasAfectadas = Negocios.Eliminar(int.Parse(id));
+                EUsuario User = (EUsuario)Session["User"];
+                int FilasAfectadas = Negocios.Eliminar(int.Parse(id),User.IdUsuario);
                 if (FilasAfectadas > 0)
                 {
                     TempData["msg"] = "0";

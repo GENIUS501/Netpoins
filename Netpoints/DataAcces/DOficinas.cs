@@ -12,8 +12,11 @@ namespace DataAcces
     public class DOficinas
     {
         Enlaces_TelecomEntities db = new Enlaces_TelecomEntities();
+        EBitacoraCambios EntidadBitacora = new EBitacoraCambios();
+        DBitacoraCambios Bitacora = new DBitacoraCambios();
+
         #region Agregar
-        public int Agregar(EOficinas Obj)//Viene de la vista Obj
+        public int Agregar(EOficinas Obj,int Usuario)//Viene de la vista Obj
         {
             try
             {
@@ -31,6 +34,11 @@ namespace DataAcces
                     if (Resultado > 0)
                     {
                         Ts.Complete();
+                        EntidadBitacora.IdUsuario = Usuario;
+                        EntidadBitacora.Tipo = "Agregar";
+                        EntidadBitacora.Detalle = "Sitios";
+                        EntidadBitacora.FechaHora = DateTime.Now;
+                        Bitacora.Agregar(EntidadBitacora);
                         return Resultado;
                     }
                     else
@@ -75,7 +83,7 @@ namespace DataAcces
         #endregion
 
         #region Modificar
-        public int Modificar(EOficinas Obj)
+        public int Modificar(EOficinas Obj,int Usuario)
         {
             try
             {
@@ -93,6 +101,11 @@ namespace DataAcces
                     if (Resultado > 0)
                     {
                         Ts.Complete();
+                        EntidadBitacora.IdUsuario = Usuario;
+                        EntidadBitacora.Tipo = "Editar";
+                        EntidadBitacora.Detalle = "Sitios";
+                        EntidadBitacora.FechaHora = DateTime.Now;
+                        Bitacora.Agregar(EntidadBitacora);
                         return Resultado;
                     }
                     else
@@ -111,7 +124,7 @@ namespace DataAcces
         #endregion
 
         #region Eliminar
-        public int Eliminar(int Id)
+        public int Eliminar(int Id,int Usuario)
         {
             try
             {
@@ -127,6 +140,11 @@ namespace DataAcces
                     if (Resultado > 0)
                     {
                         Ts.Complete();
+                        EntidadBitacora.IdUsuario = Usuario;
+                        EntidadBitacora.Tipo = "Agregar";
+                        EntidadBitacora.Detalle = "Sitios";
+                        EntidadBitacora.FechaHora = DateTime.Now;
+                        Bitacora.Agregar(EntidadBitacora);
                         return Resultado;
                     }
                     else

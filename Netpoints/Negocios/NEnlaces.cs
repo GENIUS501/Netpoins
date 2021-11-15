@@ -11,16 +11,15 @@ namespace Negocios
     public class NEnlaces
     {
         #region Agregar
-        public int Agregar(EEnlaces obj)
+        public int Agregar(EEnlaces obj, int Usuario)
         {
             try
             {
                 DEnlaces db = new DEnlaces();
-                return db.Agregar(obj);
+                return db.Agregar(obj, Usuario);
             }
-            catch (Exception ex)
-            {
-                throw ex;
+            catch (Exception ex) { 
+                throw ex; 
             }
         }
         #endregion
@@ -41,12 +40,12 @@ namespace Negocios
         #endregion
 
         #region Modificar
-        public int Modificar(EEnlaces obj)
+        public int Modificar(EEnlaces obj,int Usuario)
         {
             try
             {
                 DEnlaces db = new DEnlaces();
-                return db.Modificar(obj);
+                return db.Modificar(obj,Usuario);
             }
             catch (Exception ex)
             {
@@ -56,12 +55,12 @@ namespace Negocios
         #endregion
 
         #region Eliminar
-        public int Eliminar(int IDOficina)
+        public int Eliminar(int IDOficina, int Usuario)
         {
             try
             {
                 DEnlaces db = new DEnlaces();
-                return db.Eliminar(IDOficina);
+                return db.Eliminar(IDOficina,Usuario);
             }
             catch (Exception ex)
             {
