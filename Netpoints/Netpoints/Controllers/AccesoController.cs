@@ -1,4 +1,5 @@
-﻿using Negocios;
+﻿using Entidades;
+using Negocios;
 using Netpoints.Models;
 using System;
 using System.Collections.Generic;
@@ -38,14 +39,18 @@ namespace Netpoints.Controllers
                 else
                 {
                     ////Crea la sesion con la que el sistema validara
-                    //int id_sesion = Helper.ingresar(Ent_Unsuario.NickName);
+                    NBitacoraRegistro Registro = new NBitacoraRegistro();
+                    EBitacoraRegistros Entidad = new EBitacoraRegistros();
+                    Entidad.IdUsuario = UsuarioLogueado.IdUsuario;
+                    Entidad.FechaHoraIngreso = DateTime.Now;
+                    int id_sesion = Registro.Agregar(Entidad);
                     //if (id_sesion == 0)
                     //{
                     //    TempData["msg"] = "<script>alert('Error al ingresar al sistema!!!');</script>";
 
                     //    return View();
                     //}
-                    //Session["id_sesion"] = id_sesion;
+                    Session["id_sesion"] = id_sesion;
                     Session["User"] = UsuarioLogueado;
                     //TempData["msg"] = "<script>alert('Bienvenido " + Ent_Unsuario.NickName + "');</script>";
                     //Redirige a la pagina principal del sistema
@@ -55,7 +60,7 @@ namespace Netpoints.Controllers
             catch (Exception ex)
             {
                 ViewBag.Error = ex.Message;
-                return RedirectToAction("Login", "Home");
+                return RedirectToAction("Login", "Acceso");
                 //   return View();
             }
         }

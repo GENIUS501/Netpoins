@@ -34,5 +34,20 @@ namespace Netpoints.Controllers
         {
             return View();
         }
+
+        public void Salir()
+        {
+            int sesion = int.Parse(Session["id_sesion"].ToString());
+            NBitacoraRegistro Bitacora = new NBitacoraRegistro();
+            int resultado = Bitacora.Modificar(sesion);
+            Session["User"] = null;
+            Session["id_sesion"] = null;
+            if (resultado > 0)
+            {
+
+                Response.Redirect("~/Acceso/Login");
+            }
+        }
+
     }
 }
