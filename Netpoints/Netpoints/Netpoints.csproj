@@ -134,6 +134,7 @@
     <Compile Include="Controllers\ProveedoresController.cs" />
     <Compile Include="Controllers\RedesController.cs" />
     <Compile Include="Controllers\ReporteProveedorController.cs" />
+    <Compile Include="Controllers\ReporteUsuarioController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Filters\AuthorizeUser.cs" />
@@ -256,6 +257,7 @@
     <Content Include="Views\Enlaces\Edit.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Acceso\Login.cshtml" />
+    <Content Include="Views\ReporteUsuario\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

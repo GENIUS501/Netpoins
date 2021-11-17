@@ -28,7 +28,7 @@ namespace Netpoints.Filters
                 if (Usuario == null)
                 {
                     //Envia el error a pantalla
-                    filterContext.Result = new RedirectResult("~/Home/Login");
+                    filterContext.Result = new RedirectResult("~/Acceso/Login");
                 }
                 else
                 {
