@@ -204,6 +204,34 @@ namespace DataAcces
                 throw ex;
             }
         }
+        public List<EUsuario> Mostrar(int Idrol)
+        {
+            try
+            {
+                List<EUsuario> Obj = new List<EUsuario>();
+                var Objbd = db.Usuarios.Where(x => x.IdRol==Idrol).ToList();
+                foreach (var Item in Objbd)
+                {
+                    Obj.Add(new EUsuario()
+                    {
+                        IdRol = Item.IdRol,
+                        Nombre = Item.Nombre,
+                        Contrasena = Item.Contrasena,
+                        Email = Item.Email,
+                        Estado = Item.Estado,
+                        Identificacion = Item.Identificacion,
+                        IdUsuario = Item.IdUsuario,
+                        Telefono = Item.Telefono,
+                        Usuario = Item.Usuario
+                    });
+                }
+                return Obj;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         #endregion
 
         #region Metodos Personalizados

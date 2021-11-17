@@ -80,6 +80,18 @@ namespace Negocios
                 throw ex;
             }
         }
+        public List<EUsuario> Mostrar(int Idrol)
+        {
+            try
+            {
+                DUsuario db = new DUsuario();
+                return db.Mostrar(Idrol);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         #endregion
 
         #region Metodos Personalizados

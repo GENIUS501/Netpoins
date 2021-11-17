@@ -11,7 +11,7 @@ namespace Netpoints.Controllers
     public class ReporteUsuarioController : Controller
     {
         // GET: ReporteUsuario
-        public ActionResult Index()
+        public ActionResult Index(string Idrol)
         {
             #region Llenar drop down Roles
             //llena la lista que a su vez es una entidad
@@ -23,7 +23,14 @@ namespace Netpoints.Controllers
             #endregion
             NUsuario Negocios = new NUsuario();
             List<EUsuario> Lista = new List<EUsuario>();
-            Lista = Negocios.Mostrar();
+            if (Idrol != null)
+            {
+                Lista = Negocios.Mostrar(int.Parse(Idrol));
+            }
+            else
+            {
+                Lista = Negocios.Mostrar();
+            }
             return View(Lista);
         }
     }
