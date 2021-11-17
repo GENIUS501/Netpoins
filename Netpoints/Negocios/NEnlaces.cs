@@ -82,6 +82,18 @@ namespace Negocios
                 throw ex;
             }
         }
+        public List<EEnlaces> Mostrar(string Provincia)
+        {
+            try
+            {
+                DEnlaces db = new DEnlaces();
+                return db.Mostrar(Provincia);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         #endregion
     }
 }

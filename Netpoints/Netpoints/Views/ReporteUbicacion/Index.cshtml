@@ -1,18 +1,25 @@
-﻿@model IEnumerable<Entidades.EProveedores>
+﻿@model IEnumerable<Entidades.EEnlaces>
 
 @{
-    ViewBag.Title = "Reporte de proveedores";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div class="row">
     <div class="col-3">
         <div class="card">
             <div class="card-body">
                 <form>
                     <div class="form-floating mb-3 form-group">
-                        <input class="form-control" type="text" name="Nombre" id="Nombre" placeholder="Proveedor" required />
-                        <label for="Nombre"> Proveedor </label>
+                        <select class=" form-select" name="Provincia" id="Provincia" arial-label="Default select example" placeholder="Provincia" required>
+                            <option value="Alajuela">Alajuela</option>
+                            <option value="Cartago">Cartago</option>
+                            <option value="Guanacaste">Guanacaste</option>
+                            <option value="Heredia">Heredia</option>
+                            <option value="Limon">Limón</option>
+                            <option value="Puntarenas">Puntarenas</option>
+                            <option value="San Jose">San José</option>
+                        </select>
+                        <label for="Provincia"> Provincia </label>
                     </div>
                     <div class="mb-3">
                         <button type="submit" class="btn btn-outline-primary">Buscar<i class='bx bx-search'></i></button>
@@ -23,55 +30,38 @@
     </div>
 </div>
 <br />
-<table class="table table-dark table-hover" id="Reporte">
+<table id="GridEnlaces" class="table table-dark table-hover">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IdProveedor)
-            </th>
-            <th>
-                Proveedor
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Contacto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefono)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Comentario)
-            </th>
+            <th>Provincia</th>
+            <th>Sitio</th>
+            <th>Unidad Ejecutora</th>
+            <th>Número de Linea</th>
+            <th>IP Gateway</th>
+            <th>Interface</th>
+            <th>Tipo Enlace</th>
+            <th>Bandwidth</th>
+            <th>Medio Enlace</th>
+            <th>Proveedor</th>
+            <th>Comentario</th>
         </tr>
     </thead>
     <tbody>
-        @if (Model != null)
+        @foreach (var item in Model)
         {
-            foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IdProveedor)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NombreEmpresa)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Contacto)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Telefono)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Comentario)
-                    </td>
-                </tr>
-            }
+            <tr>
+                <td>@Netpoints.Controllers.EnlacesController.Oficinas(item.IdOficina.ToString()).Provincia</td>
+                <td>@Netpoints.Controllers.EnlacesController.Oficinas(item.IdOficina.ToString()).NombreOficina</td>
+                <td>@Netpoints.Controllers.EnlacesController.Oficinas(item.IdOficina.ToString()).UE</td>
+                <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdOficina.ToString()).Linea</td>
+                <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdOficina.ToString()).Gateway</td>
+                <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdOficina.ToString()).Interface</td>
+                <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdOficina.ToString()).TipoEnlace</td>
+                <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdOficina.ToString()).Bandwidth</td>
+                <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdOficina.ToString()).MedioEnlace</td>
+                <td>@Netpoints.Controllers.EnlacesController.Proveedores(item.IdOficina.ToString()).NombreEmpresa</td>
+                <td>@item.Comentario</td>
+            </tr>
         }
     </tbody>
 </table>
@@ -88,7 +78,7 @@
             var Usuario =@Html.Raw(User.Usuario);
             var f = new Date();
             var d = f.getDate() + "/" + f.getMonth() + "/" + f.getFullYear() + " " + f.getHours() + ":" + f.getMinutes();
-            $('#Reporte').DataTable({
+            $('#GridEnlaces').DataTable({
                 "searching": false,// false to disable pagination (or any other option)
                 "lengthChange": false,
                 dom: 'Bfrtip',
@@ -114,8 +104,8 @@
                     {
                         extend: "pdf",
                         text: '<button class="btn btn-outline-primary">Exportar a PDF<i class="bx bxs-file-pdf" ></i></button>',
-                        filename: 'Reporte de Proveedores',
-                        title: 'BCR \n Netpoints \n Reporte de proveedores \n Fecha:' + d,
+                        filename: 'Reporte de enlaces por ubicacion',
+                        title: 'BCR \n Netpoints \n Reporte de enlaces por ubicacion \n Fecha:' + d,
                         customize: function (doc) {
                             doc['footer'] = (function (page, pages) {
                                 return {
@@ -171,5 +161,6 @@
                 if (IsLoading) Loading.close();
             }, 500)
         });
+
     </script>
 }

@@ -187,6 +187,30 @@ namespace DataAcces
                 throw ex;
             }
         }
+        public List<EEnlaces> Mostrar(string Provincia)
+        {
+            try
+            {
+                List<EEnlaces> Obj = new List<EEnlaces>();
+                var Objbd = db.Enlaces.Where(x => x.Oficinas.Provincia==Provincia).ToList();
+                foreach (var Item in Objbd)
+                {
+                    Obj.Add(new EEnlaces()
+                    {
+                        Comentario = Item.Comentario,
+                        IdOficina = Item.IdOficina,
+                        IdProveedor = Item.IdProveedor,
+                        IdRed = Item.IdRed,
+                        IdEnlace = Item.IdEnlace
+                    });
+                }
+                return Obj;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         #endregion
         //#region Metodos Personalizados
         ////public string Nombre_Rol(int id)

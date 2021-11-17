@@ -56,6 +56,7 @@ namespace DataAcces
                 {
                     Obj.Add(new EBitacoraCambios()
                     {
+                        IdCambio = Item.IdCambio,
                         IdUsuario = Item.IdUsuario,
                         FechaHora = Item.FechaHora,
                         Tipo = Item.Tipo,
