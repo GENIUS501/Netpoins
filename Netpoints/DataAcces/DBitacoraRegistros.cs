@@ -8,23 +8,53 @@ using System.Transactions;
 
 namespace DataAcces
 {
-    public class DBitacoraCambios
+    public class DBitacoraRegistros
     {
         Enlaces_TelecomEntities db = new Enlaces_TelecomEntities();
         #region Agregar
-        public int Agregar(EBitacoraCambios obj)//Viene de la vista obj
+        public int Agregar(EBitacoraRegistros obj)//Viene de la vista obj
         {
             try
             {
                 using (TransactionScope Ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
-                    BitacoraCambios Objbd = new BitacoraCambios();//Viene de la base de datos
+                    BitacoraRegistros Objbd = new BitacoraRegistros();//Viene de la base de datos
                     Objbd.IdUsuario = obj.IdUsuario;
-                    Objbd.FechaHora = obj.FechaHora;
-                    Objbd.Tipo = obj.Tipo;
-                    Objbd.Detalle = obj.Detalle;
-                    db.BitacoraCambios.Add(Objbd);
+                    Objbd.FechaHoraIngreso = obj.FechaHoraIngreso;
+                    db.BitacoraRegistros.Add(Objbd);
+                    db.SaveChanges();//Commit
+                    int Resultado = Objbd.IdRegistro;
 
+                    if (Resultado > 0)
+                    {
+                        Ts.Complete();
+                        return Resultado;
+                    }
+                    else
+                    {
+                        Ts.Dispose();
+                        return 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        #endregion
+
+        #region Modificar
+        public int Modificar(int IdRegistro)
+        {
+            try
+            {
+                using (TransactionScope Ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    //Esto llena la entidad con los datos correspondientes a la entidad traida de la bd
+                    var Objbd = db.BitacoraRegistros.Find(IdRegistro);
+                    Objbd.FechaHoraSalida = DateTime.Now;
+                    //Guarda los cambios en bd
                     int Resultado = db.SaveChanges();//Commit
 
                     if (Resultado > 0)
@@ -43,6 +73,7 @@ namespace DataAcces
             {
                 throw ex;
             }
+
         }
         #endregion
 
