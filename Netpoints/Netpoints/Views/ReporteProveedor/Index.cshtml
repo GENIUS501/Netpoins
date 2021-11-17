@@ -75,11 +75,15 @@
         }
     </tbody>
 </table>
+@{
+    var User = (Entidades.EUsuario)Session["User"];
+}
 @section scripts{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/pdfmake.min.js" integrity="sha512-Yf733gmgLgGUo+VfWq4r5HAEaxftvuTes86bKvwTpqOY3oH0hHKtX/9FfKYUcpaxeBJxeXvcN4EY3J6fnmc9cA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/vfs_fonts.js"></script>
     <script>
         $(document).ready(function () {
+            var Usuario =@Html.Raw(User.Usuario);
             var f = new Date();
             var d = f.getDate() + "/" + f.getMonth() + "/" + f.getFullYear() + " " + f.getHours() + ":" + f.getMinutes();
             $('#Reporte').DataTable({
