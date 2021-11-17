@@ -4,12 +4,24 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div class="row">
+    <div class="col-3">
+        <div class="card">
+            <div class="card-body">
+                <form>
+                    <div class="form-floating mb-3 form-group">
+                        @Html.DropDownList("IdRol", ViewBag.Roles as SelectList, new { @class = "form-control", @required = "required" })
+                        <label for="Nombre"> Rol </label>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-outline-primary">Buscar<i class='bx bx-search'></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
 <table id="GridUsuarios" class="table table-dark table-hover">
     <thead>
         <tr>
@@ -37,7 +49,7 @@
         }
     </tbody>
 </table>
-@{ 
+@{
     var User = (Entidades.EUsuario)Session["User"];
 }
 @section scripts{
@@ -51,6 +63,9 @@
             var f = new Date();
             var d = f.getDate() + "/" + f.getMonth() + "/" + f.getFullYear() + " " + f.getHours() + ":" + f.getMinutes();
             $('#GridUsuarios').DataTable({
+                "searching": false,// false to disable pagination (or any other option)
+                "lengthChange": false,
+                dom: 'Bfrtip',
                 language: {
                     sLengthMenu: "_MENU_",
                     decimal: "",
@@ -84,7 +99,7 @@
                                             alignment: 'left',
                                             text:
                                                 [
-                                                    { text: Usuario, italics: true }
+                                                    { text: 'Usuario: '+Usuario, italics: true }
                                                 ]
                                         },
                                         {

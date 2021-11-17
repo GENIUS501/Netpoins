@@ -17,7 +17,7 @@ namespace DataAcces
         EBitacoraCambios EntidadBitacora = new EBitacoraCambios();
 
         #region Agregar
-        public int Agregar(EUsuario obj,int Usuario)//Viene de la vista obj
+        public int Agregar(EUsuario obj, int Usuario)//Viene de la vista obj
         {
             try
             {
@@ -92,7 +92,7 @@ namespace DataAcces
         #endregion
 
         #region Modificar
-        public int Modificar(EUsuario Obj,int Usuario)
+        public int Modificar(EUsuario Obj, int Usuario)
         {
             try
             {
@@ -137,7 +137,7 @@ namespace DataAcces
             }
 
         }
-        public int Desactivar(int IdUsuario,int Usuario)
+        public int Desactivar(int IdUsuario, int Usuario)
         {
             try
             {
@@ -275,7 +275,7 @@ namespace DataAcces
                 Usuarios Objbd = new Usuarios();
                 using (db)
                 {
-                    Objbd = db.Usuarios.Where(x => x.Usuario == Usuario && x.Contrasena == Pass).FirstOrDefault();
+                    Objbd = db.Usuarios.Where(x => x.Usuario == Usuario && x.Contrasena == Pass && x.Estado == true).FirstOrDefault();
                 }
                 if (Objbd != null)
                 {

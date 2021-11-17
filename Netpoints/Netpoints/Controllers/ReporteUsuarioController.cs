@@ -13,6 +13,14 @@ namespace Netpoints.Controllers
         // GET: ReporteUsuario
         public ActionResult Index()
         {
+            #region Llenar drop down Roles
+            //llena la lista que a su vez es una entidad
+            NUsuario negocios = new NUsuario();
+            var lista1 = negocios.LlenarRoles();
+            //Asignar y convertir los valores a items
+            var items = new SelectList(lista1, "IdRol", "Descripcion");
+            ViewBag.Roles = items;
+            #endregion
             NUsuario Negocios = new NUsuario();
             List<EUsuario> Lista = new List<EUsuario>();
             Lista = Negocios.Mostrar();
