@@ -34,7 +34,7 @@ namespace Negocios
                 throw ex;
             }
         }
-        public List<EBitacoraCambios> Mostrar()
+        public List<EBitacoraRegistros> Mostrar()
         {
             try
             {

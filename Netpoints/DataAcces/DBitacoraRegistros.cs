@@ -78,21 +78,20 @@ namespace DataAcces
         #endregion
 
         #region Listar
-        public List<EBitacoraCambios> Mostrar()
+        public List<EBitacoraRegistros> Mostrar()
         {
             try
             {
-                List<EBitacoraCambios> Obj = new List<EBitacoraCambios>();
-                var Objbd = db.BitacoraCambios.ToList();
+                List<EBitacoraRegistros> Obj = new List<EBitacoraRegistros>();
+                var Objbd = db.BitacoraRegistros.ToList();
                 foreach (var Item in Objbd)
                 {
-                    Obj.Add(new EBitacoraCambios()
+                    Obj.Add(new EBitacoraRegistros()
                     {
-                        IdCambio = Item.IdCambio,
+                        IdRegistro = Item.IdRegistro,
                         IdUsuario = Item.IdUsuario,
-                        FechaHora = Item.FechaHora,
-                        Tipo = Item.Tipo,
-                        Detalle = Item.Detalle
+                        FechaHoraIngreso = Item.FechaHoraIngreso,
+                        FechaHoraSalida = Item.FechaHoraSalida
                     });
                 }
                 return Obj;

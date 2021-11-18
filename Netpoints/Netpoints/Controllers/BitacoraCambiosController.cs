@@ -1,5 +1,6 @@
 ﻿using Entidades;
 using Negocios;
+using Netpoints.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Netpoints.Controllers
     public class BitacoraCambiosController : Controller
     {
         // GET: BitacoraCambios
+        [AuthorizeUser(idmodulo: 10)]
         public ActionResult Index()
         {
             NBitacoraCambios Negocios = new NBitacoraCambios();

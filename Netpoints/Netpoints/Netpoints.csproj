@@ -129,6 +129,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccesoController.cs" />
     <Compile Include="Controllers\BitacoraCambiosController.cs" />
+    <Compile Include="Controllers\BitacoraRegistrosController.cs" />
     <Compile Include="Controllers\EnlacesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OficinasController.cs" />
@@ -262,6 +263,7 @@
     <Content Include="Views\ReporteUsuario\Index.cshtml" />
     <Content Include="Views\ReporteUbicacion\Index.cshtml" />
     <Content Include="Views\BitacoraCambios\Index.cshtml" />
+    <Content Include="Views\BitacoraRegistros\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

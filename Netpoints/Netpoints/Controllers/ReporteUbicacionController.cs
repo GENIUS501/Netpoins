@@ -1,5 +1,6 @@
 ﻿using Entidades;
 using Negocios;
+using Netpoints.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Netpoints.Controllers
 {
     public class ReporteUbicacionController : Controller
     {
+        [AuthorizeUser(idmodulo: 7)]
         // GET: ReporteUbicacion
         public ActionResult Index(string Provincia)
         {
