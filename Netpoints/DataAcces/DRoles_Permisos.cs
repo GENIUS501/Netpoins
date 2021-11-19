@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -94,6 +95,7 @@ namespace DataAcces
                     Objbd.Modulo = Obj.Modulo;
                     Objbd.Agregar = Obj.Agregar;
                     Objbd.Eliminar = Obj.Eliminar;
+                    db.Entry(Objbd).State = EntityState.Modified;
                     //Guarda los cambios en bd
                     int Resultado = db.SaveChanges();//Commit
 

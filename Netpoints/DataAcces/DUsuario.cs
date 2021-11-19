@@ -111,6 +111,7 @@ namespace DataAcces
                     Objbd.Nombre = Obj.Nombre;
                     Objbd.Telefono = Obj.Telefono;
                     Objbd.Usuario = Obj.Usuario;
+                    db.Entry(Objbd).State = EntityState.Modified;
                     //Guarda los cambios en bd
                     int Resultado = db.SaveChanges();//Commit
 

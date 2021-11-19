@@ -95,6 +95,7 @@ namespace DataAcces
                     Objbd.IdOficina = Obj.IdOficina;
                     Objbd.IdProveedor = Obj.IdProveedor;
                     Objbd.IdRed = Obj.IdRed;
+                    db.Entry(Objbd).State = EntityState.Modified;
                     //Guarda los cambios en bd
                     int Resultado = db.SaveChanges();//Commit
 

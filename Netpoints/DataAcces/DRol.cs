@@ -92,6 +92,7 @@ namespace DataAcces
                     Objbd.Rol = Obj.Rol;
                     Objbd.Descripcion = Obj.Descripcion;
                     Objbd.Estado = Obj.Estado;
+                    db.Entry(Objbd).State = EntityState.Modified;
                     //Guarda los cambios en bd
                     int Resultado = db.SaveChanges();//Commit
 

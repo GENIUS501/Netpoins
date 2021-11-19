@@ -103,6 +103,7 @@ namespace DataAcces
                     Objbd.Linea = Obj.Linea;
                     Objbd.MedioEnlace = Obj.MedioEnlace;
                     Objbd.TipoEnlace = Obj.TipoEnlace;
+                    db.Entry(Objbd).State = EntityState.Modified;
                     //Guarda los cambios en bd
                     int Resultado = db.SaveChanges();//Commit
 

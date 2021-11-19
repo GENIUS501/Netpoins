@@ -98,6 +98,7 @@ namespace DataAcces
                     Objbd.Email = Obj.Email;
                     Objbd.NombreEmpresa = Obj.NombreEmpresa;
                     Objbd.Telefono = Obj.Telefono;
+                    db.Entry(Objbd).State = EntityState.Modified;
                     //Guarda los cambios en bd
                     int Resultado = db.SaveChanges();//Commit
 

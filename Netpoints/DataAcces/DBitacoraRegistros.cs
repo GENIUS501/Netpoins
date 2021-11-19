@@ -1,6 +1,7 @@
 ﻿using Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,6 +55,7 @@ namespace DataAcces
                     //Esto llena la entidad con los datos correspondientes a la entidad traida de la bd
                     var Objbd = db.BitacoraRegistros.Find(IdRegistro);
                     Objbd.FechaHoraSalida = DateTime.Now;
+                    db.Entry(Objbd).State = EntityState.Modified;
                     //Guarda los cambios en bd
                     int Resultado = db.SaveChanges();//Commit
 

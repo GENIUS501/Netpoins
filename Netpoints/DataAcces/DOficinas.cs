@@ -95,6 +95,7 @@ namespace DataAcces
                     Objbd.NombreOficina = Obj.NombreOficina;
                     Objbd.Provincia = Obj.Provincia;
                     Objbd.UE = Obj.UE;
+                    db.Entry(Objbd).State = EntityState.Modified;
                     //Guarda los cambios en bd
                     int Resultado = db.SaveChanges();//Commit
 
