@@ -36,24 +36,24 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>@Netpoints.Controllers.EnlacesController.Oficinas(item.IdOficina.ToString()).Provincia</td>
-                            <td>@Netpoints.Controllers.EnlacesController.Oficinas(item.IdOficina.ToString()).NombreOficina</td>
-                            <td>@Netpoints.Controllers.EnlacesController.Oficinas(item.IdOficina.ToString()).UE</td>
-                            <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdOficina.ToString()).Linea</td>
-                            <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdOficina.ToString()).Gateway</td>
-                            <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdOficina.ToString()).Interface</td>
-                            <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdOficina.ToString()).TipoEnlace</td>
-                            <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdOficina.ToString()).Bandwidth</td>
-                            <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdOficina.ToString()).MedioEnlace</td>
-                            <td>@Netpoints.Controllers.EnlacesController.Proveedores(item.IdOficina.ToString()).NombreEmpresa</td>
-                            <td>@item.Comentario</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-primary" onclick="ClickUpdate(@item.IdEnlace)"><i class='bx bxs-edit'></i>Editar</button>
-                                <button type="button" class="btn btn-outline-primary" onclick="ClickDelete(@item.IdEnlace)"><i class='bx bxs-trash'></i>Eliminar</button>
+                    <tr>
+                        <td>@Netpoints.Controllers.EnlacesController.Oficinas(item.IdOficina.ToString()).Provincia</td>
+                        <td>@Netpoints.Controllers.EnlacesController.Oficinas(item.IdOficina.ToString()).NombreOficina</td>
+                        <td>@Netpoints.Controllers.EnlacesController.Oficinas(item.IdOficina.ToString()).UE</td>
+                        <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdRed.ToString()).Linea</td>
+                        <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdRed.ToString()).Gateway</td>
+                        <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdRed.ToString()).Interface</td>
+                        <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdRed.ToString()).TipoEnlace</td>
+                        <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdRed.ToString()).Bandwidth</td>
+                        <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdRed.ToString()).MedioEnlace</td>
+                        <td>@Netpoints.Controllers.EnlacesController.Proveedores(item.IdProveedor.ToString()).NombreEmpresa</td>
+                        <td>@item.Comentario</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-primary" onclick="ClickUpdate(@item.IdEnlace)"><i class='bx bxs-edit'></i>Editar</button>
+                            <button type="button" class="btn btn-outline-primary" onclick="ClickDelete(@item.IdEnlace)"><i class='bx bxs-trash'></i>Eliminar</button>
 
-                            </td>
-                        </tr>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>

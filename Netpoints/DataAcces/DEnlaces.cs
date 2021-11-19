@@ -197,14 +197,14 @@ namespace DataAcces
                     var Objbd = db.Enlaces.Where(x => x.IdProveedor == Proveedor).ToList();
                     foreach (var Item in Objbd)
                     {
-                        Obj.Add(new EEnlaces()
-                        {
-                            Comentario = Item.Comentario,
-                            IdOficina = Item.IdOficina,
-                            IdProveedor = Item.IdProveedor,
-                            IdRed = Item.IdRed,
-                            IdEnlace = Item.IdEnlace
-                        });
+                            Obj.Add(new EEnlaces()
+                            {
+                                Comentario = Item.Comentario,
+                                IdOficina = Item.IdOficina,
+                                IdProveedor = Item.IdProveedor,
+                                IdRed = Item.IdRed,
+                                IdEnlace = Item.IdEnlace
+                            });
                     }
                     return Obj;
                 }
