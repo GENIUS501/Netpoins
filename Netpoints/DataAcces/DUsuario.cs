@@ -257,8 +257,8 @@ namespace DataAcces
                 using (db)
                 {
                     //Retorna el nombre del perfil correspondiente al id enviado al metodo
-                    var Identificacion = await db.Usuarios.Where(x => x.Identificacion == id).FirstOrDefaultAsync();
-                    if (Identificacion != null)
+                    var Objbd = await db.Usuarios.Where(x => x.Identificacion == id).FirstOrDefaultAsync();
+                    if (Objbd != null)
                     {
                         return false;
                     }

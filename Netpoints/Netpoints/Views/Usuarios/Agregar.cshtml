@@ -90,6 +90,7 @@
                         $('#Usuario').val(data);
                         $('#Usuario').prop('readonly', true);
                         $('#serificar').prop('disabled', true);
+                        return false;
                     }
                     if (data == "Error") {
                         Loading.close();
@@ -97,6 +98,7 @@
                             icon: 'error',
                             title: 'La identificación ya se encuentra registrada!'
                         });
+                        return false;
                     }
                 },
                 error: function (xhr, error, status) {
@@ -105,6 +107,7 @@
                         icon: 'error',
                         title: 'Error'
                     });
+                    return false;
                 },
             });
         }

@@ -190,8 +190,8 @@ namespace DataAcces
                 using (db)
                 {
                     //Retorna el nombre del perfil correspondiente al id enviado al metodo
-                    var Identificacion = await db.Roles.Where(x => x.Rol == id).FirstOrDefaultAsync();
-                    if (Identificacion != null)
+                    var Objbd = await db.Roles.Where(x => x.Rol == id).FirstOrDefaultAsync();
+                    if (Objbd != null)
                     {
                         return false;
                     }

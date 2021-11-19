@@ -82,6 +82,18 @@ namespace Negocios
                 throw ex;
             }
         }
+        public List<EEnlaces> MostrarProveedor(int Proveedor)
+        {
+            try
+            {
+                DEnlaces db = new DEnlaces();
+                return db.MostrarProveedores(Proveedor);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public List<EEnlaces> Mostrar(string Provincia)
         {
             try

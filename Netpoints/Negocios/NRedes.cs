@@ -84,5 +84,20 @@ namespace Negocios
             }
         }
         #endregion
+
+        #region Verificar
+        public async Task<bool> Verificar(string Id)
+        {
+            try
+            {
+                DRedes db = new DRedes();
+                return await db.Verificar(Id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        #endregion
     }
 }

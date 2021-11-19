@@ -199,5 +199,30 @@ namespace DataAcces
             }
         }
         #endregion
+        #region Metodos personalizados
+        public async Task<bool> Verificar(string id)
+        {
+            try
+            {
+                using (db)
+                {
+                    //Retorna el nombre del perfil correspondiente al id enviado al metodo
+                    var Objbd = await db.Redes.Where(x => x.Linea == id).FirstOrDefaultAsync();
+                    if (Objbd != null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        #endregion
     }
 }

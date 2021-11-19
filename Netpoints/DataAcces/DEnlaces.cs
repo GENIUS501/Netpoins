@@ -16,7 +16,7 @@ namespace DataAcces
         DBitacoraCambios Bitacora = new DBitacoraCambios();
 
         #region Agregar
-        public int Agregar(EEnlaces Obj,int Usuario)//Viene de la vista Obj
+        public int Agregar(EEnlaces Obj, int Usuario)//Viene de la vista Obj
         {
             try
             {
@@ -83,7 +83,7 @@ namespace DataAcces
         #endregion
 
         #region Modificar
-        public int Modificar(EEnlaces Obj,int Usuario)
+        public int Modificar(EEnlaces Obj, int Usuario)
         {
             try
             {
@@ -124,7 +124,7 @@ namespace DataAcces
         #endregion
 
         #region Eliminar
-        public int Eliminar(int Id,int Usuario)
+        public int Eliminar(int Id, int Usuario)
         {
             try
             {
@@ -178,9 +178,36 @@ namespace DataAcces
                         IdProveedor = Item.IdProveedor,
                         IdRed = Item.IdRed,
                         IdEnlace = Item.IdEnlace
-                });
+                    });
                 }
                 return Obj;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<EEnlaces> MostrarProveedores(int Proveedor)
+        {
+            try
+            {
+                using (db)
+                {
+                    List<EEnlaces> Obj = new List<EEnlaces>();
+                    var Objbd = db.Enlaces.Where(x => x.IdProveedor == Proveedor).ToList();
+                    foreach (var Item in Objbd)
+                    {
+                        Obj.Add(new EEnlaces()
+                        {
+                            Comentario = Item.Comentario,
+                            IdOficina = Item.IdOficina,
+                            IdProveedor = Item.IdProveedor,
+                            IdRed = Item.IdRed,
+                            IdEnlace = Item.IdEnlace
+                        });
+                    }
+                    return Obj;
+                }
             }
             catch (Exception ex)
             {
@@ -192,7 +219,7 @@ namespace DataAcces
             try
             {
                 List<EEnlaces> Obj = new List<EEnlaces>();
-                var Objbd = db.Enlaces.Where(x => x.Oficinas.Provincia==Provincia).ToList();
+                var Objbd = db.Enlaces.Where(x => x.Oficinas.Provincia == Provincia).ToList();
                 foreach (var Item in Objbd)
                 {
                     Obj.Add(new EEnlaces()

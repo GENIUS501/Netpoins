@@ -16,44 +16,47 @@
                         <div class="form-floating mb-3 form-group">
                             <input class="form-control" type="text" name="Linea" id="Linea" maxlength="8" placeholder="Linea" required />
                             <label for="Linea">Linea</label>
+                            <button type="button" onclick="Verificar()" class="btn btn-outline-primary" id="serificar">Verificar <i class='bx bx-check-square'></i></button>
                         </div>
-                        <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="text" name="Gateway" id="Gateway"  maxlength="15" placeholder="IP Gateway" required />
-                            <label for="Gateway">IP Gateway </label>
-                        </div>
-                        <div class="form-floating mb-3 form-group">
-                            <select class=" form-select" name="Interface" id="Interface" arial-label="Default select example" required>
-                                <option value="Internet 1">Internet 1</option>
-                                <option value="Internet 2">Internet 2</option>
-                            </select>
-                            <label for="Interface"> Interface </label>
-                        </div>
-                        <div class="form-floating mb-3 form-group">
-                            <select class=" form-select" name="TipoEnlace" id="TipoEnlace" arial-label="Default select example" required>
-                                <option value="Principal">Principal</option>
-                                <option value="Respaldo">Respaldo</option>
-                            </select>
-                            <label for="TipoEnlace"> Tipo Enlace </label>
-                        </div>
-                        <div class="form-floating mb-3 form-group">
-                            <input class="form-control" type="number" name="Bandwidth" id="Bandwidth"  min="256" placeholder="Bandwidth" required />
-                            <label for="Bandwidth">Bandwidth </label>
-                        </div>
-                        <div class="form-floating mb-3 form-group">
-                            <select class=" form-select" name="MedioEnlace" id="MedioEnlace" arial-label="Default select example" required>
-                                <option value="Fibra Optica">Fibra Optica</option>
-                                <option value="Inalambrico">Inalambrico</option>
-                                <option value="Cobre">Cobre</option>
-                            </select>
-                            <label for="MedioEnlace"> Medio Enlace </label>
-                        </div>
-                        <div class="form-floating mb-3 form-group">
-                            <textarea class="form-control" type="text" name="Comentario" id="textarea" rows="3" placeholder="Comentarios"> </textarea>
-                            <label for="Comentario"> Comentarios </label>
-                        </div>
-                        <br />
-                        <div class="mb-3">
-                            <button type="submit" class="btn btn-outline-primary">Guardar <i class='bx bx-save'></i></button>
+                        <div id="Datos">
+                            <div class="form-floating mb-3 form-group">
+                                <input class="form-control" type="text" name="Gateway" id="Gateway" maxlength="15" placeholder="IP Gateway" required />
+                                <label for="Gateway">IP Gateway </label>
+                            </div>
+                            <div class="form-floating mb-3 form-group">
+                                <select class=" form-select" name="Interface" id="Interface" arial-label="Default select example" required>
+                                    <option value="Internet 1">Internet 1</option>
+                                    <option value="Internet 2">Internet 2</option>
+                                </select>
+                                <label for="Interface"> Interface </label>
+                            </div>
+                            <div class="form-floating mb-3 form-group">
+                                <select class=" form-select" name="TipoEnlace" id="TipoEnlace" arial-label="Default select example" required>
+                                    <option value="Principal">Principal</option>
+                                    <option value="Respaldo">Respaldo</option>
+                                </select>
+                                <label for="TipoEnlace"> Tipo Enlace </label>
+                            </div>
+                            <div class="form-floating mb-3 form-group">
+                                <input class="form-control" type="number" name="Bandwidth" id="Bandwidth" min="256" placeholder="Bandwidth" required />
+                                <label for="Bandwidth">Bandwidth </label>
+                            </div>
+                            <div class="form-floating mb-3 form-group">
+                                <select class=" form-select" name="MedioEnlace" id="MedioEnlace" arial-label="Default select example" required>
+                                    <option value="Fibra Optica">Fibra Optica</option>
+                                    <option value="Inalambrico">Inalambrico</option>
+                                    <option value="Cobre">Cobre</option>
+                                </select>
+                                <label for="MedioEnlace"> Medio Enlace </label>
+                            </div>
+                            <div class="form-floating mb-3 form-group">
+                                <textarea class="form-control" type="text" name="Comentario" id="textarea" rows="3" placeholder="Comentarios"> </textarea>
+                                <label for="Comentario"> Comentarios </label>
+                            </div>
+                            <br />
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-outline-primary">Guardar <i class='bx bx-save'></i></button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -64,5 +67,47 @@
 @section scripts{
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Scripts/Redes/Agregar.js"></script>
-    <script>CreateValidator("#RedesEdit");</script>
+    <script>
+        CreateValidator("#RedesEdit");
+        $("#Datos").hide();
+                function Verificar() {
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("Verificar", "Redes")" + "?" + "id=" + $('#Linea').val(),
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    Loading.fire("Verificando...");
+                    if (data == "success") {
+                        Loading.close();
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Linea Valida!'
+                        });
+                        $("#Datos").show();
+                        $('#Linea').prop('readonly', true);
+                        $('#serificar').prop('disabled', true);
+                        return false;
+                    }
+                    if (data == "Error") {
+                        Loading.close();
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'La linea ya se encuentra registrada!'
+                        });
+                        return false;
+                    }
+                },
+                error: function (xhr, error, status) {
+                    Loading.close();
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Error'
+                    });
+                    return false;
+                },
+            });
+        }
+    </script>
 }

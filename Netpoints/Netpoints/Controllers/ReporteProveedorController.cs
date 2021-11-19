@@ -13,10 +13,19 @@ namespace Netpoints.Controllers
     {
         // GET: ReporteProveedor
         [AuthorizeUser(idmodulo: 6)]
-        public ActionResult Index()
+        public ActionResult Index(string Proveedor)
         {
-            NProveedores Negocios = new NProveedores();
-            List<EProveedores> Lista = new List<EProveedores>();
+            NEnlaces Negocios = new NEnlaces();
+            List<EEnlaces> Lista = new List<EEnlaces>();
+            NProveedores Proveedores = new NProveedores();
+            List<EProveedores> Lista2 = new List<EProveedores>();
+            Lista2 = Proveedores.Mostrar();
+            ViewBag.ddlProveedores = Lista2;
+            if (Proveedor != null && Proveedor != "")
+            {
+                Lista = Negocios.MostrarProveedor(int.Parse(Proveedor));
+                return View(Lista);
+            }
             Lista = Negocios.Mostrar();
             return View(Lista);
         }
