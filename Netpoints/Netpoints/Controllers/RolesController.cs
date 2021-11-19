@@ -45,7 +45,10 @@ namespace Netpoints.Controllers
                 Modelo.IdRol = FilasAfectadas;
                 var Permisos = Grabar(Modelo);
                 NRoles_Permisos Negocios_Permisos = new NRoles_Permisos();
-                int FilasAfectadasPermisos = Negocios_Permisos.Agregar(Permisos);
+                if (Permisos.Count() > 0)
+                {
+                    int FilasAfectadasPermisos = Negocios_Permisos.Agregar(Permisos,Modelo.IdRol);
+                }
                 if (FilasAfectadas > 0)
                 {
                     return Json("success");
@@ -604,7 +607,7 @@ namespace Netpoints.Controllers
                 int FilasAfectadas = Negocios.Modificar(Rol,User.IdUsuario);
                 var Permisos = Grabar(Model);
                 NRoles_Permisos Negocios_Permisos = new NRoles_Permisos();
-                int FilasAfectadasPermisos = Negocios_Permisos.Agregar(Permisos);
+                int FilasAfectadasPermisos = Negocios_Permisos.Agregar(Permisos,Model.IdRol);
                 return Json("success");        
             }
             catch (Exception ex)

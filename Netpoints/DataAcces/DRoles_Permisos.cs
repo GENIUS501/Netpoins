@@ -13,21 +13,23 @@ namespace DataAcces
     {
         Enlaces_TelecomEntities db = new Enlaces_TelecomEntities();
         #region Agregar
-        public int Agregar(List<ERoles_Permisos> obj)//Viene de la vista obj
+        public int Agregar(List<ERoles_Permisos> obj,int Idrol)//Viene de la vista obj
         {
             try
             {
                 using (TransactionScope Ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
-                    int Idrol = int.Parse(obj[0].Id_Rol.ToString());
                     var Permisos_Anteriores = db.Roles_Permisos.Where(x => x.Id_Rol == Idrol).ToList();
                     if (Permisos_Anteriores.Count > 0)
                     {
                         db.Roles_Permisos.RemoveRange(Permisos_Anteriores);
                     }
-                    string Objason = JsonConvert.SerializeObject(obj);
-                    List<Roles_Permisos> Permisos = JsonConvert.DeserializeObject<List<Roles_Permisos>>(Objason);
-                    db.Roles_Permisos.AddRange(Permisos);
+                    if (obj.Count > 0)
+                    {
+                        string Objason = JsonConvert.SerializeObject(obj);
+                        List<Roles_Permisos> Permisos = JsonConvert.DeserializeObject<List<Roles_Permisos>>(Objason);
+                        db.Roles_Permisos.AddRange(Permisos);
+                    }
 
                     int Resultado = db.SaveChanges();//Commit
 
@@ -225,7 +227,7 @@ namespace DataAcces
                                 Agregar = Item.Agregar,
                                 Eliminar = Item.Eliminar,
                             });
-                        
+
                         }
                         return Permisos;
                     }
@@ -246,7 +248,7 @@ namespace DataAcces
                     List<Roles_Permisos> Objbd = new List<Roles_Permisos>();
                     if (Accion == "A")
                     {
-                        Objbd = db.Roles_Permisos.Where(x => x.Id_Rol==Idrol && x.Modulo==IdModulo && x.Agregar=="S").ToList();
+                        Objbd = db.Roles_Permisos.Where(x => x.Id_Rol == Idrol && x.Modulo == IdModulo && x.Agregar == "S").ToList();
                     }
                     if (Accion == "E")
                     {
@@ -257,7 +259,7 @@ namespace DataAcces
                         Objbd = db.Roles_Permisos.Where(x => x.Id_Rol == Idrol && x.Modulo == IdModulo && x.Eliminar == "S").ToList();
                     }
                     List<ERoles_Permisos> Permisos = new List<ERoles_Permisos>();
-                    if (Objbd.Count()>0)
+                    if (Objbd.Count() > 0)
                     {
                         foreach (var Item in Objbd)
                         {

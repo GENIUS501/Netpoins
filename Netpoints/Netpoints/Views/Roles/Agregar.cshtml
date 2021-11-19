@@ -190,6 +190,7 @@
                         $("#Datos").show();
                         $('#Rol').prop('readonly', true);
                         $('#serificar').prop('disabled', true);
+                        return false;
                     }
                     if (data == "Error") {
                         Loading.close();
@@ -197,6 +198,7 @@
                             icon: 'error',
                             title: 'Rol invalido'
                         });
+                        return false;
                     }
                 },
                 error: function (xhr, error, status) {
@@ -205,6 +207,7 @@
                         icon: 'error',
                         title: 'Error'
                     });
+                    return false;
                 },
             });
         }

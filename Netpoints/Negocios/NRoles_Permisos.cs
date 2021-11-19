@@ -11,12 +11,12 @@ namespace Negocios
     public class NRoles_Permisos
     {
         #region Agregar
-        public int Agregar(List<ERoles_Permisos> obj)
+        public int Agregar(List<ERoles_Permisos> obj,int Idrol)
         {
             try
             {
                 DRoles_Permisos db = new DRoles_Permisos();
-                return db.Agregar(obj);
+                return db.Agregar(obj,Idrol);
             }
             catch (Exception ex)
             {
