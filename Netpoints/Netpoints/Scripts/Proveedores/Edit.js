@@ -1,4 +1,11 @@
-﻿$("#FormProveedores").submit(function (e) {
+﻿jQuery.fn.extend({
+    disable: function (state) {
+        return this.each(function () {
+            this.disabled = state;
+        });
+    }
+});
+$("#FormProveedores").submit(function (e) {
     e.preventDefault();
     $.validator.setDefaults({ ignore: "" });
     var Formulario = $(this);
@@ -28,6 +35,7 @@
             }
             if (data == "Error") {
                 Loading.close();
+                $('input[type="submit"], button').disable(false);
                 Toast.fire({
                     icon: 'error',
                     title: 'Error'
@@ -36,6 +44,7 @@
         },
         error: function (xhr, error, status) {
             Loading.close();
+            $('input[type="submit"], button').disable(false);
             Toast.fire({
                 icon: 'error',
                 title: 'Error'

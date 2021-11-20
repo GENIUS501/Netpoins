@@ -1,4 +1,11 @@
-﻿$("#Confirmar").submit(function (e) {
+﻿jQuery.fn.extend({
+    disable: function (state) {
+        return this.each(function () {
+            this.disabled = state;
+        });
+    }
+});
+$("#Confirmar").submit(function (e) {
     e.preventDefault();
     $.validator.setDefaults({ ignore: "" });
     var Formulario = $(this);
@@ -27,6 +34,7 @@
                 })
             }
             if (data == "Error") {
+                $('input[type="submit"], button').disable(false);
                 Toast.fire({
                     icon: 'error',
                     title: 'Error'
@@ -34,6 +42,7 @@
             }
         },
         error: function (xhr, error, status) {
+            $('input[type="submit"], button').disable(false);
             Toast.fire({
                 icon: 'error',
                 title: 'Error'
