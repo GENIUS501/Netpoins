@@ -1,0 +1,16 @@
+C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Negocios\bin\Release\Negocios.dll
+C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Negocios\bin\Release\Negocios.pdb
+C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Negocios\bin\Release\DataAcces.dll
+C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Negocios\bin\Release\Entidades.dll
+C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Negocios\bin\Release\EntityFramework.dll
+C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Negocios\bin\Release\Newtonsoft.Json.dll
+C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Negocios\bin\Release\DataAcces.pdb
+C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Negocios\bin\Release\DataAcces.dll.config
+C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Negocios\bin\Release\Entidades.pdb
+C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Negocios\bin\Release\EntityFramework.xml
+C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Negocios\bin\Release\Newtonsoft.Json.xml
+C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Negocios\obj\Release\Negocios.csproj.AssemblyReference.cache
+C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Negocios\obj\Release\Negocios.csproj.CoreCompileInputs.cache
+C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Negocios\obj\Release\Negocios.csproj.CopyComplete
+C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Negocios\obj\Release\Negocios.dll
+C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Negocios\obj\Release\Negocios.pdb

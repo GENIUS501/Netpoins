@@ -171,6 +171,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Files\Ayuda.pdf" />
+    <None Include="Properties\PublishProfiles\Netpoints - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\Netpoints - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\datatable\css\buttons.dataTables.min.css" />
     <Content Include="Scripts\datatable\css\colReorder.dataTables.min.css" />
