@@ -52,6 +52,7 @@ namespace Netpoints.Controllers
                     //}
                     Session["id_sesion"] = id_sesion;
                     Session["User"] = UsuarioLogueado;
+                    Session["Usuario"] = UsuarioLogueado.Usuario;
                     //TempData["msg"] = "<script>alert('Bienvenido " + Ent_Unsuario.NickName + "');</script>";
                     //Redirige a la pagina principal del sistema
                     return RedirectToAction("Index", "Home");

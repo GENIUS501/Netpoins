@@ -32,7 +32,7 @@ namespace Netpoints.Controllers
                 NUsuario negocios = new NUsuario();
                 var lista1 = negocios.LlenarRoles();
                 //Asignar y convertir los valores a items
-                var items = new SelectList(lista1, "IdRol", "Descripcion");
+                var items = new SelectList(lista1, "IdRol", "Rol");
                 //List<SelectListItem> items = lista1.ConvertAll(d =>
                 //{
                 //    return new SelectListItem()

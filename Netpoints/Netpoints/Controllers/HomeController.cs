@@ -41,6 +41,7 @@ namespace Netpoints.Controllers
             NBitacoraRegistro Bitacora = new NBitacoraRegistro();
             int resultado = Bitacora.Modificar(sesion);
             Session["User"] = null;
+            Session["Usuario"] = null;
             Session["id_sesion"] = null;
             if (resultado > 0)
             {
