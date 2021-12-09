@@ -42,7 +42,6 @@
             <th>Bandwidth</th>
             <th>Medio Enlace</th>
             <th>Proveedor</th>
-            <th>Comentario</th>
         </tr>
     </thead>
     <tbody>
@@ -59,7 +58,6 @@
                 <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdRed.ToString()).Bandwidth</td>
                 <td>@Netpoints.Controllers.EnlacesController.Redes(item.IdRed.ToString()).MedioEnlace</td>
                 <td>@Netpoints.Controllers.EnlacesController.Proveedores(item.IdProveedor.ToString()).NombreEmpresa</td>
-                <td>@item.Comentario</td>
             </tr>
         }
     </tbody>

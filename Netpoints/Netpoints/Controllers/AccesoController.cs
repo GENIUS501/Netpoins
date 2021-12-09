@@ -33,7 +33,7 @@ namespace Netpoints.Controllers
                     //Expresa el error a la vista
                     //ViewBag.Error = "Usuario o Contrasena invalida!!!";
                     //Notifica que la clave esta incorrecta
-                    //TempData["msg"] = "<script>alert('Usuario o contrasena invalida!!!');</script>";
+                    TempData["msg"] = "<script>alert('Usuario o contrasena incorrecto!!!');</script>";
                     return View();
                 }
                 else
@@ -53,7 +53,7 @@ namespace Netpoints.Controllers
                     Session["id_sesion"] = id_sesion;
                     Session["User"] = UsuarioLogueado;
                     Session["Usuario"] = UsuarioLogueado.Usuario;
-                    //TempData["msg"] = "<script>alert('Bienvenido " + Ent_Unsuario.NickName + "');</script>";
+                    TempData["msg"] = "<script>alert('Bienvenido " + UsuarioLogueado.Usuario + "');</script>";
                     //Redirige a la pagina principal del sistema
                     return RedirectToAction("Index", "Home");
                 }

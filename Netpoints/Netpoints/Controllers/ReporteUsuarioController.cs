@@ -20,7 +20,7 @@ namespace Netpoints.Controllers
             NUsuario negocios = new NUsuario();
             var lista1 = negocios.LlenarRoles();
             //Asignar y convertir los valores a items
-            var items = new SelectList(lista1, "IdRol", "Descripcion");
+            var items = new SelectList(lista1, "IdRol", "Rol");
             ViewBag.Roles = items;
             #endregion
             NUsuario Negocios = new NUsuario();

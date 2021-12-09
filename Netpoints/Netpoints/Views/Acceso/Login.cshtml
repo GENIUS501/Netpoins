@@ -2,6 +2,8 @@
 @{
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
+<!--Mostrar Alerta-->
+@Html.Raw(TempData["msg"])
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,11 +24,11 @@
                                 <h5 class="card-title text-center"></h5>
                                 <form action="/Acceso/Login" method="POST">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" name="Usuario" id="Usuario" placeholder="Nombre">
+                                        <input type="text" class="form-control" name="Usuario" id="Usuario" placeholder="Nombre" required>
                                         <label for="Usuario"><i class='bx bx-user'></i>Usuario</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="password" class="form-control" name="Pass" id="Pass" placeholder="Clave">
+                                        <input type="password" class="form-control" name="Pass" id="Pass" placeholder="Clave" required>
                                         <label for="Pass"> <i class='bx bxs-lock'></i>Contraseña</label>
                                     </div>
                                     <br />
@@ -36,7 +38,7 @@
                                         </div>
                                         <div div class="col-5">
                                             <button type="button" class="btn btn-outline-secondary"
-                                                    onclick="window.location.href = '/Login';">
+                                                    onclick="window.location.href = '/Acceso/Login';">
                                                 Cancelar
                                             </button>
                                         </div>
