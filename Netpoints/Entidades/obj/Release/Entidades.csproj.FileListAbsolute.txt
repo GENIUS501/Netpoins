@@ -4,3 +4,9 @@ C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Entidades\obj
 C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Entidades\obj\Release\Entidades.csproj.CoreCompileInputs.cache
 C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Entidades\obj\Release\Entidades.dll
 C:\Users\JavierArguedasDíaz\source\repos\Susan\Netpoins\Netpoints\Entidades\obj\Release\Entidades.pdb
+C:\Users\jimensus\Desktop\Netpoins\Netpoints\Entidades\bin\Release\Entidades.dll
+C:\Users\jimensus\Desktop\Netpoins\Netpoints\Entidades\bin\Release\Entidades.pdb
+C:\Users\jimensus\Desktop\Netpoins\Netpoints\Entidades\obj\Release\Entidades.csproj.AssemblyReference.cache
+C:\Users\jimensus\Desktop\Netpoins\Netpoints\Entidades\obj\Release\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\jimensus\Desktop\Netpoins\Netpoints\Entidades\obj\Release\Entidades.dll
+C:\Users\jimensus\Desktop\Netpoins\Netpoints\Entidades\obj\Release\Entidades.pdb

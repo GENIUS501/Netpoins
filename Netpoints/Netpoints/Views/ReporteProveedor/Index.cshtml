@@ -4,7 +4,8 @@
     ViewBag.Title = "Reporte de proveedores";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<h2>Reporte de enlaces por proveedor</h2>
+<br />
 <div class="row">
     <div class="col-3">
         <div class="card">
@@ -27,7 +28,6 @@
         </div>
     </div>
 </div>
-<br />
 <br />
 <table id="GridEnlaces" class="table table-dark table-hover">
     <thead>
@@ -101,8 +101,8 @@
                     {
                         extend: "pdf",
                         text: '<button class="btn btn-outline-primary">Exportar a PDF<i class="bx bxs-file-pdf" ></i></button>',
-                        filename: 'Reporte de enlaces por ubicacion',
-                        title: 'BCR \n Netpoints \n Reporte de enlaces por ubicacion \n Fecha:' + d,
+                        filename: 'Reporte de enlaces por proveedor',
+                        title: 'BCR \n Netpoints \n Reporte de enlaces por proveedor \n Fecha:' + d,
                         customize: function (doc) {
                             doc['footer'] = (function (page, pages) {
                                 return {
@@ -130,29 +130,6 @@
                     }
                 ]
 
-                //buttons: [
-                //    {
-                //        "extend": 'pdfHtml5',
-                //        "text": '<button class="btn btn-outline-primary">Exportar a PDF<i class="bx bxs-file-pdf" ></i></button>',
-                //        "titleAttr": 'pdf',
-                //        "className": '',
-                //        "exportOptions": {
-                //            "columns": ":visible",
-                //        },
-                //        "autoFilter": true,
-                //        "sheetName": 'Datos exportado ANE'
-                //    },
-                //    {
-                //        "extend": 'print',
-                //        "text": '<button class="btn btn-outline-primary">Imprimir<i class="bx bxs-printer"></i></button>',
-                //        "titleAttr": 'Imprimir',
-                //        "exportOptions": {
-                //            "columns": ":visible"
-                //        },
-                //        title: 'Proveedores',
-                //        "className": ''
-                //    },
-                //],
             });
             setTimeout(function () {
                 if (IsLoading) Loading.close();

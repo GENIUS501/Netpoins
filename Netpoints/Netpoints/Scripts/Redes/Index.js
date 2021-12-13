@@ -17,7 +17,7 @@ var ClickDelete = function (id) {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Borrar Red!'
+        confirmButtonText: 'Eliminar Red!'
     }).then((result) => {
         if (result.isConfirmed) {
             window.location.href = "Redes/Delete/" + id;

@@ -33,7 +33,7 @@ namespace Netpoints.Controllers
                     //Expresa el error a la vista
                     //ViewBag.Error = "Usuario o Contrasena invalida!!!";
                     //Notifica que la clave esta incorrecta
-                    TempData["msg"] = "<script>alert('Usuario o contrasena incorrecto!!!');</script>";
+                    TempData["msg"] = "<script>alert('Usuario o contraseña incorrectos!!!');</script>";
                     return View();
                 }
                 else

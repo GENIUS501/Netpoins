@@ -27,7 +27,7 @@ $("#FormEnlaces").submit(function (e) {
                 Loading.close();
                 Toast.fire({
                     icon: 'success',
-                    title: 'Enlace Guardado'
+                    title: 'Enlace Editado'
                 });
                 sleep(2500).then(() => {
                     window.location.href = "../Enlaces/Index"

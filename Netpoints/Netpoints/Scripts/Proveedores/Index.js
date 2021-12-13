@@ -17,7 +17,7 @@ var ClickDelete = function (id) {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Borrar proveedor!'
+        confirmButtonText: 'Eiminar proveedor!'
     }).then((result) => {
         if (result.isConfirmed) {
             window.location.href = "Proveedores/Delete/" + id;

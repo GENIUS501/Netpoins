@@ -17,7 +17,7 @@ var ClickDelete = function (id) {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Borrar Sitio!'
+        confirmButtonText: 'Eliminar Sitio!'
     }).then((result) => {
         if (result.isConfirmed) {
             window.location.href = "Oficinas/Delete/" + id;

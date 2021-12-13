@@ -1,0 +1,6 @@
+C:\Users\jimensus\source\repos\NetpointsGIT\Netpoins\Netpoints\Entidades\bin\Debug\Entidades.dll
+C:\Users\jimensus\source\repos\NetpointsGIT\Netpoins\Netpoints\Entidades\bin\Debug\Entidades.pdb
+C:\Users\jimensus\source\repos\NetpointsGIT\Netpoins\Netpoints\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
+C:\Users\jimensus\source\repos\NetpointsGIT\Netpoins\Netpoints\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\jimensus\source\repos\NetpointsGIT\Netpoins\Netpoints\Entidades\obj\Debug\Entidades.dll
+C:\Users\jimensus\source\repos\NetpointsGIT\Netpoins\Netpoints\Entidades\obj\Debug\Entidades.pdb

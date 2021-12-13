@@ -26,7 +26,7 @@ $("#FormRedes").submit(function (e) {
             if (data == "success") {
                 Toast.fire({
                     icon: 'success',
-                    title: 'Red Guardada'
+                    title: 'Red Editada'
                 });
                 sleep(2500).then(() => {
                     window.location.href = "../Redes/Index"
