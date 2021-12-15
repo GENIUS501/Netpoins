@@ -1,0 +1,72 @@
+﻿@model Entidades.ERedes
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="RedesEdit" class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Editar Red</h4>
+                    <form id="FormRedes" action="/Redes/Edit" method="POST">
+                        <input type="hidden" name="IdRed" value="@Model.IdRed" />
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="Linea" id="Linea" maxlength="8" placeholder="Linea" value="@Model.Linea" required />
+                            <label for="Linea">Número de Linea</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="Gateway" id="Gateway" maxlength="15" placeholder="IP Gateway" value="@Model.Gateway" required />
+                            <label for="Gateway">IP Gateway </label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <select class=" form-select" name="Interface" id="Interface" arial-label="Default select example" required>
+                                <option value="Internet 1">Internet 1</option>
+                                <option value="Internet 2">Internet 2</option>
+                            </select>
+                            <label for="Interface"> Interface </label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <select class=" form-select" name="TipoEnlace" id="TipoEnlace" arial-label="Default select example" required>
+                                <option value="Principal">Principal</option>
+                                <option value="Respaldo">Respaldo</option>
+                            </select>
+                            <label for="TipoEnlace"> Tipo Enlace </label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="number" name="Bandwidth" id="Bandwidth" min="256" placeholder="Bandwidth" value="@Model.Bandwidth" required />
+                            <label for="Bandwidth">Bandwidth </label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <select class=" form-select" name="MedioEnlace" id="MedioEnlace" arial-label="Default select example" required>
+                                <option value="Fibra Optica">Fibra Óptica</option>
+                                <option value="Inalambrico">Inalámbrico</option>
+                                <option value="Cobre">Cobre</option>
+                            </select>
+                            <label for="MedioEnlace"> Medio Enlace </label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <textarea class="form-control" type="text" name="Comentario" id="textarea" rows="3" placeholder="Comentarios">@Html.Raw(Model.Comentario)</textarea>
+                            <label for="Comentario"> Comentarios </label>
+                        </div>
+                        <br />
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-outline-primary">Guardar <i class='bx bx-edit'></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/Redes/Edit.js"></script>
+    <script>CreateValidator("#RedesEdit");</script>
+    <script>
+        $("#Interface").val("@Model.Interface");
+        $("#TipoEnlace").val("@Model.TipoEnlace");
+        $("#MedioEnlace").val("@Model.MedioEnlace");
+    </script>
+}

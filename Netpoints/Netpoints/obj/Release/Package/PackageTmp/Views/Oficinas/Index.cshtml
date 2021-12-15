@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Entidades.EOficinas>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <h1>Sitios BCR</h1> <br />
+    <div class="row">
+        <div class="col-2">
+            <button type="button" class="btn btn-outline-primary" onclick="ClickNew()"><i class='bx bx-add-to-queue'></i>Agregar</button>
+            <br />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-11">
+            <table id="GridOficinas" class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th>Provincia</th>
+                        <th>Ubicación</th>
+                        <th>Unidad Ejecutora</th>
+                        <th>Comentarios</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Provincia</td>
+                            <td>@item.NombreOficina</td>
+                            <td>@item.UE</td>
+                            <td>@item.Comentario</td>
+                            <td>
+                                <button type="button" class="btn btn-outline-primary" onclick="ClickUpdate(@item.IdOficina)"><i class='bx bxs-edit'></i>Editar</button>
+                                <button type="button" class="btn btn-outline-primary" onclick="ClickDelete(@item.IdOficina)"><i class='bx bxs-trash'></i>Eliminar</button>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="root">
+
+</div>
+
+@section scripts{
+    @if (TempData["msg"] == "0")
+    {
+        <script>
+            Swal.fire(
+                '¡Eliminado!',
+                'El Sitio ha sido Eliminado.',
+            );
+            var IsLoading = false;
+        </script>
+    }
+    else
+    {
+        <script>
+            var IsLoading = true;
+        </script>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <script>
+            Swal.fire(
+                '¡Error!',
+                'Este Sitio tiene registros asociados.',
+            );
+            var IsLoading = false;
+        </script>
+    }
+    <script src="~/Scripts/Oficinas/Index.js"></script>
+}
