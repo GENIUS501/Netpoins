@@ -1,0 +1,171 @@
+﻿@model Entidades.EEnlaces
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="EnlacesEdit" class="container">
+
+    <div class="row" v-if="true">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Editar Enlace</h4>
+                    <form id="FormEnlaces" action="/Enlaces/Edit" method="POST">
+
+                        <input type="hidden" name="IdEnlace" value="@Model.IdEnlace" />
+
+                        <div class="form-floating mb-3 form-group">
+                            @Html.DropDownList("IdOficina", ViewBag.ddloficinas as SelectList, new { @class = "form-control", @required = "required", @onchange = "ChangeOficina()" })
+                            <label for="IdOficina">Sitio</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="UE" id="UE" placeholder="Unidad Ejecutora" value="@ViewBag.Oficinas.UE" readonly required />
+                            <label for="UE">Unidad Ejecutora</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="Provincia" id="Provincia" placeholder="Provincia" value="@ViewBag.Oficinas.Provincia" readonly required />
+                            <label for="Provincia">Provincia</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="Comentariob" id="Comentariob" placeholder="Comentario" value="@ViewBag.Oficinas.Comentario"  readonly />
+                            <label for="Comentariob">Comentario</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            @Html.DropDownList("IdRed", ViewBag.ddlredes as SelectList, new { @class = "form-control", @required = "required", onchange = "ChangeLinea()" })
+                            <label for="IdRed">Número de Linea</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="Gateway" id="Gateway" placeholder="IP Gateway" value="@ViewBag.Redes.Gateway" readonly />
+                            <label for="Gateway">IP Gateway</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="Interface" id="Interface" placeholder="Interface" value="@ViewBag.Redes.Interface" readonly />
+                            <label for="Gateway">Interface</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="TipoEnlace" id="TipoEnlace" placeholder="Tipo Enlace" value="@ViewBag.Redes.TipoEnlace" readonly />
+                            <label for="TipoEnlace">Tipo Enlace</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="Bandwidth" id="Bandwidth" placeholder="Bandwidth" value="@ViewBag.Redes.Bandwidth" readonly />
+                            <label for="Bandwidth">Bandwidth</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="MedioEnlace" id="MedioEnlace" placeholder="Medio Enlace" value="@ViewBag.Redes.MedioEnlace" readonly />
+                            <label for="MedioEnlace">Medio Enlace</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <input class="form-control" type="text" name="Comentarioa" id="Comentarioa" placeholder="Comentario" value="@ViewBag.Redes.Comentario" readonly />
+                            <label for="Comentarioa">Comentario</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            @Html.DropDownList("IdProveedor", ViewBag.ddlproveedores as SelectList, new { @class = "form-control", @required = "required" })
+                            <label for="IdProveedor">Proveedor</label>
+                        </div>
+                        <div class="form-floating mb-3 form-group">
+                            <textarea class="form-control" type="text" name="Comentario" id="textarea" rows="3">@Model.Comentario </textarea>
+                            <label for="Comentario"> Comentarios </label>
+                        </div>
+                        <br />
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-outline-primary">Guardar <i class='bx bx-edit'></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/Enlaces/Edit.js" defer></script>
+    <script>CreateValidator("#EnlacesEdit");</script>
+    <script>
+        function ChangeOficina() {
+            if ($('#IdOficina').val() != "") {
+                $.ajax({
+                    type: "GET",
+                    url: "@Url.Action("TraerOficina", "Enlaces")" + "?" + "id=" + $('#IdOficina').val(),
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        Loading.fire("Cargando...");
+                        if (data == "Error") {
+                            Loading.close();
+                            Toast.fire({
+                                icon: 'error',
+                                title: 'Error'
+                            });
+                        }
+                        if (data != "") {
+                            //debugger
+                            Loading.close();
+                            $('#UE').val(data['UE']);
+                            $('#Provincia').val(data['Provincia']);
+                            $('#Comentariob').val(data['Comentario']);
+                        }
+                    },
+                    error: function (xhr, error, status) {
+                        Loading.close();
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Error'
+                        });
+                    },
+                });
+            } else {
+                $('#UE').val("");
+                $('#Provincia').val("");
+                $('#Comentariob').val("");
+            }
+        }
+        function ChangeLinea() {
+            if ($('#IdRed').val() != "") {
+                $.ajax({
+                    type: "GET",
+                    url: "@Url.Action("TraerRedes", "Enlaces")" + "?" + "id=" + $('#IdRed').val(),
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        Loading.fire("Cargando...");
+                        if (data == "Error") {
+                            Loading.close();
+                            Toast.fire({
+                                icon: 'error',
+                                title: 'Error'
+                            });
+                        }
+                        if (data != "") {
+                            Loading.close();
+                            $('#Gateway').val(data['Gateway']);
+                            $('#Interface').val(data['Interface']);
+                            $('#TipoEnlace').val(data['TipoEnlace']);
+                            $('#MedioEnlace').val(data['MedioEnlace']);
+                            $('#Bandwidth').val(data['Bandwidth']);
+                            $('#Comentarioa').val(data['Comentario']);
+                        }
+                    },
+                    error: function (xhr, error, status) {
+                        Loading.close();
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Error'
+                        });
+                    },
+                });
+            } else {
+                $('#Gateway').val("");
+                $('#Interface').val("");
+                $('#TipoEnlace').val("");
+                $('#Bandwidth').val("");
+                $('#MedioEnlace').val("");
+                $('#Comentarioa').val("");
+                $('#Bandwidth').val("");
+            }
+        }
+    </script>
+}

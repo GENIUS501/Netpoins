@@ -3,7 +3,7 @@
     "mssql1": {
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/netpoints/databases/Enlaces_Telecom",
       "type": "mssql.azure",
-      "connectionId": "ConnectionStrings:_",
+      "connectionId": "ConnectionStrings",
       "secretStore": "AzureAppSettings"
     }
   }

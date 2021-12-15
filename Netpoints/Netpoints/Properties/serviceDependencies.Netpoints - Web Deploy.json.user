@@ -1,20 +1,4 @@
 {
-  "dependencies": {
-    "mssql1": {
-      "restored": true,
-      "restoreTime": "2021-12-13T23:46:58.3891884Z"
-    }
-  },
-  "parameters": {
-    "mssql1.subscriptionId": {
-      "Name": "mssql1.subscriptionId",
-      "Type": "subscription",
-      "Value": "0c3e25b4-7ac5-443d-813e-455116918bc2"
-    },
-    "mssql1.resourceGroupName": {
-      "Name": "mssql1.resourceGroupName",
-      "Type": "resourceGroup",
-      "Value": "Netpoints"
-    }
-  }
+  "dependencies": {},
+  "parameters": {}
 }
