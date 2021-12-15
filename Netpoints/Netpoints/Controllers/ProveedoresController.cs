@@ -101,7 +101,9 @@ namespace Netpoints.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError("Error", ex.Message);
-                return Redirect("Index");
+                //return Redirect("Index");
+                TempData["error"] = "error";//Manejar error de BD
+                return RedirectToAction("index");
             }
         }
     }

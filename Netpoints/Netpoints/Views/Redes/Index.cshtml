@@ -61,9 +61,8 @@
     {
         <script>
             Swal.fire(
-                'Eliminado!',
-                'La red ha sido Eliminado..',
-                'Exitosamente'
+                '¡Eliminado!',
+                'La Red ha sido Eliminada.',
             );
             var IsLoading = false;
         </script>
@@ -72,6 +71,16 @@
     {
         <script>
             var IsLoading = true;
+        </script>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <script>
+            Swal.fire(
+                '¡Error!',
+                'Esta Red tiene registros asociados.',
+            );
+            var IsLoading = false;
         </script>
     }
     <script src="~/Scripts/Redes/Index.js"></script>

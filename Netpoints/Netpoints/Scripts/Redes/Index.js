@@ -12,12 +12,12 @@ var ClickUpdate = function (id) {
 var ClickDelete = function (id) {
 
     Swal.fire({
-        title: 'Estas seguro de Eliminar la red?',
+        title: '¿Está seguro que desea eliminar la Red?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Eliminar Red!'
+        confirmButtonText: 'Eliminar'
     }).then((result) => {
         if (result.isConfirmed) {
             window.location.href = "Redes/Delete/" + id;

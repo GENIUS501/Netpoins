@@ -12,12 +12,12 @@ var ClickUpdate = function (id) {
 var ClickDelete = function (id) {
 
     Swal.fire({
-        title: 'Estas seguro de Eliminar el enlace?',
+        title: '¿Está seguro que desea eliminar el Enlace?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Eliminar Enlace!'
+        confirmButtonText: 'Eliminar'
     }).then((result) => {
         if (result.isConfirmed) {
             window.location.href = "Enlaces/Delete/" + id;

@@ -32,9 +32,9 @@
                             <td>@(item.Estado ? "Activo" : "Inactivo")</td>
                             <td>
                                 <button type="button" class="btn btn-outline-primary" onclick="ClickUpdate(@item.IdRol)"><i class='bx bxs-edit'></i>Editar</button>
-                                @if(item.Estado)
+                                @if (item.Estado)
                                 {
-                                <button type="button" class="btn btn-outline-primary" onclick="ClickDelete(@item.IdRol)"><i class='bx bxs-trash'></i>Desactivar</button>
+                                    <button type="button" class="btn btn-outline-primary" onclick="ClickDelete(@item.IdRol)"><i class='bx bxs-trash'></i>Desactivar</button>
                                 }
                             </td>
                         </tr>
@@ -48,13 +48,12 @@
 
 </div>
 @section scripts{
-    @if (TempData["msg"]=="0")
+    @if (TempData["msg"] == "0")
     {
         <script>
             Swal.fire(
-                'Desactivado!',
-                'El Rol ha sido Desactivado..',
-                'Exitosamente'
+                '¡Desactivado!',
+                'El Rol ha sido Desactivado.',
             );
             var IsLoading = false;
         </script>

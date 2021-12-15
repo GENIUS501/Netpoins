@@ -53,13 +53,12 @@
 </div>
 
 @section scripts{
-    @if (TempData["msg"]=="0")
+    @if (TempData["msg"] == "0")
     {
         <script>
             Swal.fire(
-                'Eliminado!',
-                'El proveedor ha sido eliminado ..',
-                'Exitosamente'
+                '¡Eliminado!',
+                'El Proveedor ha sido Eliminado.',
             );
             var IsLoading = false;
         </script>
@@ -68,6 +67,16 @@
     {
         <script>
             var IsLoading = true;
+        </script>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <script>
+            Swal.fire(
+                '¡Error!',
+                'Este Proveedor tiene registros asociados.',
+            );
+            var IsLoading = false;
         </script>
     }
     <script src="~/Scripts/Proveedores/Index.js"></script>

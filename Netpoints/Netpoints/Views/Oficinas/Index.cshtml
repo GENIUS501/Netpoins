@@ -51,13 +51,12 @@
 </div>
 
 @section scripts{
-    @if (TempData["msg"]=="0")
+    @if (TempData["msg"] == "0")
     {
         <script>
             Swal.fire(
-                'Eliminado!',
-                'El sitio ha sido Eliminado..',
-                'Exitosamente'
+                '¡Eliminado!',
+                'El Sitio ha sido Eliminado.',
             );
             var IsLoading = false;
         </script>
@@ -66,6 +65,16 @@
     {
         <script>
             var IsLoading = true;
+        </script>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <script>
+            Swal.fire(
+                '¡Error!',
+                'Este Sitio tiene registros asociados.',
+            );
+            var IsLoading = false;
         </script>
     }
     <script src="~/Scripts/Oficinas/Index.js"></script>

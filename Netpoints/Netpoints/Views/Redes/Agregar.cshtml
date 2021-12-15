@@ -15,8 +15,8 @@
                         <input type="hidden" name="IdRed" />
                         <div class="form-floating mb-3 form-group">
                             <input class="form-control" type="text" name="Linea" id="Linea" maxlength="8" placeholder="Linea" required />
-                            <label for="Linea">Linea</label>
-                            <button type="button" onclick="Verificar()" class="btn btn-outline-primary" id="serificar">Verificar <i class='bx bx-check-square'></i></button>
+                            <label for="Linea">Número de Linea</label>
+                            <button type="button" onclick="Verificar()" class="btn btn-outline-primary" id="serificar">Validar <i class='bx bx-check-square'></i></button>
                         </div>
                         <div id="Datos">
                             <div class="form-floating mb-3 form-group">
@@ -43,8 +43,8 @@
                             </div>
                             <div class="form-floating mb-3 form-group">
                                 <select class=" form-select" name="MedioEnlace" id="MedioEnlace" arial-label="Default select example" required>
-                                    <option value="Fibra Optica">Fibra Optica</option>
-                                    <option value="Inalambrico">Inalambrico</option>
+                                    <option value="Fibra Optica">Fibra Óptica</option>
+                                    <option value="Inalambrico">Inalámbrico</option>
                                     <option value="Cobre">Cobre</option>
                                 </select>
                                 <label for="MedioEnlace"> Medio Enlace </label>
@@ -83,7 +83,7 @@
                         Loading.close();
                         Toast.fire({
                             icon: 'success',
-                            title: 'Linea Valida!'
+                            title: 'Linea Valida'
                         });
                         $("#Datos").show();
                         $('#Linea').prop('readonly', true);

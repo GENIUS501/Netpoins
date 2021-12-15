@@ -12,12 +12,12 @@ var ClickUpdate = function (id) {
 var ClickDelete = function (id) {
 
     Swal.fire({
-        title: 'Estas seguro de desactivar el rol?',
+        title: '¿Está seguro que desea desactivar el Rol?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Desactivar Rol!'
+        confirmButtonText: 'Desactivar'
     }).then((result) => {
         if (result.isConfirmed) {
             window.location.href = "Roles/Delete/" + id;
